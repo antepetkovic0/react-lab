@@ -1,5 +1,0 @@
-export { LabCard } from './LabCard'
-export type { LabCardSectionValue } from './LabCardBadge'
-export { LabCardBadge } from './LabCardBadge'
-export type { LabCardLevelValue } from './LabCardLevel'
-export { LabCardLevel } from './LabCardLevel'

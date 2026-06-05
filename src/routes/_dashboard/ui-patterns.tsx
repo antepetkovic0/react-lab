@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { LabSectionPage } from '@/components/LabSectionPage'
+import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection'
 
 export const Route = createFileRoute('/_dashboard/ui-patterns')({
   component: UiPatternsPage,
