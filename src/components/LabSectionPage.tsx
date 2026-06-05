@@ -4,15 +4,15 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from "@/components/ui/card";
 
 type LabSectionPageProps = {
-  eyebrow: string
-  title: string
-  description: string
-  topics: string[]
-  labs: string[]
-}
+  eyebrow: string;
+  title: string;
+  description: string;
+  topics: string[];
+  labs: string[];
+};
 
 export function LabSectionPage({
   eyebrow,
@@ -75,5 +75,5 @@ export function LabSectionPage({
         </Card>
       </section>
     </div>
-  )
+  );
 }
