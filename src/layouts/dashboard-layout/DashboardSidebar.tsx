@@ -1,11 +1,17 @@
 import {
-  CreditCardIcon,
-  GalleryVerticalEnd,
+  AtomIcon,
+  BoxIcon,
+  CircuitBoardIcon,
+  CodeXmlIcon,
+  FlaskConicalIcon,
+  FormInputIcon,
+  GaugeIcon,
+  GlobeIcon,
   LayoutDashboardIcon,
-  PackageIcon,
-  SettingsIcon,
-  ShoppingCartIcon,
-  UsersIcon,
+  PuzzleIcon,
+  RouteIcon,
+  ShieldCheckIcon,
+  WebhookIcon,
 } from "lucide-react";
 import {
   Sidebar,
@@ -22,11 +28,25 @@ import { SubscribeForm } from "./SubscribeForm";
 const data = {
   navPrimary: [
     { title: "Dashboard", url: "/", icon: LayoutDashboardIcon },
-    { title: "Orders", url: "/orders", icon: ShoppingCartIcon },
-    { title: "Products", url: "/products", icon: PackageIcon },
-    { title: "Employees", url: "/store/employees", icon: UsersIcon },
-    { title: "Store Settings", url: "/store/settings", icon: SettingsIcon },
-    { title: "Payments", url: "/payments", icon: CreditCardIcon },
+    {
+      title: "Fundamentals",
+      url: "/fundamentals",
+      icon: CodeXmlIcon,
+    },
+    { title: "Hooks & Effects", url: "/hooks-effects", icon: WebhookIcon },
+    { title: "Routing", url: "/routing", icon: RouteIcon },
+    {
+      title: "Forms & Validation",
+      url: "/forms-validation",
+      icon: FormInputIcon,
+    },
+    { title: "State Management", url: "/state-management", icon: BoxIcon },
+    { title: "Data Fetching", url: "/data-fetching", icon: GlobeIcon },
+    { title: "UI Patterns", url: "/ui-patterns", icon: PuzzleIcon },
+    { title: "Performance", url: "/performance", icon: GaugeIcon },
+    { title: "Security", url: "/security", icon: ShieldCheckIcon },
+    { title: "Testing", url: "/testing", icon: FlaskConicalIcon },
+    { title: "Architecture", url: "/architecture", icon: CircuitBoardIcon },
   ],
 };
 
@@ -39,10 +59,9 @@ export function DashboardSidebar({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              {/** biome-ignore lint/a11y/useValidAnchor: <explanation> */}
-              <a href="#">
+              <a href="/">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <GalleryVerticalEnd className="size-4" />
+                  <AtomIcon className="size-4" />
                 </div>
                 <div className="flex flex-col gap-0.5 leading-none">
                   <span className="font-medium">React Lab</span>

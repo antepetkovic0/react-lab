@@ -10,32 +10,178 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/_dashboard'
+import { Route as DashboardIndexRouteImport } from './routes/_dashboard/index'
+import { Route as DashboardUiPatternsRouteImport } from './routes/_dashboard/ui-patterns'
+import { Route as DashboardTestingRouteImport } from './routes/_dashboard/testing'
+import { Route as DashboardStateManagementRouteImport } from './routes/_dashboard/state-management'
+import { Route as DashboardSecurityRouteImport } from './routes/_dashboard/security'
+import { Route as DashboardRoutingRouteImport } from './routes/_dashboard/routing'
+import { Route as DashboardPerformanceRouteImport } from './routes/_dashboard/performance'
+import { Route as DashboardHooksEffectsRouteImport } from './routes/_dashboard/hooks-effects'
+import { Route as DashboardFundamentalsRouteImport } from './routes/_dashboard/fundamentals'
+import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboard/forms-validation'
+import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
+import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardUiPatternsRoute = DashboardUiPatternsRouteImport.update({
+  id: '/ui-patterns',
+  path: '/ui-patterns',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardTestingRoute = DashboardTestingRouteImport.update({
+  id: '/testing',
+  path: '/testing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardStateManagementRoute =
+  DashboardStateManagementRouteImport.update({
+    id: '/state-management',
+    path: '/state-management',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRoutingRoute = DashboardRoutingRouteImport.update({
+  id: '/routing',
+  path: '/routing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardPerformanceRoute = DashboardPerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardHooksEffectsRoute = DashboardHooksEffectsRouteImport.update({
+  id: '/hooks-effects',
+  path: '/hooks-effects',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardFundamentalsRoute = DashboardFundamentalsRouteImport.update({
+  id: '/fundamentals',
+  path: '/fundamentals',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardFormsValidationRoute =
+  DashboardFormsValidationRouteImport.update({
+    id: '/forms-validation',
+    path: '/forms-validation',
+    getParentRoute: () => DashboardRoute,
+  } as any)
+const DashboardDataFetchingRoute = DashboardDataFetchingRouteImport.update({
+  id: '/data-fetching',
+  path: '/data-fetching',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardArchitectureRoute = DashboardArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
+  getParentRoute: () => DashboardRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof DashboardRoute
+  '/': typeof DashboardIndexRoute
+  '/architecture': typeof DashboardArchitectureRoute
+  '/data-fetching': typeof DashboardDataFetchingRoute
+  '/forms-validation': typeof DashboardFormsValidationRoute
+  '/fundamentals': typeof DashboardFundamentalsRoute
+  '/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/performance': typeof DashboardPerformanceRoute
+  '/routing': typeof DashboardRoutingRoute
+  '/security': typeof DashboardSecurityRoute
+  '/state-management': typeof DashboardStateManagementRoute
+  '/testing': typeof DashboardTestingRoute
+  '/ui-patterns': typeof DashboardUiPatternsRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof DashboardRoute
+  '/architecture': typeof DashboardArchitectureRoute
+  '/data-fetching': typeof DashboardDataFetchingRoute
+  '/forms-validation': typeof DashboardFormsValidationRoute
+  '/fundamentals': typeof DashboardFundamentalsRoute
+  '/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/performance': typeof DashboardPerformanceRoute
+  '/routing': typeof DashboardRoutingRoute
+  '/security': typeof DashboardSecurityRoute
+  '/state-management': typeof DashboardStateManagementRoute
+  '/testing': typeof DashboardTestingRoute
+  '/ui-patterns': typeof DashboardUiPatternsRoute
+  '/': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/_dashboard': typeof DashboardRoute
+  '/_dashboard': typeof DashboardRouteWithChildren
+  '/_dashboard/architecture': typeof DashboardArchitectureRoute
+  '/_dashboard/data-fetching': typeof DashboardDataFetchingRoute
+  '/_dashboard/forms-validation': typeof DashboardFormsValidationRoute
+  '/_dashboard/fundamentals': typeof DashboardFundamentalsRoute
+  '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/_dashboard/performance': typeof DashboardPerformanceRoute
+  '/_dashboard/routing': typeof DashboardRoutingRoute
+  '/_dashboard/security': typeof DashboardSecurityRoute
+  '/_dashboard/state-management': typeof DashboardStateManagementRoute
+  '/_dashboard/testing': typeof DashboardTestingRoute
+  '/_dashboard/ui-patterns': typeof DashboardUiPatternsRoute
+  '/_dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/architecture'
+    | '/data-fetching'
+    | '/forms-validation'
+    | '/fundamentals'
+    | '/hooks-effects'
+    | '/performance'
+    | '/routing'
+    | '/security'
+    | '/state-management'
+    | '/testing'
+    | '/ui-patterns'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/_dashboard'
+  to:
+    | '/architecture'
+    | '/data-fetching'
+    | '/forms-validation'
+    | '/fundamentals'
+    | '/hooks-effects'
+    | '/performance'
+    | '/routing'
+    | '/security'
+    | '/state-management'
+    | '/testing'
+    | '/ui-patterns'
+    | '/'
+  id:
+    | '__root__'
+    | '/_dashboard'
+    | '/_dashboard/architecture'
+    | '/_dashboard/data-fetching'
+    | '/_dashboard/forms-validation'
+    | '/_dashboard/fundamentals'
+    | '/_dashboard/hooks-effects'
+    | '/_dashboard/performance'
+    | '/_dashboard/routing'
+    | '/_dashboard/security'
+    | '/_dashboard/state-management'
+    | '/_dashboard/testing'
+    | '/_dashboard/ui-patterns'
+    | '/_dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  DashboardRoute: typeof DashboardRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -47,11 +193,129 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dashboard/': {
+      id: '/_dashboard/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/ui-patterns': {
+      id: '/_dashboard/ui-patterns'
+      path: '/ui-patterns'
+      fullPath: '/ui-patterns'
+      preLoaderRoute: typeof DashboardUiPatternsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/testing': {
+      id: '/_dashboard/testing'
+      path: '/testing'
+      fullPath: '/testing'
+      preLoaderRoute: typeof DashboardTestingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/state-management': {
+      id: '/_dashboard/state-management'
+      path: '/state-management'
+      fullPath: '/state-management'
+      preLoaderRoute: typeof DashboardStateManagementRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/security': {
+      id: '/_dashboard/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof DashboardSecurityRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/routing': {
+      id: '/_dashboard/routing'
+      path: '/routing'
+      fullPath: '/routing'
+      preLoaderRoute: typeof DashboardRoutingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/performance': {
+      id: '/_dashboard/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof DashboardPerformanceRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/hooks-effects': {
+      id: '/_dashboard/hooks-effects'
+      path: '/hooks-effects'
+      fullPath: '/hooks-effects'
+      preLoaderRoute: typeof DashboardHooksEffectsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/fundamentals': {
+      id: '/_dashboard/fundamentals'
+      path: '/fundamentals'
+      fullPath: '/fundamentals'
+      preLoaderRoute: typeof DashboardFundamentalsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/forms-validation': {
+      id: '/_dashboard/forms-validation'
+      path: '/forms-validation'
+      fullPath: '/forms-validation'
+      preLoaderRoute: typeof DashboardFormsValidationRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/data-fetching': {
+      id: '/_dashboard/data-fetching'
+      path: '/data-fetching'
+      fullPath: '/data-fetching'
+      preLoaderRoute: typeof DashboardDataFetchingRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/_dashboard/architecture': {
+      id: '/_dashboard/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof DashboardArchitectureRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardArchitectureRoute: typeof DashboardArchitectureRoute
+  DashboardDataFetchingRoute: typeof DashboardDataFetchingRoute
+  DashboardFormsValidationRoute: typeof DashboardFormsValidationRoute
+  DashboardFundamentalsRoute: typeof DashboardFundamentalsRoute
+  DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRoute
+  DashboardPerformanceRoute: typeof DashboardPerformanceRoute
+  DashboardRoutingRoute: typeof DashboardRoutingRoute
+  DashboardSecurityRoute: typeof DashboardSecurityRoute
+  DashboardStateManagementRoute: typeof DashboardStateManagementRoute
+  DashboardTestingRoute: typeof DashboardTestingRoute
+  DashboardUiPatternsRoute: typeof DashboardUiPatternsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardArchitectureRoute: DashboardArchitectureRoute,
+  DashboardDataFetchingRoute: DashboardDataFetchingRoute,
+  DashboardFormsValidationRoute: DashboardFormsValidationRoute,
+  DashboardFundamentalsRoute: DashboardFundamentalsRoute,
+  DashboardHooksEffectsRoute: DashboardHooksEffectsRoute,
+  DashboardPerformanceRoute: DashboardPerformanceRoute,
+  DashboardRoutingRoute: DashboardRoutingRoute,
+  DashboardSecurityRoute: DashboardSecurityRoute,
+  DashboardStateManagementRoute: DashboardStateManagementRoute,
+  DashboardTestingRoute: DashboardTestingRoute,
+  DashboardUiPatternsRoute: DashboardUiPatternsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
-  DashboardRoute: DashboardRoute,
+  DashboardRoute: DashboardRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

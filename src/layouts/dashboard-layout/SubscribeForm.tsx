@@ -14,13 +14,13 @@ export function SubscribeForm() {
       <CardHeader className="px-4">
         <CardTitle className="text-sm">Subscribe to our newsletter</CardTitle>
         <CardDescription>
-          Opt-in to receive updates and news about the labs.
+          Opt-in to receive updates and news about the labs
         </CardDescription>
       </CardHeader>
       <CardContent className="px-4">
         <form>
           <div className="grid gap-2.5">
-            <SidebarInput type="email" placeholder="Email" />
+            <SidebarInput type="email" placeholder="me@example.com" />
             <Button
               className="w-full bg-sidebar-primary text-sidebar-primary-foreground shadow-none"
               size="sm"
