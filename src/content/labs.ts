@@ -100,6 +100,21 @@ export const labs = [
     isPopular: true,
     isSearchable: true,
   },
+  {
+    id: "debounce-throttle",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Cpath d="M31 85h98" fill="none" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M42 76V44M74 76V32M106 76V52" stroke="%237c3aed" stroke-width="8" stroke-linecap="round"/%3E%3Cpath d="M38 44h28M70 32h28M102 52h22" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3Ccircle cx="42" cy="44" r="7" fill="%237c3aed"/%3E%3Ccircle cx="74" cy="32" r="7" fill="%237c3aed"/%3E%3Ccircle cx="106" cy="52" r="7" fill="%237c3aed"/%3E%3Cpath d="M37 96h18M69 96h18M101 96h18" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3Cpath d="M32 24c16 0 16 14 32 14s16-14 32-14 16 14 32 14" fill="none" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3C/svg%3E',
+    imageAlt: "Timed updates settling into measured intervals",
+    title: "Debounce & Throttle",
+    description:
+      "Write reusable hooks for delayed and rate-limited updates, then apply them to search and slider examples.",
+    level: "intermediate",
+    section: "hooks-effects",
+    sectionLabel: "Hooks & Effects",
+    href: "/hooks-effects/debounce-throttle",
+    isPopular: true,
+    isSearchable: true,
+  },
 ] satisfies Lab[];
 
 export const popularLabs = labs.filter((lab) => lab.isPopular);

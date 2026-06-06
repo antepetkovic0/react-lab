@@ -23,6 +23,7 @@ import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboar
 import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
 import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
+import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
 import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
 
 const DashboardRoute = DashboardRouteImport.update({
@@ -97,6 +98,12 @@ const DashboardPerformanceCoreWebVitalsRoute =
     path: '/core-web-vitals',
     getParentRoute: () => DashboardPerformanceRoute,
   } as any)
+const DashboardHooksEffectsDebounceThrottleRoute =
+  DashboardHooksEffectsDebounceThrottleRouteImport.update({
+    id: '/debounce-throttle',
+    path: '/debounce-throttle',
+    getParentRoute: () => DashboardHooksEffectsRoute,
+  } as any)
 const DashboardFundamentalsComponentsJsxRoute =
   DashboardFundamentalsComponentsJsxRouteImport.update({
     id: '/components-jsx',
@@ -110,7 +117,7 @@ export interface FileRoutesByFullPath {
   '/data-fetching': typeof DashboardDataFetchingRoute
   '/forms-validation': typeof DashboardFormsValidationRoute
   '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
-  '/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
   '/security': typeof DashboardSecurityRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRoutesByTo {
@@ -125,7 +133,7 @@ export interface FileRoutesByTo {
   '/data-fetching': typeof DashboardDataFetchingRoute
   '/forms-validation': typeof DashboardFormsValidationRoute
   '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
-  '/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
   '/security': typeof DashboardSecurityRoute
@@ -134,6 +142,7 @@ export interface FileRoutesByTo {
   '/ui-patterns': typeof DashboardUiPatternsRoute
   '/': typeof DashboardIndexRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRoutesById {
@@ -143,7 +152,7 @@ export interface FileRoutesById {
   '/_dashboard/data-fetching': typeof DashboardDataFetchingRoute
   '/_dashboard/forms-validation': typeof DashboardFormsValidationRoute
   '/_dashboard/fundamentals': typeof DashboardFundamentalsRouteWithChildren
-  '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRoute
+  '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/_dashboard/performance': typeof DashboardPerformanceRouteWithChildren
   '/_dashboard/routing': typeof DashboardRoutingRoute
   '/_dashboard/security': typeof DashboardSecurityRoute
@@ -152,6 +161,7 @@ export interface FileRoutesById {
   '/_dashboard/ui-patterns': typeof DashboardUiPatternsRoute
   '/_dashboard/': typeof DashboardIndexRoute
   '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/_dashboard/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRouteTypes {
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/testing'
     | '/ui-patterns'
     | '/fundamentals/components-jsx'
+    | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/ui-patterns'
     | '/'
     | '/fundamentals/components-jsx'
+    | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
   id:
     | '__root__'
@@ -203,6 +215,7 @@ export interface FileRouteTypes {
     | '/_dashboard/ui-patterns'
     | '/_dashboard/'
     | '/_dashboard/fundamentals/components-jsx'
+    | '/_dashboard/hooks-effects/debounce-throttle'
     | '/_dashboard/performance/core-web-vitals'
   fileRoutesById: FileRoutesById
 }
@@ -310,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPerformanceCoreWebVitalsRouteImport
       parentRoute: typeof DashboardPerformanceRoute
     }
+    '/_dashboard/hooks-effects/debounce-throttle': {
+      id: '/_dashboard/hooks-effects/debounce-throttle'
+      path: '/debounce-throttle'
+      fullPath: '/hooks-effects/debounce-throttle'
+      preLoaderRoute: typeof DashboardHooksEffectsDebounceThrottleRouteImport
+      parentRoute: typeof DashboardHooksEffectsRoute
+    }
     '/_dashboard/fundamentals/components-jsx': {
       id: '/_dashboard/fundamentals/components-jsx'
       path: '/components-jsx'
@@ -334,6 +354,20 @@ const DashboardFundamentalsRouteWithChildren =
     DashboardFundamentalsRouteChildren,
   )
 
+interface DashboardHooksEffectsRouteChildren {
+  DashboardHooksEffectsDebounceThrottleRoute: typeof DashboardHooksEffectsDebounceThrottleRoute
+}
+
+const DashboardHooksEffectsRouteChildren: DashboardHooksEffectsRouteChildren = {
+  DashboardHooksEffectsDebounceThrottleRoute:
+    DashboardHooksEffectsDebounceThrottleRoute,
+}
+
+const DashboardHooksEffectsRouteWithChildren =
+  DashboardHooksEffectsRoute._addFileChildren(
+    DashboardHooksEffectsRouteChildren,
+  )
+
 interface DashboardPerformanceRouteChildren {
   DashboardPerformanceCoreWebVitalsRoute: typeof DashboardPerformanceCoreWebVitalsRoute
 }
@@ -351,7 +385,7 @@ interface DashboardRouteChildren {
   DashboardDataFetchingRoute: typeof DashboardDataFetchingRoute
   DashboardFormsValidationRoute: typeof DashboardFormsValidationRoute
   DashboardFundamentalsRoute: typeof DashboardFundamentalsRouteWithChildren
-  DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRoute
+  DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRouteWithChildren
   DashboardPerformanceRoute: typeof DashboardPerformanceRouteWithChildren
   DashboardRoutingRoute: typeof DashboardRoutingRoute
   DashboardSecurityRoute: typeof DashboardSecurityRoute
@@ -366,7 +400,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardDataFetchingRoute: DashboardDataFetchingRoute,
   DashboardFormsValidationRoute: DashboardFormsValidationRoute,
   DashboardFundamentalsRoute: DashboardFundamentalsRouteWithChildren,
-  DashboardHooksEffectsRoute: DashboardHooksEffectsRoute,
+  DashboardHooksEffectsRoute: DashboardHooksEffectsRouteWithChildren,
   DashboardPerformanceRoute: DashboardPerformanceRouteWithChildren,
   DashboardRoutingRoute: DashboardRoutingRoute,
   DashboardSecurityRoute: DashboardSecurityRoute,
