@@ -34,10 +34,12 @@ const vitals = [
     reactFocus:
       "Reduce render-blocking work, split routes, preload the hero image, and avoid delaying the first useful paint behind client-only data chains.",
     codeTips: [
-      "Render the hero content on the first pass instead of waiting for a client-only effect.",
-      'Preload the LCP image with a real <link rel="preload" as="image"> tag.',
-      "Lazy-load below-the-fold route chunks and heavy widgets with React.lazy().",
-      "Keep the initial Suspense fallback small and close to the final layout.",
+      "Identify the LCP element -> metric.entries.at(-1)?.element",
+      'Preload the LCP image -> <link rel="preload" as="image" href="..." fetchpriority="high">',
+      "Use modern format (AVIF, WebP) together with srcset and sizes attributes",
+      "Preload fonts -> <link rel='preload' href='...' as='font' type='font/woff2' crossorigin> together with font-display: swap",
+      "Lazy-load below-the-fold route chunks and heavy widgets with React.lazy()",
+      "Keep the initial Suspense fallback small and close to the final layout",
     ],
   },
   {
@@ -50,10 +52,10 @@ const vitals = [
     reactFocus:
       "Keep event handlers light, defer expensive state updates, memoize costly derived data, and move non-urgent work out of the input path.",
     codeTips: [
-      "Move expensive derived data into useMemo() when the inputs are stable.",
-      "Wrap non-urgent updates in startTransition() so input feedback can paint first.",
-      "Split large controlled forms so one keystroke does not re-render the whole page.",
-      "Debounce network writes and analytics work outside the immediate event handler.",
+      "Move expensive derived data into useMemo() when the inputs are stable",
+      "Wrap non-urgent updates in startTransition() so input feedback can paint first",
+      "Split large controlled forms so one keystroke does not re-render the whole page",
+      "Debounce network writes and analytics work outside the immediate event handler",
     ],
   },
   {
@@ -66,10 +68,9 @@ const vitals = [
     reactFocus:
       "Reserve space for images, ads, embeds, and skeletons so React updates do not push settled content around.",
     codeTips: [
-      "Set width and height, or aspect-ratio, on images and media containers.",
-      "Match skeleton dimensions to the loaded component before data arrives.",
-      "Avoid inserting banners above existing content after the route has painted.",
-      "Prefer transform animations instead of layout-changing top, left, width, or height updates.",
+      "Set width and height, or aspect-ratio, on images and media containers",
+      "Match skeleton dimensions to the loaded component before data arrives",
+      "Avoid inserting banners above existing content after the route has painted",
     ],
   },
 ];
@@ -87,6 +88,7 @@ const observerCode = `function sendToConsole(metric: MetricType) {
 
 function reportWebVitals(onPerfEntry?: (metric: MetricType) => void) {
   if (onPerfEntry && onPerfEntry instanceof Function) {
+    // using dynamic import to avoid bundling web-vitals with the main bundle
     import("web-vitals").then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       onCLS(onPerfEntry);
       onINP(onPerfEntry);
@@ -220,7 +222,7 @@ function CoreWebVitalsPage() {
                 Browser Observer
               </CardTitle>
               <CardDescription>
-                A small hook-sized example for reading performance entries.
+                A small library example for reading performance entries.
               </CardDescription>
             </CardHeader>
             <CardContent>

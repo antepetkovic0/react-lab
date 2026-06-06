@@ -1,23 +1,13 @@
 import { createFileRoute, Outlet, useRouterState } from '@tanstack/react-router'
 import { LabCard } from '@/components/shared/lab-card/LabCard'
 import { LabTopicsSection } from '@/components/shared/lab-topics-section/LabTopicsSection'
+import { getLabsBySection } from '@/content/labs'
 
 export const Route = createFileRoute('/_dashboard/performance')({
   component: PerformancePage,
 })
 
-const labCards = [
-  {
-    imageSrc:
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Cpath d="M28 86h104" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M40 76V45M80 76V32M120 76V56" stroke="%23059669" stroke-width="8" stroke-linecap="round"/%3E%3Cpath d="M33 46h34M73 33h34M113 56h20" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3Ccircle cx="40" cy="44" r="8" fill="%23059669"/%3E%3Ccircle cx="80" cy="32" r="8" fill="%23059669"/%3E%3Ccircle cx="120" cy="56" r="8" fill="%23059669"/%3E%3Cpath d="M36 101h8M76 101h8M116 101h8" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M38 20h84" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
-    imageAlt: 'Core Web Vitals metric bars',
-    title: 'Core Web Vitals',
-    description:
-      'Measure LCP, INP, and CLS, then connect each score to the React and browser work behind it.',
-    level: 'intermediate' as const,
-    href: '/performance/core-web-vitals',
-  },
-]
+const labCards = getLabsBySection('performance')
 
 function PerformancePage() {
   const pathname = useRouterState({
@@ -79,7 +69,7 @@ function PerformancePage() {
               imageSrc={card.imageSrc}
               key={card.title}
               level={card.level}
-              section="performance"
+              section={card.section}
               title={card.title}
             />
           ))}

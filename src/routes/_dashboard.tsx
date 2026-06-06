@@ -4,6 +4,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { DashboardSearch } from "@/layouts/dashboard-layout/DashboardSearch";
 import { DashboardSidebar } from "@/layouts/dashboard-layout/DashboardSidebar";
 
 export const Route = createFileRoute("/_dashboard")({
@@ -15,8 +16,9 @@ function RootComponent() {
     <SidebarProvider>
       <DashboardSidebar />
       <SidebarInset>
-        <header className="bg-background sticky top-0 flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
+        <header className="sticky top-0 flex h-16 shrink-0 items-center justify-center border-b bg-background px-4">
+          <SidebarTrigger className="absolute left-4 -ml-1" />
+          <DashboardSearch />
         </header>
         <main className="w-full">
           <div className="px-8 pt-8 pb-4">
