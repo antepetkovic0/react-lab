@@ -1,79 +1,79 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router'
 import {
   ActivityIcon,
   BarChart3Icon,
-  ChevronRightIcon,
   Clock3Icon,
   InfoIcon,
   MousePointerClickIcon,
   MoveHorizontalIcon,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+} from 'lucide-react'
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
+import { Badge } from '@/components/ui/badge'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from '@/components/ui/card'
 
-export const Route = createFileRoute("/_dashboard/performance/core-web-vitals")(
+export const Route = createFileRoute('/_dashboard/performance/core-web-vitals')(
   {
     component: CoreWebVitalsPage,
   },
-);
+)
 
 const vitals = [
   {
-    name: "LCP",
-    label: "Largest Contentful Paint",
-    target: "2.5s or less",
+    name: 'LCP',
+    label: 'Largest Contentful Paint',
+    target: '2.5s or less',
     icon: Clock3Icon,
     description:
-      "How long it takes for the largest meaningful image or text block to appear in the viewport.",
+      'How long it takes for the largest meaningful image or text block to appear in the viewport.',
     reactFocus:
-      "Reduce render-blocking work, split routes, preload the hero image, and avoid delaying the first useful paint behind client-only data chains.",
+      'Reduce render-blocking work, split routes, preload the hero image, and avoid delaying the first useful paint behind client-only data chains.',
     codeTips: [
-      "Identify the LCP element -> metric.entries.at(-1)?.element",
+      'Identify the LCP element -> metric.entries.at(-1)?.element',
       'Preload the LCP image -> <link rel="preload" as="image" href="..." fetchpriority="high">',
-      "Use modern format (AVIF, WebP) together with srcset and sizes attributes",
+      'Use modern format (AVIF, WebP) together with srcset and sizes attributes',
       "Preload fonts -> <link rel='preload' href='...' as='font' type='font/woff2' crossorigin> together with font-display: swap",
-      "Lazy-load below-the-fold route chunks and heavy widgets with React.lazy()",
-      "Keep the initial Suspense fallback small and close to the final layout",
+      'Lazy-load below-the-fold route chunks and heavy widgets with React.lazy()',
+      'Keep the initial Suspense fallback small and close to the final layout',
     ],
   },
   {
-    name: "INP",
-    label: "Interaction to Next Paint",
-    target: "200ms or less",
+    name: 'INP',
+    label: 'Interaction to Next Paint',
+    target: '200ms or less',
     icon: MousePointerClickIcon,
     description:
-      "How quickly the page responds visually after a user interaction like typing, tapping, or clicking.",
+      'How quickly the page responds visually after a user interaction like typing, tapping, or clicking.',
     reactFocus:
-      "Keep event handlers light, defer expensive state updates, memoize costly derived data, and move non-urgent work out of the input path.",
+      'Keep event handlers light, defer expensive state updates, memoize costly derived data, and move non-urgent work out of the input path.',
     codeTips: [
-      "Move expensive derived data into useMemo() when the inputs are stable",
-      "Wrap non-urgent updates in startTransition() so input feedback can paint first",
-      "Split large controlled forms so one keystroke does not re-render the whole page",
-      "Debounce network writes and analytics work outside the immediate event handler",
+      'Move expensive derived data into useMemo() when the inputs are stable',
+      'Wrap non-urgent updates in startTransition() so input feedback can paint first',
+      'Split large controlled forms so one keystroke does not re-render the whole page',
+      'Debounce network writes and analytics work outside the immediate event handler',
     ],
   },
   {
-    name: "CLS",
-    label: "Cumulative Layout Shift",
-    target: "0.1 or less",
+    name: 'CLS',
+    label: 'Cumulative Layout Shift',
+    target: '0.1 or less',
     icon: MoveHorizontalIcon,
     description:
-      "How much visible content unexpectedly moves after the page has already started rendering.",
+      'How much visible content unexpectedly moves after the page has already started rendering.',
     reactFocus:
-      "Reserve space for images, ads, embeds, and skeletons so React updates do not push settled content around.",
+      'Reserve space for images, ads, embeds, and skeletons so React updates do not push settled content around.',
     codeTips: [
-      "Set width and height, or aspect-ratio, on images and media containers",
-      "Match skeleton dimensions to the loaded component before data arrives",
-      "Avoid inserting banners above existing content after the route has painted",
+      'Set width and height, or aspect-ratio, on images and media containers',
+      'Match skeleton dimensions to the loaded component before data arrives',
+      'Avoid inserting banners above existing content after the route has painted',
     ],
   },
-];
+]
 
 const observerCode = `function sendToConsole(metric: MetricType) {
   console.log("[web-vitals]", metric.name, {
@@ -100,21 +100,12 @@ function reportWebVitals(onPerfEntry?: (metric: MetricType) => void) {
 }
 
 reportWebVitals(sendToConsole);
-`;
+`
 
 function CoreWebVitalsPage() {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
-      <nav
-        aria-label="Breadcrumb"
-        className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"
-      >
-        <span>Dashboard</span>
-        <ChevronRightIcon className="size-3" />
-        <span>Performance</span>
-        <ChevronRightIcon className="size-3" />
-        <span className="font-medium text-foreground">Core Web Vitals</span>
-      </nav>
+      <RouteBreadcrumbs />
 
       <section className="flex flex-wrap items-start justify-between gap-4">
         <div className="max-w-3xl space-y-3">
@@ -136,7 +127,7 @@ function CoreWebVitalsPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         {vitals.map((vital) => {
-          const Icon = vital.icon;
+          const Icon = vital.icon
 
           return (
             <article
@@ -161,7 +152,7 @@ function CoreWebVitalsPage() {
                 {vital.description}
               </p>
             </article>
-          );
+          )
         })}
       </section>
 
@@ -252,5 +243,5 @@ function CoreWebVitalsPage() {
         </aside>
       </div>
     </div>
-  );
+  )
 }
