@@ -22,6 +22,8 @@ import { Route as DashboardFundamentalsRouteImport } from './routes/_dashboard/f
 import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboard/forms-validation'
 import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
+import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
+import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
@@ -89,34 +91,50 @@ const DashboardArchitectureRoute = DashboardArchitectureRouteImport.update({
   path: '/architecture',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardPerformanceCoreWebVitalsRoute =
+  DashboardPerformanceCoreWebVitalsRouteImport.update({
+    id: '/core-web-vitals',
+    path: '/core-web-vitals',
+    getParentRoute: () => DashboardPerformanceRoute,
+  } as any)
+const DashboardFundamentalsComponentsJsxRoute =
+  DashboardFundamentalsComponentsJsxRouteImport.update({
+    id: '/components-jsx',
+    path: '/components-jsx',
+    getParentRoute: () => DashboardFundamentalsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof DashboardIndexRoute
   '/architecture': typeof DashboardArchitectureRoute
   '/data-fetching': typeof DashboardDataFetchingRoute
   '/forms-validation': typeof DashboardFormsValidationRoute
-  '/fundamentals': typeof DashboardFundamentalsRoute
+  '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/hooks-effects': typeof DashboardHooksEffectsRoute
-  '/performance': typeof DashboardPerformanceRoute
+  '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
   '/security': typeof DashboardSecurityRoute
   '/state-management': typeof DashboardStateManagementRoute
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRoute
+  '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRoutesByTo {
   '/architecture': typeof DashboardArchitectureRoute
   '/data-fetching': typeof DashboardDataFetchingRoute
   '/forms-validation': typeof DashboardFormsValidationRoute
-  '/fundamentals': typeof DashboardFundamentalsRoute
+  '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/hooks-effects': typeof DashboardHooksEffectsRoute
-  '/performance': typeof DashboardPerformanceRoute
+  '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
   '/security': typeof DashboardSecurityRoute
   '/state-management': typeof DashboardStateManagementRoute
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRoute
   '/': typeof DashboardIndexRoute
+  '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -124,15 +142,17 @@ export interface FileRoutesById {
   '/_dashboard/architecture': typeof DashboardArchitectureRoute
   '/_dashboard/data-fetching': typeof DashboardDataFetchingRoute
   '/_dashboard/forms-validation': typeof DashboardFormsValidationRoute
-  '/_dashboard/fundamentals': typeof DashboardFundamentalsRoute
+  '/_dashboard/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRoute
-  '/_dashboard/performance': typeof DashboardPerformanceRoute
+  '/_dashboard/performance': typeof DashboardPerformanceRouteWithChildren
   '/_dashboard/routing': typeof DashboardRoutingRoute
   '/_dashboard/security': typeof DashboardSecurityRoute
   '/_dashboard/state-management': typeof DashboardStateManagementRoute
   '/_dashboard/testing': typeof DashboardTestingRoute
   '/_dashboard/ui-patterns': typeof DashboardUiPatternsRoute
   '/_dashboard/': typeof DashboardIndexRoute
+  '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -149,6 +169,8 @@ export interface FileRouteTypes {
     | '/state-management'
     | '/testing'
     | '/ui-patterns'
+    | '/fundamentals/components-jsx'
+    | '/performance/core-web-vitals'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/architecture'
@@ -163,6 +185,8 @@ export interface FileRouteTypes {
     | '/testing'
     | '/ui-patterns'
     | '/'
+    | '/fundamentals/components-jsx'
+    | '/performance/core-web-vitals'
   id:
     | '__root__'
     | '/_dashboard'
@@ -178,6 +202,8 @@ export interface FileRouteTypes {
     | '/_dashboard/testing'
     | '/_dashboard/ui-patterns'
     | '/_dashboard/'
+    | '/_dashboard/fundamentals/components-jsx'
+    | '/_dashboard/performance/core-web-vitals'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -277,16 +303,56 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardArchitectureRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/_dashboard/performance/core-web-vitals': {
+      id: '/_dashboard/performance/core-web-vitals'
+      path: '/core-web-vitals'
+      fullPath: '/performance/core-web-vitals'
+      preLoaderRoute: typeof DashboardPerformanceCoreWebVitalsRouteImport
+      parentRoute: typeof DashboardPerformanceRoute
+    }
+    '/_dashboard/fundamentals/components-jsx': {
+      id: '/_dashboard/fundamentals/components-jsx'
+      path: '/components-jsx'
+      fullPath: '/fundamentals/components-jsx'
+      preLoaderRoute: typeof DashboardFundamentalsComponentsJsxRouteImport
+      parentRoute: typeof DashboardFundamentalsRoute
+    }
   }
 }
+
+interface DashboardFundamentalsRouteChildren {
+  DashboardFundamentalsComponentsJsxRoute: typeof DashboardFundamentalsComponentsJsxRoute
+}
+
+const DashboardFundamentalsRouteChildren: DashboardFundamentalsRouteChildren = {
+  DashboardFundamentalsComponentsJsxRoute:
+    DashboardFundamentalsComponentsJsxRoute,
+}
+
+const DashboardFundamentalsRouteWithChildren =
+  DashboardFundamentalsRoute._addFileChildren(
+    DashboardFundamentalsRouteChildren,
+  )
+
+interface DashboardPerformanceRouteChildren {
+  DashboardPerformanceCoreWebVitalsRoute: typeof DashboardPerformanceCoreWebVitalsRoute
+}
+
+const DashboardPerformanceRouteChildren: DashboardPerformanceRouteChildren = {
+  DashboardPerformanceCoreWebVitalsRoute:
+    DashboardPerformanceCoreWebVitalsRoute,
+}
+
+const DashboardPerformanceRouteWithChildren =
+  DashboardPerformanceRoute._addFileChildren(DashboardPerformanceRouteChildren)
 
 interface DashboardRouteChildren {
   DashboardArchitectureRoute: typeof DashboardArchitectureRoute
   DashboardDataFetchingRoute: typeof DashboardDataFetchingRoute
   DashboardFormsValidationRoute: typeof DashboardFormsValidationRoute
-  DashboardFundamentalsRoute: typeof DashboardFundamentalsRoute
+  DashboardFundamentalsRoute: typeof DashboardFundamentalsRouteWithChildren
   DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRoute
-  DashboardPerformanceRoute: typeof DashboardPerformanceRoute
+  DashboardPerformanceRoute: typeof DashboardPerformanceRouteWithChildren
   DashboardRoutingRoute: typeof DashboardRoutingRoute
   DashboardSecurityRoute: typeof DashboardSecurityRoute
   DashboardStateManagementRoute: typeof DashboardStateManagementRoute
@@ -299,9 +365,9 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardArchitectureRoute: DashboardArchitectureRoute,
   DashboardDataFetchingRoute: DashboardDataFetchingRoute,
   DashboardFormsValidationRoute: DashboardFormsValidationRoute,
-  DashboardFundamentalsRoute: DashboardFundamentalsRoute,
+  DashboardFundamentalsRoute: DashboardFundamentalsRouteWithChildren,
   DashboardHooksEffectsRoute: DashboardHooksEffectsRoute,
-  DashboardPerformanceRoute: DashboardPerformanceRoute,
+  DashboardPerformanceRoute: DashboardPerformanceRouteWithChildren,
   DashboardRoutingRoute: DashboardRoutingRoute,
   DashboardSecurityRoute: DashboardSecurityRoute,
   DashboardStateManagementRoute: DashboardStateManagementRoute,

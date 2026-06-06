@@ -1,10 +1,11 @@
 import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { TooltipProvider } from "./components/ui/tooltip.tsx";
 import { routeTree } from "./routeTree.gen.ts";
+import { reportWebVitals, sendToConsole } from "./setup/report-web-vitals.ts";
 
 import "./index.css";
-import { TooltipProvider } from "./components/ui/tooltip.tsx";
 
 const root = document.getElementById("root");
 if (!root) {
@@ -16,6 +17,8 @@ const router = createRouter({
   defaultPreload: "intent",
   scrollRestoration: true,
 });
+
+reportWebVitals(sendToConsole);
 
 declare module "@tanstack/react-router" {
   interface Register {
