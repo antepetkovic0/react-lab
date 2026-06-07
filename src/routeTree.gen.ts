@@ -22,6 +22,7 @@ import { Route as DashboardFundamentalsRouteImport } from './routes/_dashboard/f
 import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboard/forms-validation'
 import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
+import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
 import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
 import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
 import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
@@ -92,6 +93,12 @@ const DashboardArchitectureRoute = DashboardArchitectureRouteImport.update({
   path: '/architecture',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardUiPatternsCompoundComponentsRoute =
+  DashboardUiPatternsCompoundComponentsRouteImport.update({
+    id: '/compound-components',
+    path: '/compound-components',
+    getParentRoute: () => DashboardUiPatternsRoute,
+  } as any)
 const DashboardPerformanceCoreWebVitalsRoute =
   DashboardPerformanceCoreWebVitalsRouteImport.update({
     id: '/core-web-vitals',
@@ -123,10 +130,11 @@ export interface FileRoutesByFullPath {
   '/security': typeof DashboardSecurityRoute
   '/state-management': typeof DashboardStateManagementRoute
   '/testing': typeof DashboardTestingRoute
-  '/ui-patterns': typeof DashboardUiPatternsRoute
+  '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesByTo {
   '/architecture': typeof DashboardArchitectureRoute
@@ -139,11 +147,12 @@ export interface FileRoutesByTo {
   '/security': typeof DashboardSecurityRoute
   '/state-management': typeof DashboardStateManagementRoute
   '/testing': typeof DashboardTestingRoute
-  '/ui-patterns': typeof DashboardUiPatternsRoute
+  '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/': typeof DashboardIndexRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -158,11 +167,12 @@ export interface FileRoutesById {
   '/_dashboard/security': typeof DashboardSecurityRoute
   '/_dashboard/state-management': typeof DashboardStateManagementRoute
   '/_dashboard/testing': typeof DashboardTestingRoute
-  '/_dashboard/ui-patterns': typeof DashboardUiPatternsRoute
+  '/_dashboard/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/_dashboard/': typeof DashboardIndexRoute
   '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/_dashboard/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/_dashboard/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/fundamentals/components-jsx'
     | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
+    | '/ui-patterns/compound-components'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/architecture'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/fundamentals/components-jsx'
     | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
+    | '/ui-patterns/compound-components'
   id:
     | '__root__'
     | '/_dashboard'
@@ -217,6 +229,7 @@ export interface FileRouteTypes {
     | '/_dashboard/fundamentals/components-jsx'
     | '/_dashboard/hooks-effects/debounce-throttle'
     | '/_dashboard/performance/core-web-vitals'
+    | '/_dashboard/ui-patterns/compound-components'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -316,6 +329,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardArchitectureRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/_dashboard/ui-patterns/compound-components': {
+      id: '/_dashboard/ui-patterns/compound-components'
+      path: '/compound-components'
+      fullPath: '/ui-patterns/compound-components'
+      preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
+      parentRoute: typeof DashboardUiPatternsRoute
+    }
     '/_dashboard/performance/core-web-vitals': {
       id: '/_dashboard/performance/core-web-vitals'
       path: '/core-web-vitals'
@@ -380,6 +400,18 @@ const DashboardPerformanceRouteChildren: DashboardPerformanceRouteChildren = {
 const DashboardPerformanceRouteWithChildren =
   DashboardPerformanceRoute._addFileChildren(DashboardPerformanceRouteChildren)
 
+interface DashboardUiPatternsRouteChildren {
+  DashboardUiPatternsCompoundComponentsRoute: typeof DashboardUiPatternsCompoundComponentsRoute
+}
+
+const DashboardUiPatternsRouteChildren: DashboardUiPatternsRouteChildren = {
+  DashboardUiPatternsCompoundComponentsRoute:
+    DashboardUiPatternsCompoundComponentsRoute,
+}
+
+const DashboardUiPatternsRouteWithChildren =
+  DashboardUiPatternsRoute._addFileChildren(DashboardUiPatternsRouteChildren)
+
 interface DashboardRouteChildren {
   DashboardArchitectureRoute: typeof DashboardArchitectureRoute
   DashboardDataFetchingRoute: typeof DashboardDataFetchingRoute
@@ -391,7 +423,7 @@ interface DashboardRouteChildren {
   DashboardSecurityRoute: typeof DashboardSecurityRoute
   DashboardStateManagementRoute: typeof DashboardStateManagementRoute
   DashboardTestingRoute: typeof DashboardTestingRoute
-  DashboardUiPatternsRoute: typeof DashboardUiPatternsRoute
+  DashboardUiPatternsRoute: typeof DashboardUiPatternsRouteWithChildren
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
@@ -406,7 +438,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardSecurityRoute: DashboardSecurityRoute,
   DashboardStateManagementRoute: DashboardStateManagementRoute,
   DashboardTestingRoute: DashboardTestingRoute,
-  DashboardUiPatternsRoute: DashboardUiPatternsRoute,
+  DashboardUiPatternsRoute: DashboardUiPatternsRouteWithChildren,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 

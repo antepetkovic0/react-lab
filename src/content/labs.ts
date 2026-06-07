@@ -115,6 +115,21 @@ export const labs = [
     isPopular: true,
     isSearchable: true,
   },
+  {
+    id: "compound-components",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="35" y="28" width="90" height="22" rx="7" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Crect x="35" y="50" width="90" height="42" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Cpath d="M48 39h34M111 36l6 6 6-6M48 65h64M48 78h42" stroke="%230f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M24 39h11M125 39h11M80 19v9M80 92v9" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/%3E%3Ccircle cx="80" cy="19" r="4" fill="%23059669"/%3E%3Ccircle cx="80" cy="101" r="4" fill="%23059669"/%3E%3Cpath d="M60 50v42M100 50v42" stroke="%230891b2" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3C/svg%3E',
+    imageAlt: "Accordion pieces sharing state through context",
+    title: "Compound Components",
+    description:
+      "Build an accordion API where child components share internal state through React Context.",
+    level: "intermediate",
+    section: "ui-patterns",
+    sectionLabel: "UI Patterns",
+    href: "/ui-patterns/compound-components",
+    isPopular: true,
+    isSearchable: true,
+  },
 ] satisfies Lab[];
 
 export const popularLabs = labs.filter((lab) => lab.isPopular);

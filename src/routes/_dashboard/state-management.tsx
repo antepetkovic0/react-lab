@@ -18,12 +18,36 @@ function StateManagementPage() {
       ]}
       title="State Management"
       topics={[
-        'Local state',
-        'Derived state',
-        'Context',
-        'Zustand',
-        'Redux Toolkit',
-        'URL state',
+        {
+          title: 'Local state',
+          description:
+            'Keep state near the component that owns the interaction whenever possible.',
+        },
+        {
+          title: 'Derived state',
+          description:
+            'Calculate values from existing data instead of duplicating state unnecessarily.',
+        },
+        {
+          title: 'Context',
+          description:
+            'Share values across a subtree without passing props through every layer.',
+        },
+        {
+          title: 'Zustand',
+          description:
+            'Use a small external store for shared client state with minimal setup.',
+        },
+        {
+          title: 'Redux Toolkit',
+          description:
+            'Model larger state transitions with slices, actions, and predictable updates.',
+        },
+        {
+          title: 'URL state',
+          description:
+            'Put shareable filters, tabs, and view options into search params.',
+        },
       ]}
     />
   )
