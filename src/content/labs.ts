@@ -116,6 +116,21 @@ export const labs = [
     isSearchable: true,
   },
   {
+    id: "reducer-state-machine",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="25" y="24" width="38" height="24" rx="8" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Crect x="97" y="24" width="38" height="24" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Crect x="25" y="72" width="38" height="24" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Crect x="97" y="72" width="38" height="24" rx="8" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M63 36h34M116 48v24M97 84H63M44 72V48" fill="none" stroke="%230891b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="m91 29 8 7-8 7M109 66l7 8 7-8M69 77l-8 7 8 7M37 54l7-8 7 8" fill="none" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Ccircle cx="44" cy="36" r="5" fill="%23059669"/%3E%3Ccircle cx="116" cy="36" r="5" fill="%230f172a"/%3E%3Ccircle cx="44" cy="84" r="5" fill="%230f172a"/%3E%3Ccircle cx="116" cy="84" r="5" fill="%23059669"/%3E%3Cpath d="M75 60h10M80 55v10" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
+    imageAlt: "Reducer state machine nodes connected by event arrows",
+    title: "Reducer State Machine",
+    description:
+      "Model an upload flow with reducer events, explicit states, valid transitions, and side effects outside the reducer.",
+    level: "intermediate",
+    section: "state-management",
+    sectionLabel: "State Management",
+    href: "/state-management/reducer-state-machine",
+    isPopular: true,
+    isSearchable: true,
+  },
+  {
     id: "compound-components",
     imageSrc:
       'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="35" y="28" width="90" height="22" rx="7" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Crect x="35" y="50" width="90" height="42" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Cpath d="M48 39h34M111 36l6 6 6-6M48 65h64M48 78h42" stroke="%230f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M24 39h11M125 39h11M80 19v9M80 92v9" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/%3E%3Ccircle cx="80" cy="19" r="4" fill="%23059669"/%3E%3Ccircle cx="80" cy="101" r="4" fill="%23059669"/%3E%3Cpath d="M60 50v42M100 50v42" stroke="%230891b2" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3C/svg%3E',
@@ -127,6 +142,21 @@ export const labs = [
     section: "ui-patterns",
     sectionLabel: "UI Patterns",
     href: "/ui-patterns/compound-components",
+    isPopular: true,
+    isSearchable: true,
+  },
+  {
+    id: "oauth-pkce",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="45" y="48" width="70" height="45" rx="10" fill="none" stroke="%230f172a" stroke-width="4"/%3E%3Cpath d="M61 48V37c0-12 8-20 19-20s19 8 19 20v11" fill="none" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Ccircle cx="80" cy="70" r="7" fill="%23059669"/%3E%3Cpath d="M80 77v8" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M25 65h20M115 65h20M32 50l13 15-13 15M128 50l-13 15 13 15" fill="none" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M55 102h50" stroke="%230f172a" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7"/%3E%3C/svg%3E',
+    imageAlt: "PKCE lock with authorization flow arrows",
+    title: "OAuth 2.0 with PKCE",
+    description:
+      "Simulate the authorization code flow, generate PKCE values, and break the verifier checks safely in the browser.",
+    level: "advanced",
+    section: "security",
+    sectionLabel: "Security",
+    href: "/security/oauth-pkce",
     isPopular: true,
     isSearchable: true,
   },

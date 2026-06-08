@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Outlet, useRouterState } from '@tanstack/react-router'
 import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection'
 
 export const Route = createFileRoute('/_dashboard/state-management')({
@@ -6,11 +6,20 @@ export const Route = createFileRoute('/_dashboard/state-management')({
 })
 
 function StateManagementPage() {
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  })
+
+  if (pathname !== '/state-management') {
+    return <Outlet />
+  }
+
   return (
     <LabSectionPage
       description="Compare local, shared, and global state patterns so each problem gets the smallest useful tool."
       eyebrow="Client State"
       labs={[
+        'Reducer state machine',
         'Local state refactor',
         'Context provider lab',
         'Zustand store',
@@ -27,6 +36,11 @@ function StateManagementPage() {
           title: 'Derived state',
           description:
             'Calculate values from existing data instead of duplicating state unnecessarily.',
+        },
+        {
+          title: 'Reducer state machines',
+          description:
+            'Represent complex flows as explicit states, events, and valid transitions.',
         },
         {
           title: 'Context',

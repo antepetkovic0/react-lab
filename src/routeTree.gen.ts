@@ -23,6 +23,8 @@ import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboar
 import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
 import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
+import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
+import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashboard/security/oauth-pkce'
 import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
 import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
 import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
@@ -99,6 +101,18 @@ const DashboardUiPatternsCompoundComponentsRoute =
     path: '/compound-components',
     getParentRoute: () => DashboardUiPatternsRoute,
   } as any)
+const DashboardStateManagementReducerStateMachineRoute =
+  DashboardStateManagementReducerStateMachineRouteImport.update({
+    id: '/reducer-state-machine',
+    path: '/reducer-state-machine',
+    getParentRoute: () => DashboardStateManagementRoute,
+  } as any)
+const DashboardSecurityOauthPkceRoute =
+  DashboardSecurityOauthPkceRouteImport.update({
+    id: '/oauth-pkce',
+    path: '/oauth-pkce',
+    getParentRoute: () => DashboardSecurityRoute,
+  } as any)
 const DashboardPerformanceCoreWebVitalsRoute =
   DashboardPerformanceCoreWebVitalsRouteImport.update({
     id: '/core-web-vitals',
@@ -127,13 +141,15 @@ export interface FileRoutesByFullPath {
   '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
-  '/security': typeof DashboardSecurityRoute
-  '/state-management': typeof DashboardStateManagementRoute
+  '/security': typeof DashboardSecurityRouteWithChildren
+  '/state-management': typeof DashboardStateManagementRouteWithChildren
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
+  '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesByTo {
@@ -144,14 +160,16 @@ export interface FileRoutesByTo {
   '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
   '/routing': typeof DashboardRoutingRoute
-  '/security': typeof DashboardSecurityRoute
-  '/state-management': typeof DashboardStateManagementRoute
+  '/security': typeof DashboardSecurityRouteWithChildren
+  '/state-management': typeof DashboardStateManagementRouteWithChildren
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/': typeof DashboardIndexRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
+  '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesById {
@@ -164,14 +182,16 @@ export interface FileRoutesById {
   '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/_dashboard/performance': typeof DashboardPerformanceRouteWithChildren
   '/_dashboard/routing': typeof DashboardRoutingRoute
-  '/_dashboard/security': typeof DashboardSecurityRoute
-  '/_dashboard/state-management': typeof DashboardStateManagementRoute
+  '/_dashboard/security': typeof DashboardSecurityRouteWithChildren
+  '/_dashboard/state-management': typeof DashboardStateManagementRouteWithChildren
   '/_dashboard/testing': typeof DashboardTestingRoute
   '/_dashboard/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/_dashboard/': typeof DashboardIndexRoute
   '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/_dashboard/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
   '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
+  '/_dashboard/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
+  '/_dashboard/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/_dashboard/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRouteTypes {
@@ -192,6 +212,8 @@ export interface FileRouteTypes {
     | '/fundamentals/components-jsx'
     | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
+    | '/security/oauth-pkce'
+    | '/state-management/reducer-state-machine'
     | '/ui-patterns/compound-components'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -210,6 +232,8 @@ export interface FileRouteTypes {
     | '/fundamentals/components-jsx'
     | '/hooks-effects/debounce-throttle'
     | '/performance/core-web-vitals'
+    | '/security/oauth-pkce'
+    | '/state-management/reducer-state-machine'
     | '/ui-patterns/compound-components'
   id:
     | '__root__'
@@ -229,6 +253,8 @@ export interface FileRouteTypes {
     | '/_dashboard/fundamentals/components-jsx'
     | '/_dashboard/hooks-effects/debounce-throttle'
     | '/_dashboard/performance/core-web-vitals'
+    | '/_dashboard/security/oauth-pkce'
+    | '/_dashboard/state-management/reducer-state-machine'
     | '/_dashboard/ui-patterns/compound-components'
   fileRoutesById: FileRoutesById
 }
@@ -336,6 +362,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
       parentRoute: typeof DashboardUiPatternsRoute
     }
+    '/_dashboard/state-management/reducer-state-machine': {
+      id: '/_dashboard/state-management/reducer-state-machine'
+      path: '/reducer-state-machine'
+      fullPath: '/state-management/reducer-state-machine'
+      preLoaderRoute: typeof DashboardStateManagementReducerStateMachineRouteImport
+      parentRoute: typeof DashboardStateManagementRoute
+    }
+    '/_dashboard/security/oauth-pkce': {
+      id: '/_dashboard/security/oauth-pkce'
+      path: '/oauth-pkce'
+      fullPath: '/security/oauth-pkce'
+      preLoaderRoute: typeof DashboardSecurityOauthPkceRouteImport
+      parentRoute: typeof DashboardSecurityRoute
+    }
     '/_dashboard/performance/core-web-vitals': {
       id: '/_dashboard/performance/core-web-vitals'
       path: '/core-web-vitals'
@@ -400,6 +440,32 @@ const DashboardPerformanceRouteChildren: DashboardPerformanceRouteChildren = {
 const DashboardPerformanceRouteWithChildren =
   DashboardPerformanceRoute._addFileChildren(DashboardPerformanceRouteChildren)
 
+interface DashboardSecurityRouteChildren {
+  DashboardSecurityOauthPkceRoute: typeof DashboardSecurityOauthPkceRoute
+}
+
+const DashboardSecurityRouteChildren: DashboardSecurityRouteChildren = {
+  DashboardSecurityOauthPkceRoute: DashboardSecurityOauthPkceRoute,
+}
+
+const DashboardSecurityRouteWithChildren =
+  DashboardSecurityRoute._addFileChildren(DashboardSecurityRouteChildren)
+
+interface DashboardStateManagementRouteChildren {
+  DashboardStateManagementReducerStateMachineRoute: typeof DashboardStateManagementReducerStateMachineRoute
+}
+
+const DashboardStateManagementRouteChildren: DashboardStateManagementRouteChildren =
+  {
+    DashboardStateManagementReducerStateMachineRoute:
+      DashboardStateManagementReducerStateMachineRoute,
+  }
+
+const DashboardStateManagementRouteWithChildren =
+  DashboardStateManagementRoute._addFileChildren(
+    DashboardStateManagementRouteChildren,
+  )
+
 interface DashboardUiPatternsRouteChildren {
   DashboardUiPatternsCompoundComponentsRoute: typeof DashboardUiPatternsCompoundComponentsRoute
 }
@@ -420,8 +486,8 @@ interface DashboardRouteChildren {
   DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRouteWithChildren
   DashboardPerformanceRoute: typeof DashboardPerformanceRouteWithChildren
   DashboardRoutingRoute: typeof DashboardRoutingRoute
-  DashboardSecurityRoute: typeof DashboardSecurityRoute
-  DashboardStateManagementRoute: typeof DashboardStateManagementRoute
+  DashboardSecurityRoute: typeof DashboardSecurityRouteWithChildren
+  DashboardStateManagementRoute: typeof DashboardStateManagementRouteWithChildren
   DashboardTestingRoute: typeof DashboardTestingRoute
   DashboardUiPatternsRoute: typeof DashboardUiPatternsRouteWithChildren
   DashboardIndexRoute: typeof DashboardIndexRoute
@@ -435,8 +501,8 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardHooksEffectsRoute: DashboardHooksEffectsRouteWithChildren,
   DashboardPerformanceRoute: DashboardPerformanceRouteWithChildren,
   DashboardRoutingRoute: DashboardRoutingRoute,
-  DashboardSecurityRoute: DashboardSecurityRoute,
-  DashboardStateManagementRoute: DashboardStateManagementRoute,
+  DashboardSecurityRoute: DashboardSecurityRouteWithChildren,
+  DashboardStateManagementRoute: DashboardStateManagementRouteWithChildren,
   DashboardTestingRoute: DashboardTestingRoute,
   DashboardUiPatternsRoute: DashboardUiPatternsRouteWithChildren,
   DashboardIndexRoute: DashboardIndexRoute,
