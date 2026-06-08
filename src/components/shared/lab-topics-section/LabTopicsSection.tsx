@@ -1,19 +1,18 @@
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 type Topic =
   | string
   | {
-      title: string
-      description: string
-    }
+      title: string;
+      description: string;
+    };
 
 type LabTopicsSectionProps = {
-  eyebrow: string
-  title: string
-  description: string
-  topics: Topic[]
-  labs?: string[]
-}
+  eyebrow: string;
+  title: string;
+  description: string;
+  topics: Topic[];
+};
 
 export function LabTopicsSection({
   eyebrow,
@@ -61,9 +60,9 @@ export function LabTopicsSection({
 
         <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
           {topics.map((topic, index) => {
-            const topicTitle = typeof topic === 'string' ? topic : topic.title
+            const topicTitle = typeof topic === "string" ? topic : topic.title;
             const topicDescription =
-              typeof topic === 'string' ? undefined : topic.description
+              typeof topic === "string" ? undefined : topic.description;
 
             return (
               <article
@@ -72,11 +71,11 @@ export function LabTopicsSection({
               >
                 <span
                   className={cn(
-                    'mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs font-semibold text-primary',
-                    index > 2 && 'bg-muted text-muted-foreground',
+                    "mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-md bg-primary/10 text-xs font-semibold text-primary",
+                    index > 2 && "bg-muted text-muted-foreground",
                   )}
                 >
-                  {String(index + 1).padStart(2, '0')}
+                  {String(index + 1).padStart(2, "0")}
                 </span>
                 <div className="space-y-1">
                   <h3 className="text-sm font-semibold leading-5">
@@ -89,10 +88,10 @@ export function LabTopicsSection({
                   ) : null}
                 </div>
               </article>
-            )
+            );
           })}
         </div>
       </section>
     </div>
-  )
+  );
 }

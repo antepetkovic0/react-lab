@@ -1,68 +1,70 @@
-import { ChevronDownIcon } from "lucide-react";
-import React, { useContext, useId, useMemo, useState } from "react";
-import { cn } from "@/lib/utils";
+import { ChevronDownIcon } from 'lucide-react'
+import React, { useContext, useId, useMemo, useState } from 'react'
+import { cn } from '@/lib/utils'
 
 interface LabAccordionContextType {
-  openId: string | null;
-  toggleItem: (id: string) => void;
+  openId: string | null
+  toggleItem: (id: string) => void
 }
 
-const LabAccordionContext =
-  React.createContext<LabAccordionContextType | undefined>(undefined);
+const LabAccordionContext = React.createContext<
+  LabAccordionContextType | undefined
+>(undefined)
 
 const useLabAccordionContext = () => {
-  const context = useContext(LabAccordionContext);
+  const context = useContext(LabAccordionContext)
   if (!context) {
     throw new Error(
-      "LabAccordion compound components must be used within a <LabAccordion>.",
-    );
+      'LabAccordion compound components must be used within a <LabAccordion>.',
+    )
   }
-  return context;
-};
-
-interface LabAccordionItemContextType {
-  id: string;
-  triggerId: string;
-  contentId: string;
+  return context
 }
 
-const LabAccordionItemContext =
-  React.createContext<LabAccordionItemContextType | undefined>(undefined);
+interface LabAccordionItemContextType {
+  id: string
+  triggerId: string
+  contentId: string
+}
+
+const LabAccordionItemContext = React.createContext<
+  LabAccordionItemContextType | undefined
+>(undefined)
 
 const useLabAccordionItemContext = () => {
-  const context = useContext(LabAccordionItemContext);
+  const context = useContext(LabAccordionItemContext)
   if (!context) {
     throw new Error(
-      "<LabAccordionTrigger> and <LabAccordionContent> must be used within a <LabAccordionItem>.",
-    );
+      '<LabAccordionTrigger> and <LabAccordionContent> must be used within a <LabAccordionItem>.',
+    )
   }
-  return context;
-};
+  return context
+}
 
 interface LabAccordionProps {
-  defaultValue?: string;
-  children: React.ReactNode;
+  defaultValue?: string
+  children: React.ReactNode
 }
 
 interface LabAccordionItemProps {
-  value: string;
-  children: React.ReactNode;
+  value: string
+  children: React.ReactNode
 }
 
 interface LabAccordionTriggerProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 interface LabAccordionContentProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 function LabAccordion({ defaultValue, children }: LabAccordionProps) {
-  const [openId, setOpenId] = useState<string | null>(defaultValue ?? null);
+  const [openId, setOpenId] = useState<string | null>(defaultValue ?? null)
 
   const toggleItem = (id: string) => {
-    setOpenId((prevId) => (prevId === id ? null : id));
-  };
+    setOpenId((prevId) => (prevId === id ? null : id))
+  }
 
   return (
     <LabAccordionContext.Provider value={{ openId, toggleItem }}>
@@ -70,11 +72,11 @@ function LabAccordion({ defaultValue, children }: LabAccordionProps) {
         {children}
       </div>
     </LabAccordionContext.Provider>
-  );
+  )
 }
 
 function LabAccordionItem({ value, children }: LabAccordionItemProps) {
-  const generatedId = useId();
+  const generatedId = useId()
   const contextValue = useMemo<LabAccordionItemContextType>(
     () => ({
       id: value,
@@ -82,19 +84,19 @@ function LabAccordionItem({ value, children }: LabAccordionItemProps) {
       contentId: `${generatedId}-content`,
     }),
     [generatedId, value],
-  );
+  )
 
   return (
     <LabAccordionItemContext.Provider value={contextValue}>
       <div className="border-b last:border-b-0">{children}</div>
     </LabAccordionItemContext.Provider>
-  );
+  )
 }
 
 function LabAccordionTrigger({ children }: LabAccordionTriggerProps) {
-  const { openId, toggleItem } = useLabAccordionContext();
-  const { id, contentId, triggerId } = useLabAccordionItemContext();
-  const isOpen = openId === id;
+  const { openId, toggleItem } = useLabAccordionContext()
+  const { id, contentId, triggerId } = useLabAccordionItemContext()
+  const isOpen = openId === id
 
   return (
     <h3>
@@ -110,19 +112,19 @@ function LabAccordionTrigger({ children }: LabAccordionTriggerProps) {
         <ChevronDownIcon
           aria-hidden="true"
           className={cn(
-            "size-4 shrink-0 text-muted-foreground transition-transform",
-            isOpen && "rotate-180 text-primary",
+            'size-4 shrink-0 text-muted-foreground transition-transform',
+            isOpen && 'rotate-180 text-primary',
           )}
         />
       </button>
     </h3>
-  );
+  )
 }
 
 function LabAccordionContent({ children }: LabAccordionContentProps) {
-  const { openId } = useLabAccordionContext();
-  const { id, triggerId, contentId } = useLabAccordionItemContext();
-  const isOpen = openId === id;
+  const { openId } = useLabAccordionContext()
+  const { id, triggerId, contentId } = useLabAccordionItemContext()
+  const isOpen = openId === id
 
   return (
     <section
@@ -133,7 +135,7 @@ function LabAccordionContent({ children }: LabAccordionContentProps) {
     >
       {children}
     </section>
-  );
+  )
 }
 
 export {
@@ -141,4 +143,4 @@ export {
   LabAccordionContent,
   LabAccordionItem,
   LabAccordionTrigger,
-};
+}
