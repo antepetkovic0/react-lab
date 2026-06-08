@@ -1,5 +1,6 @@
 import { AlertTriangleIcon, CheckCircle2Icon } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import type { TokenExchangeResult } from "./oauth-pkce.types";
 import { ValueBox } from "./ValueBox";
 
 function ResultPanel({ result }: { result: TokenExchangeResult }) {

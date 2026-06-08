@@ -25,6 +25,7 @@ import {
   storageOptions,
   tokenExchangeCode,
 } from "./oauth-pkce.data";
+import type { TokenExchangeResult } from "./oauth-pkce.types";
 import { getDefaultRedirectUri, makeFakeToken } from "./oauth-pkce.utils";
 import { ResultPanel } from "./ResultPanel";
 import { StatusRow } from "./StatusRow";
@@ -45,20 +46,6 @@ type CallbackParams = {
   code: string;
   state: string;
 };
-
-type TokenExchangeResult =
-  | {
-      status: "success";
-      title: string;
-      description: string;
-      accessToken: string;
-      idToken: string;
-    }
-  | {
-      status: "error";
-      title: string;
-      description: string;
-    };
 
 function OAuthPkcePage() {
   const [clientId, setClientId] = useState("react-lab-spa");
