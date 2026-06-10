@@ -146,6 +146,21 @@ export const labs = [
     isSearchable: true,
   },
   {
+    id: "class-variance-authority",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="31" y="24" width="98" height="72" rx="11" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M46 43h34M46 59h22M46 75h44" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M99 41h18M99 58h18M99 75h18" stroke="%23059669" stroke-width="5" stroke-linecap="round"/%3E%3Ccircle cx="92" cy="41" r="4" fill="%23059669"/%3E%3Ccircle cx="92" cy="58" r="4" fill="%230891b2"/%3E%3Ccircle cx="92" cy="75" r="4" fill="%23059669"/%3E%3Cpath d="M25 40h6M25 80h6M129 40h6M129 80h6M80 17v7M80 96v7" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/%3E%3Cpath d="M53 96c8-12 18-12 27 0s19 12 27 0" fill="none" stroke="%23059669" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
+    imageAlt: "Variant recipe card with connected style options",
+    title: "Class Variance Authority",
+    description:
+      "Build typed Tailwind variant recipes with cva, cx, tailwind-merge, and compound variant rules.",
+    level: "intermediate",
+    section: "ui-patterns",
+    sectionLabel: "UI Patterns",
+    href: "/ui-patterns/class-variance-authority",
+    isPopular: true,
+    isSearchable: true,
+  },
+  {
     id: "oauth-pkce",
     imageSrc:
       'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="45" y="48" width="70" height="45" rx="10" fill="none" stroke="%230f172a" stroke-width="4"/%3E%3Cpath d="M61 48V37c0-12 8-20 19-20s19 8 19 20v11" fill="none" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Ccircle cx="80" cy="70" r="7" fill="%23059669"/%3E%3Cpath d="M80 77v8" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M25 65h20M115 65h20M32 50l13 15-13 15M128 50l-13 15 13 15" fill="none" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M55 102h50" stroke="%230f172a" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7"/%3E%3C/svg%3E',

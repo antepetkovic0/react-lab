@@ -23,6 +23,7 @@ import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboar
 import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
 import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
+import { Route as DashboardUiPatternsClassVarianceAuthorityRouteImport } from './routes/_dashboard/ui-patterns/class-variance-authority'
 import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
 import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashboard/security/oauth-pkce'
 import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
@@ -101,6 +102,12 @@ const DashboardUiPatternsCompoundComponentsRoute =
     path: '/compound-components',
     getParentRoute: () => DashboardUiPatternsRoute,
   } as any)
+const DashboardUiPatternsClassVarianceAuthorityRoute =
+  DashboardUiPatternsClassVarianceAuthorityRouteImport.update({
+    id: '/class-variance-authority',
+    path: '/class-variance-authority',
+    getParentRoute: () => DashboardUiPatternsRoute,
+  } as any)
 const DashboardStateManagementReducerStateMachineRoute =
   DashboardStateManagementReducerStateMachineRouteImport.update({
     id: '/reducer-state-machine',
@@ -150,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
+  '/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesByTo {
@@ -170,6 +178,7 @@ export interface FileRoutesByTo {
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
+  '/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRoutesById {
@@ -192,6 +201,7 @@ export interface FileRoutesById {
   '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/_dashboard/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/_dashboard/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
+  '/_dashboard/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/_dashboard/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
 }
 export interface FileRouteTypes {
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/performance/core-web-vitals'
     | '/security/oauth-pkce'
     | '/state-management/reducer-state-machine'
+    | '/ui-patterns/class-variance-authority'
     | '/ui-patterns/compound-components'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/performance/core-web-vitals'
     | '/security/oauth-pkce'
     | '/state-management/reducer-state-machine'
+    | '/ui-patterns/class-variance-authority'
     | '/ui-patterns/compound-components'
   id:
     | '__root__'
@@ -255,6 +267,7 @@ export interface FileRouteTypes {
     | '/_dashboard/performance/core-web-vitals'
     | '/_dashboard/security/oauth-pkce'
     | '/_dashboard/state-management/reducer-state-machine'
+    | '/_dashboard/ui-patterns/class-variance-authority'
     | '/_dashboard/ui-patterns/compound-components'
   fileRoutesById: FileRoutesById
 }
@@ -362,6 +375,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
       parentRoute: typeof DashboardUiPatternsRoute
     }
+    '/_dashboard/ui-patterns/class-variance-authority': {
+      id: '/_dashboard/ui-patterns/class-variance-authority'
+      path: '/class-variance-authority'
+      fullPath: '/ui-patterns/class-variance-authority'
+      preLoaderRoute: typeof DashboardUiPatternsClassVarianceAuthorityRouteImport
+      parentRoute: typeof DashboardUiPatternsRoute
+    }
     '/_dashboard/state-management/reducer-state-machine': {
       id: '/_dashboard/state-management/reducer-state-machine'
       path: '/reducer-state-machine'
@@ -467,10 +487,13 @@ const DashboardStateManagementRouteWithChildren =
   )
 
 interface DashboardUiPatternsRouteChildren {
+  DashboardUiPatternsClassVarianceAuthorityRoute: typeof DashboardUiPatternsClassVarianceAuthorityRoute
   DashboardUiPatternsCompoundComponentsRoute: typeof DashboardUiPatternsCompoundComponentsRoute
 }
 
 const DashboardUiPatternsRouteChildren: DashboardUiPatternsRouteChildren = {
+  DashboardUiPatternsClassVarianceAuthorityRoute:
+    DashboardUiPatternsClassVarianceAuthorityRoute,
   DashboardUiPatternsCompoundComponentsRoute:
     DashboardUiPatternsCompoundComponentsRoute,
 }
