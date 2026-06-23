@@ -1,7 +1,11 @@
-import { CopyIcon, EyeIcon, FileCode2Icon, LightbulbIcon } from 'lucide-react'
+import {
+  ArrowRightIcon,
+  EyeIcon,
+  FileCode2Icon,
+  LightbulbIcon,
+} from 'lucide-react'
 import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
@@ -9,47 +13,37 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import {
+  classicTransformCode,
+  componentExampleCode,
+  elementObjectCode,
+  focusTopics,
+  jsxBeforeCode,
+  modernRuntimeCode,
+  practiceNotes,
+} from './components-jsx.data'
 
-const codeLines = [
-  { id: 'props-open', code: 'type ProfileCardProps = {' },
-  { id: 'props-name', code: '  name: string' },
-  { id: 'props-role', code: '  role: string' },
-  { id: 'props-online', code: '  isOnline: boolean' },
-  { id: 'props-close', code: '}' },
-  { id: 'blank-after-props', code: '' },
-  {
-    id: 'component-open',
-    code: 'function ProfileCard(props: ProfileCardProps) {',
-  },
-  { id: 'return-open', code: '  return (' },
-  { id: 'article-open', code: '    <article className="profile-card">' },
-  { id: 'status-dot', code: '      <StatusDot active={props.isOnline} />' },
-  { id: 'content-open', code: '      <div>' },
-  { id: 'name-heading', code: '        <h2>{props.name}</h2>' },
-  { id: 'role-text', code: '        <p>{props.role}</p>' },
-  { id: 'content-close', code: '      </div>' },
-  { id: 'article-close', code: '    </article>' },
-  { id: 'return-close', code: '  )' },
-  { id: 'component-close', code: '}' },
-]
+type CodeBlockProps = {
+  code: string
+  title: string
+  eyebrow?: string
+}
 
-const overviewTopics = [
-  {
-    title: 'Components are the unit of React UI',
-    description:
-      'A component is a JavaScript function that returns a description of what should appear on screen. When you compose components together, a large interface becomes a tree of small named pieces.',
-  },
-  {
-    title: 'JSX keeps markup and UI logic close',
-    description:
-      'JSX is a syntax extension for JavaScript. It looks like markup, but it can use JavaScript expressions inside braces, so data and rendering logic stay in the same component.',
-  },
-  {
-    title: 'JSX becomes plain JavaScript',
-    description:
-      'During the build step, JSX is compiled into JavaScript calls that create React elements. React reads those element objects and updates the DOM to match them.',
-  },
-]
+function CodeBlock({ code, eyebrow, title }: CodeBlockProps) {
+  return (
+    <div className="overflow-hidden rounded-lg border bg-background">
+      <div className="border-b bg-muted/30 px-4 py-3">
+        {eyebrow ? (
+          <p className="mb-1 text-xs font-medium text-primary">{eyebrow}</p>
+        ) : null}
+        <h3 className="text-sm font-semibold">{title}</h3>
+      </div>
+      <pre className="overflow-x-auto p-4 text-xs leading-6">
+        <code>{code}</code>
+      </pre>
+    </div>
+  )
+}
 
 function ComponentsJsxPage() {
   return (
@@ -67,50 +61,52 @@ function ComponentsJsxPage() {
             </Badge>
           </div>
           <p className="text-sm leading-6 text-muted-foreground">
-            Practice turning UI into small React components, writing JSX that
-            reads like the interface, and passing data through props.
+            Learn the smallest mental model for React UI: components describe
+            pieces of the screen, JSX is the syntax most teams use to write
+            those descriptions, and compilers turn JSX into JavaScript objects
+            React can read.
           </p>
         </div>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-3">
-        {overviewTopics.map((topic) => (
-          <article
-            className="rounded-lg border bg-background p-4"
-            key={topic.title}
-          >
-            <h2 className="text-sm font-semibold">{topic.title}</h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              {topic.description}
-            </p>
-          </article>
-        ))}
+      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {focusTopics.map((topic) => {
+          const Icon = topic.icon
+
+          return (
+            <article
+              className="rounded-lg border bg-background p-4"
+              key={topic.title}
+            >
+              <div className="flex items-center gap-2">
+                <span className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <Icon className="size-4" />
+                </span>
+                <h2 className="text-sm font-semibold">{topic.title}</h2>
+              </div>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                {topic.description}
+              </p>
+            </article>
+          )
+        })}
       </section>
 
       <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_380px]">
-        <Card className="min-h-[520px] gap-0 py-0">
-          <div className="flex items-center justify-between border-b px-4 py-3">
-            <div className="flex items-center gap-2">
-              <FileCode2Icon className="size-4 text-primary" />
-              <span className="text-sm font-medium">ProfileCard.tsx</span>
+        <Card className="gap-0 py-0">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
+            <div>
+              <h2 className="text-sm font-semibold">A component returns JSX</h2>
+              <p className="mt-1 text-xs text-muted-foreground">
+                This function names a reusable piece of UI and returns the
+                element tree it wants React to render.
+              </p>
             </div>
-            <Button size="sm" variant="outline">
-              <CopyIcon className="size-3.5" />
-              Copy
-            </Button>
+            <Badge variant="outline">ProfileCard.tsx</Badge>
           </div>
-          <CardContent className="p-0">
-            <pre className="overflow-x-auto p-4 text-[13px] leading-7">
-              <code>
-                {codeLines.map(({ code, id }, index) => (
-                  <span className="grid grid-cols-[2rem_1fr]" key={id}>
-                    <span className="select-none text-muted-foreground">
-                      {index + 1}
-                    </span>
-                    <span>{code || ' '}</span>
-                  </span>
-                ))}
-              </code>
+          <CardContent className="p-4">
+            <pre className="overflow-x-auto rounded-lg bg-muted p-4 text-xs leading-6">
+              <code>{componentExampleCode}</code>
             </pre>
           </CardContent>
         </Card>
@@ -123,7 +119,7 @@ function ComponentsJsxPage() {
                 Preview
               </CardTitle>
               <CardDescription>
-                This is the small interface produced by the JSX.
+                The JSX describes this small interface.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -145,31 +141,143 @@ function ComponentsJsxPage() {
           </Card>
 
           <Card>
-            <div className="flex items-center justify-between border-b px-4 py-3">
-              <div className="flex items-center gap-2">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
                 <LightbulbIcon className="size-4 text-primary" />
-                <span className="text-sm font-semibold">Small Notes</span>
-              </div>
-            </div>
-            <CardContent className="space-y-3 pt-4 text-sm leading-6 text-muted-foreground">
-              <p>
-                JSX is not a string and not HTML. It is JavaScript syntax that
-                lets a component describe its UI.
-              </p>
-              <p>
-                Values inside braces, like <code>props.name</code>, are regular
-                JavaScript expressions.
-              </p>
-              <p>
-                In the classic transform, JSX compiles to{' '}
-                <code>React.createElement()</code>. Modern React tooling can use
-                a newer automatic runtime, but the result is still JavaScript
-                that creates React elements.
-              </p>
+                JSX Practice Notes
+              </CardTitle>
+              <CardDescription>
+                The rules that make JSX feel like JavaScript.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2 text-sm leading-6 text-muted-foreground">
+                {practiceNotes.map((note) => (
+                  <li className="rounded-md bg-muted/30 p-3" key={note}>
+                    {note}
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
         </aside>
       </div>
+
+      <Card className="gap-0 py-0">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3">
+          <div>
+            <h2 className="text-sm font-semibold">JSX represents objects</h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              JSX is not HTML and not a string. Build tools compile it into
+              JavaScript that creates React element objects.
+            </p>
+          </div>
+          <Badge className="bg-primary/10 text-primary" variant="outline">
+            Before and after compilation
+          </Badge>
+        </div>
+        <CardContent className="space-y-4 p-4">
+          <div className="grid items-stretch gap-4 xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]">
+            <CodeBlock code={jsxBeforeCode} eyebrow="Before" title="JSX" />
+            <div className="hidden items-center justify-center text-muted-foreground xl:flex">
+              <ArrowRightIcon className="size-5" />
+            </div>
+            <CodeBlock
+              code={classicTransformCode}
+              eyebrow="Classic transform"
+              title="React.createElement calls"
+            />
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            <Card className="bg-muted/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base">
+                  <FileCode2Icon className="size-4 text-primary" />
+                  Modern tooling note
+                </CardTitle>
+                <CardDescription>
+                  Vite and current React tooling normally use the automatic JSX
+                  runtime instead of requiring a visible React import.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="overflow-x-auto rounded-lg bg-background p-4 text-xs leading-6">
+                  <code>{modernRuntimeCode}</code>
+                </pre>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-muted/20">
+              <CardHeader>
+                <CardTitle className="text-base">
+                  The useful mental model
+                </CardTitle>
+                <CardDescription>
+                  The exact generated code can vary, but the result is still a
+                  lightweight object describing the UI.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <pre className="overflow-x-auto rounded-lg bg-background p-4 text-xs leading-6">
+                  <code>{elementObjectCode}</code>
+                </pre>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm leading-6 text-muted-foreground">
+            React reads these element descriptions, calls your components when
+            needed, and uses the resulting tree to update the DOM. That is why a
+            component can return JSX without manually creating DOM nodes.
+          </div>
+        </CardContent>
+      </Card>
+
+      <section className="grid gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle>Component Names Matter</CardTitle>
+            <CardDescription>
+              JSX uses casing to decide whether a tag is built-in or custom.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
+            <p>
+              <code>&lt;article&gt;</code>, <code>&lt;h2&gt;</code>, and{' '}
+              <code>&lt;span&gt;</code> compile with string types because they
+              refer to browser elements.
+            </p>
+            <p>
+              <code>&lt;StatusDot /&gt;</code> compiles with the{' '}
+              <code>StatusDot</code> function itself because capitalized JSX
+              tags refer to React components.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>JSX Is Still JavaScript</CardTitle>
+            <CardDescription>
+              Braces let markup and values meet without turning UI into string
+              templates.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm leading-6 text-muted-foreground">
+            <p>
+              In <code>&lt;h2&gt;&#123;name&#125;&lt;/h2&gt;</code>, the{' '}
+              <code>name</code> value is a JavaScript expression. It can come
+              from props, local variables, calculations, or function calls.
+            </p>
+            <p>
+              JSX expressions can be assigned to variables, returned from
+              functions, passed as arguments, or used inside conditions just
+              like other JavaScript expressions.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   )
 }

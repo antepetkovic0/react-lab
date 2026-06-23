@@ -30,21 +30,8 @@ export const labs = [
     section: "fundamentals",
     sectionLabel: "Fundamentals",
     href: "/fundamentals/components-jsx",
-    isPopular: true,
+    isPopular: false,
     isSearchable: true,
-  },
-  {
-    id: "state-props",
-    imageSrc:
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Cpath d="M48 36h29l15 24-15 24H48L33 60z" fill="none" stroke="%230f172a" stroke-width="3" stroke-linejoin="round"/%3E%3Cpath d="M92 36h20l15 24-15 24H92L77 60z" fill="none" stroke="%23059669" stroke-width="3" stroke-linejoin="round"/%3E%3Cpath d="M64 60h31" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="m91 52 8 8-8 8" fill="none" stroke="%230f172a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3Ccircle cx="55" cy="60" r="7" fill="%23059669"/%3E%3Cpath d="M103 52h13M103 68h9" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M38 29h18M104 91h18" stroke="%230891b2" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 6"/%3E%3C/svg%3E',
-    imageAlt: "Props flowing into stateful UI",
-    title: "State & Props",
-    description:
-      "Compare parent-owned inputs with component-owned values that change over time.",
-    level: "beginner",
-    section: "fundamentals",
-    sectionLabel: "Fundamentals",
-    href: "/fundamentals/state-props",
   },
   {
     id: "rendering-lifecycle",
@@ -58,6 +45,8 @@ export const labs = [
     section: "fundamentals",
     sectionLabel: "Fundamentals",
     href: "/fundamentals/rendering-lifecycle",
+    isPopular: false,
+    isSearchable: true,
   },
   {
     id: "why-keys",
@@ -71,6 +60,8 @@ export const labs = [
     section: "fundamentals",
     sectionLabel: "Fundamentals",
     href: "/fundamentals/why-keys",
+    isPopular: false,
+    isSearchable: true,
   },
   {
     id: "lifting-state-up",
@@ -84,22 +75,10 @@ export const labs = [
     section: "fundamentals",
     sectionLabel: "Fundamentals",
     href: "/fundamentals/lifting-state-up",
-  },
-  {
-    id: "core-web-vitals",
-    imageSrc:
-      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Cpath d="M28 86h104" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M40 76V45M80 76V32M120 76V56" stroke="%23059669" stroke-width="8" stroke-linecap="round"/%3E%3Cpath d="M33 46h34M73 33h34M113 56h20" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3Ccircle cx="40" cy="44" r="8" fill="%23059669"/%3E%3Ccircle cx="80" cy="32" r="8" fill="%23059669"/%3E%3Ccircle cx="120" cy="56" r="8" fill="%23059669"/%3E%3Cpath d="M36 101h8M76 101h8M116 101h8" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M38 20h84" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
-    imageAlt: "Core Web Vitals metric bars",
-    title: "Core Web Vitals",
-    description:
-      "Measure LCP, INP, and CLS, then connect each score to the React and browser work behind it.",
-    level: "intermediate",
-    section: "performance",
-    sectionLabel: "Performance",
-    href: "/performance/core-web-vitals",
     isPopular: true,
     isSearchable: true,
   },
+
   {
     id: "debounce-throttle",
     imageSrc:
@@ -113,6 +92,21 @@ export const labs = [
     sectionLabel: "Hooks & Effects",
     href: "/hooks-effects/debounce-throttle",
     isPopular: true,
+    isSearchable: true,
+  },
+  {
+    id: "effect-dependencies",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="28" y="25" width="104" height="70" rx="12" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M46 44h26M88 44h26M46 62h18M80 62h34M46 80h34M96 80h18" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M72 44h16M64 62h16M80 80h16" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M39 34v52M121 34v52" stroke="%230891b2" stroke-width="3" stroke-linecap="round"/%3E%3Ccircle cx="72" cy="44" r="5" fill="%23059669"/%3E%3Ccircle cx="80" cy="62" r="5" fill="%230891b2"/%3E%3Ccircle cx="96" cy="80" r="5" fill="%23059669"/%3E%3Cpath d="M24 60h14M122 60h14M31 53l7 7-7 7M129 53l-7 7 7 7" fill="none" stroke="%23059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E',
+    imageAlt: "Dependency array values compared between renders",
+    title: "Effect Dependencies",
+    description:
+      "Learn how React compares dependency arrays with Object.is and why references rerun effects.",
+    level: "intermediate",
+    section: "hooks-effects",
+    sectionLabel: "Hooks & Effects",
+    href: "/hooks-effects/effect-dependencies",
+    isPopular: false,
     isSearchable: true,
   },
   {
@@ -157,7 +151,7 @@ export const labs = [
     section: "ui-patterns",
     sectionLabel: "UI Patterns",
     href: "/ui-patterns/class-variance-authority",
-    isPopular: true,
+    isPopular: false,
     isSearchable: true,
   },
   {
@@ -172,6 +166,21 @@ export const labs = [
     section: "security",
     sectionLabel: "Security",
     href: "/security/oauth-pkce",
+    isPopular: true,
+    isSearchable: true,
+  },
+  {
+    id: "core-web-vitals",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Cpath d="M28 86h104" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M40 76V45M80 76V32M120 76V56" stroke="%23059669" stroke-width="8" stroke-linecap="round"/%3E%3Cpath d="M33 46h34M73 33h34M113 56h20" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 6"/%3E%3Ccircle cx="40" cy="44" r="8" fill="%23059669"/%3E%3Ccircle cx="80" cy="32" r="8" fill="%23059669"/%3E%3Ccircle cx="120" cy="56" r="8" fill="%23059669"/%3E%3Cpath d="M36 101h8M76 101h8M116 101h8" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M38 20h84" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
+    imageAlt: "Core Web Vitals metric bars",
+    title: "Core Web Vitals",
+    description:
+      "Measure LCP, INP, and CLS, then connect each score to the React and browser work behind it.",
+    level: "intermediate",
+    section: "performance",
+    sectionLabel: "Performance",
+    href: "/performance/core-web-vitals",
     isPopular: true,
     isSearchable: true,
   },

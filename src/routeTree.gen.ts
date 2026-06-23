@@ -27,7 +27,11 @@ import { Route as DashboardUiPatternsClassVarianceAuthorityRouteImport } from '.
 import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
 import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashboard/security/oauth-pkce'
 import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
+import { Route as DashboardHooksEffectsEffectDependenciesRouteImport } from './routes/_dashboard/hooks-effects/effect-dependencies'
 import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
+import { Route as DashboardFundamentalsWhyKeysRouteImport } from './routes/_dashboard/fundamentals/why-keys'
+import { Route as DashboardFundamentalsRenderingLifecycleRouteImport } from './routes/_dashboard/fundamentals/rendering-lifecycle'
+import { Route as DashboardFundamentalsLiftingStateUpRouteImport } from './routes/_dashboard/fundamentals/lifting-state-up'
 import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
 
 const DashboardRoute = DashboardRouteImport.update({
@@ -126,11 +130,35 @@ const DashboardPerformanceCoreWebVitalsRoute =
     path: '/core-web-vitals',
     getParentRoute: () => DashboardPerformanceRoute,
   } as any)
+const DashboardHooksEffectsEffectDependenciesRoute =
+  DashboardHooksEffectsEffectDependenciesRouteImport.update({
+    id: '/effect-dependencies',
+    path: '/effect-dependencies',
+    getParentRoute: () => DashboardHooksEffectsRoute,
+  } as any)
 const DashboardHooksEffectsDebounceThrottleRoute =
   DashboardHooksEffectsDebounceThrottleRouteImport.update({
     id: '/debounce-throttle',
     path: '/debounce-throttle',
     getParentRoute: () => DashboardHooksEffectsRoute,
+  } as any)
+const DashboardFundamentalsWhyKeysRoute =
+  DashboardFundamentalsWhyKeysRouteImport.update({
+    id: '/why-keys',
+    path: '/why-keys',
+    getParentRoute: () => DashboardFundamentalsRoute,
+  } as any)
+const DashboardFundamentalsRenderingLifecycleRoute =
+  DashboardFundamentalsRenderingLifecycleRouteImport.update({
+    id: '/rendering-lifecycle',
+    path: '/rendering-lifecycle',
+    getParentRoute: () => DashboardFundamentalsRoute,
+  } as any)
+const DashboardFundamentalsLiftingStateUpRoute =
+  DashboardFundamentalsLiftingStateUpRouteImport.update({
+    id: '/lifting-state-up',
+    path: '/lifting-state-up',
+    getParentRoute: () => DashboardFundamentalsRoute,
   } as any)
 const DashboardFundamentalsComponentsJsxRoute =
   DashboardFundamentalsComponentsJsxRouteImport.update({
@@ -153,7 +181,11 @@ export interface FileRoutesByFullPath {
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
+  '/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
+  '/fundamentals/why-keys': typeof DashboardFundamentalsWhyKeysRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
+  '/hooks-effects/effect-dependencies': typeof DashboardHooksEffectsEffectDependenciesRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
@@ -174,7 +206,11 @@ export interface FileRoutesByTo {
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/': typeof DashboardIndexRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
+  '/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
+  '/fundamentals/why-keys': typeof DashboardFundamentalsWhyKeysRoute
   '/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
+  '/hooks-effects/effect-dependencies': typeof DashboardHooksEffectsEffectDependenciesRoute
   '/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
@@ -197,7 +233,11 @@ export interface FileRoutesById {
   '/_dashboard/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/_dashboard/': typeof DashboardIndexRoute
   '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
+  '/_dashboard/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
+  '/_dashboard/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
+  '/_dashboard/fundamentals/why-keys': typeof DashboardFundamentalsWhyKeysRoute
   '/_dashboard/hooks-effects/debounce-throttle': typeof DashboardHooksEffectsDebounceThrottleRoute
+  '/_dashboard/hooks-effects/effect-dependencies': typeof DashboardHooksEffectsEffectDependenciesRoute
   '/_dashboard/performance/core-web-vitals': typeof DashboardPerformanceCoreWebVitalsRoute
   '/_dashboard/security/oauth-pkce': typeof DashboardSecurityOauthPkceRoute
   '/_dashboard/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
@@ -220,7 +260,11 @@ export interface FileRouteTypes {
     | '/testing'
     | '/ui-patterns'
     | '/fundamentals/components-jsx'
+    | '/fundamentals/lifting-state-up'
+    | '/fundamentals/rendering-lifecycle'
+    | '/fundamentals/why-keys'
     | '/hooks-effects/debounce-throttle'
+    | '/hooks-effects/effect-dependencies'
     | '/performance/core-web-vitals'
     | '/security/oauth-pkce'
     | '/state-management/reducer-state-machine'
@@ -241,7 +285,11 @@ export interface FileRouteTypes {
     | '/ui-patterns'
     | '/'
     | '/fundamentals/components-jsx'
+    | '/fundamentals/lifting-state-up'
+    | '/fundamentals/rendering-lifecycle'
+    | '/fundamentals/why-keys'
     | '/hooks-effects/debounce-throttle'
+    | '/hooks-effects/effect-dependencies'
     | '/performance/core-web-vitals'
     | '/security/oauth-pkce'
     | '/state-management/reducer-state-machine'
@@ -263,7 +311,11 @@ export interface FileRouteTypes {
     | '/_dashboard/ui-patterns'
     | '/_dashboard/'
     | '/_dashboard/fundamentals/components-jsx'
+    | '/_dashboard/fundamentals/lifting-state-up'
+    | '/_dashboard/fundamentals/rendering-lifecycle'
+    | '/_dashboard/fundamentals/why-keys'
     | '/_dashboard/hooks-effects/debounce-throttle'
+    | '/_dashboard/hooks-effects/effect-dependencies'
     | '/_dashboard/performance/core-web-vitals'
     | '/_dashboard/security/oauth-pkce'
     | '/_dashboard/state-management/reducer-state-machine'
@@ -403,12 +455,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPerformanceCoreWebVitalsRouteImport
       parentRoute: typeof DashboardPerformanceRoute
     }
+    '/_dashboard/hooks-effects/effect-dependencies': {
+      id: '/_dashboard/hooks-effects/effect-dependencies'
+      path: '/effect-dependencies'
+      fullPath: '/hooks-effects/effect-dependencies'
+      preLoaderRoute: typeof DashboardHooksEffectsEffectDependenciesRouteImport
+      parentRoute: typeof DashboardHooksEffectsRoute
+    }
     '/_dashboard/hooks-effects/debounce-throttle': {
       id: '/_dashboard/hooks-effects/debounce-throttle'
       path: '/debounce-throttle'
       fullPath: '/hooks-effects/debounce-throttle'
       preLoaderRoute: typeof DashboardHooksEffectsDebounceThrottleRouteImport
       parentRoute: typeof DashboardHooksEffectsRoute
+    }
+    '/_dashboard/fundamentals/why-keys': {
+      id: '/_dashboard/fundamentals/why-keys'
+      path: '/why-keys'
+      fullPath: '/fundamentals/why-keys'
+      preLoaderRoute: typeof DashboardFundamentalsWhyKeysRouteImport
+      parentRoute: typeof DashboardFundamentalsRoute
+    }
+    '/_dashboard/fundamentals/rendering-lifecycle': {
+      id: '/_dashboard/fundamentals/rendering-lifecycle'
+      path: '/rendering-lifecycle'
+      fullPath: '/fundamentals/rendering-lifecycle'
+      preLoaderRoute: typeof DashboardFundamentalsRenderingLifecycleRouteImport
+      parentRoute: typeof DashboardFundamentalsRoute
+    }
+    '/_dashboard/fundamentals/lifting-state-up': {
+      id: '/_dashboard/fundamentals/lifting-state-up'
+      path: '/lifting-state-up'
+      fullPath: '/fundamentals/lifting-state-up'
+      preLoaderRoute: typeof DashboardFundamentalsLiftingStateUpRouteImport
+      parentRoute: typeof DashboardFundamentalsRoute
     }
     '/_dashboard/fundamentals/components-jsx': {
       id: '/_dashboard/fundamentals/components-jsx'
@@ -422,11 +502,19 @@ declare module '@tanstack/react-router' {
 
 interface DashboardFundamentalsRouteChildren {
   DashboardFundamentalsComponentsJsxRoute: typeof DashboardFundamentalsComponentsJsxRoute
+  DashboardFundamentalsLiftingStateUpRoute: typeof DashboardFundamentalsLiftingStateUpRoute
+  DashboardFundamentalsRenderingLifecycleRoute: typeof DashboardFundamentalsRenderingLifecycleRoute
+  DashboardFundamentalsWhyKeysRoute: typeof DashboardFundamentalsWhyKeysRoute
 }
 
 const DashboardFundamentalsRouteChildren: DashboardFundamentalsRouteChildren = {
   DashboardFundamentalsComponentsJsxRoute:
     DashboardFundamentalsComponentsJsxRoute,
+  DashboardFundamentalsLiftingStateUpRoute:
+    DashboardFundamentalsLiftingStateUpRoute,
+  DashboardFundamentalsRenderingLifecycleRoute:
+    DashboardFundamentalsRenderingLifecycleRoute,
+  DashboardFundamentalsWhyKeysRoute: DashboardFundamentalsWhyKeysRoute,
 }
 
 const DashboardFundamentalsRouteWithChildren =
@@ -436,11 +524,14 @@ const DashboardFundamentalsRouteWithChildren =
 
 interface DashboardHooksEffectsRouteChildren {
   DashboardHooksEffectsDebounceThrottleRoute: typeof DashboardHooksEffectsDebounceThrottleRoute
+  DashboardHooksEffectsEffectDependenciesRoute: typeof DashboardHooksEffectsEffectDependenciesRoute
 }
 
 const DashboardHooksEffectsRouteChildren: DashboardHooksEffectsRouteChildren = {
   DashboardHooksEffectsDebounceThrottleRoute:
     DashboardHooksEffectsDebounceThrottleRoute,
+  DashboardHooksEffectsEffectDependenciesRoute:
+    DashboardHooksEffectsEffectDependenciesRoute,
 }
 
 const DashboardHooksEffectsRouteWithChildren =

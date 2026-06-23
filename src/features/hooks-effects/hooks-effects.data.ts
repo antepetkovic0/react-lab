@@ -15,6 +15,10 @@ export const overview = {
       description: "Synchronize with timers, browser APIs, and servers.",
     },
     {
+      title: "Dependency arrays",
+      description: "Compare reactive values across renders with Object.is.",
+    },
+    {
       title: "useRef",
       description: "Keep mutable values without causing renders.",
     },
