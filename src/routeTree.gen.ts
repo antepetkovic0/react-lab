@@ -33,6 +33,7 @@ import { Route as DashboardFundamentalsWhyKeysRouteImport } from './routes/_dash
 import { Route as DashboardFundamentalsRenderingLifecycleRouteImport } from './routes/_dashboard/fundamentals/rendering-lifecycle'
 import { Route as DashboardFundamentalsLiftingStateUpRouteImport } from './routes/_dashboard/fundamentals/lifting-state-up'
 import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
+import { Route as DashboardFormsValidationReactHookFormZodRouteImport } from './routes/_dashboard/forms-validation/react-hook-form-zod'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
@@ -166,12 +167,18 @@ const DashboardFundamentalsComponentsJsxRoute =
     path: '/components-jsx',
     getParentRoute: () => DashboardFundamentalsRoute,
   } as any)
+const DashboardFormsValidationReactHookFormZodRoute =
+  DashboardFormsValidationReactHookFormZodRouteImport.update({
+    id: '/react-hook-form-zod',
+    path: '/react-hook-form-zod',
+    getParentRoute: () => DashboardFormsValidationRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof DashboardIndexRoute
   '/architecture': typeof DashboardArchitectureRoute
   '/data-fetching': typeof DashboardDataFetchingRoute
-  '/forms-validation': typeof DashboardFormsValidationRoute
+  '/forms-validation': typeof DashboardFormsValidationRouteWithChildren
   '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
@@ -180,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/state-management': typeof DashboardStateManagementRouteWithChildren
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
+  '/forms-validation/react-hook-form-zod': typeof DashboardFormsValidationReactHookFormZodRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
   '/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
@@ -195,7 +203,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/architecture': typeof DashboardArchitectureRoute
   '/data-fetching': typeof DashboardDataFetchingRoute
-  '/forms-validation': typeof DashboardFormsValidationRoute
+  '/forms-validation': typeof DashboardFormsValidationRouteWithChildren
   '/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/performance': typeof DashboardPerformanceRouteWithChildren
@@ -205,6 +213,7 @@ export interface FileRoutesByTo {
   '/testing': typeof DashboardTestingRoute
   '/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/': typeof DashboardIndexRoute
+  '/forms-validation/react-hook-form-zod': typeof DashboardFormsValidationReactHookFormZodRoute
   '/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
   '/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
@@ -222,7 +231,7 @@ export interface FileRoutesById {
   '/_dashboard': typeof DashboardRouteWithChildren
   '/_dashboard/architecture': typeof DashboardArchitectureRoute
   '/_dashboard/data-fetching': typeof DashboardDataFetchingRoute
-  '/_dashboard/forms-validation': typeof DashboardFormsValidationRoute
+  '/_dashboard/forms-validation': typeof DashboardFormsValidationRouteWithChildren
   '/_dashboard/fundamentals': typeof DashboardFundamentalsRouteWithChildren
   '/_dashboard/hooks-effects': typeof DashboardHooksEffectsRouteWithChildren
   '/_dashboard/performance': typeof DashboardPerformanceRouteWithChildren
@@ -232,6 +241,7 @@ export interface FileRoutesById {
   '/_dashboard/testing': typeof DashboardTestingRoute
   '/_dashboard/ui-patterns': typeof DashboardUiPatternsRouteWithChildren
   '/_dashboard/': typeof DashboardIndexRoute
+  '/_dashboard/forms-validation/react-hook-form-zod': typeof DashboardFormsValidationReactHookFormZodRoute
   '/_dashboard/fundamentals/components-jsx': typeof DashboardFundamentalsComponentsJsxRoute
   '/_dashboard/fundamentals/lifting-state-up': typeof DashboardFundamentalsLiftingStateUpRoute
   '/_dashboard/fundamentals/rendering-lifecycle': typeof DashboardFundamentalsRenderingLifecycleRoute
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/state-management'
     | '/testing'
     | '/ui-patterns'
+    | '/forms-validation/react-hook-form-zod'
     | '/fundamentals/components-jsx'
     | '/fundamentals/lifting-state-up'
     | '/fundamentals/rendering-lifecycle'
@@ -284,6 +295,7 @@ export interface FileRouteTypes {
     | '/testing'
     | '/ui-patterns'
     | '/'
+    | '/forms-validation/react-hook-form-zod'
     | '/fundamentals/components-jsx'
     | '/fundamentals/lifting-state-up'
     | '/fundamentals/rendering-lifecycle'
@@ -310,6 +322,7 @@ export interface FileRouteTypes {
     | '/_dashboard/testing'
     | '/_dashboard/ui-patterns'
     | '/_dashboard/'
+    | '/_dashboard/forms-validation/react-hook-form-zod'
     | '/_dashboard/fundamentals/components-jsx'
     | '/_dashboard/fundamentals/lifting-state-up'
     | '/_dashboard/fundamentals/rendering-lifecycle'
@@ -497,8 +510,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFundamentalsComponentsJsxRouteImport
       parentRoute: typeof DashboardFundamentalsRoute
     }
+    '/_dashboard/forms-validation/react-hook-form-zod': {
+      id: '/_dashboard/forms-validation/react-hook-form-zod'
+      path: '/react-hook-form-zod'
+      fullPath: '/forms-validation/react-hook-form-zod'
+      preLoaderRoute: typeof DashboardFormsValidationReactHookFormZodRouteImport
+      parentRoute: typeof DashboardFormsValidationRoute
+    }
   }
 }
+
+interface DashboardFormsValidationRouteChildren {
+  DashboardFormsValidationReactHookFormZodRoute: typeof DashboardFormsValidationReactHookFormZodRoute
+}
+
+const DashboardFormsValidationRouteChildren: DashboardFormsValidationRouteChildren =
+  {
+    DashboardFormsValidationReactHookFormZodRoute:
+      DashboardFormsValidationReactHookFormZodRoute,
+  }
+
+const DashboardFormsValidationRouteWithChildren =
+  DashboardFormsValidationRoute._addFileChildren(
+    DashboardFormsValidationRouteChildren,
+  )
 
 interface DashboardFundamentalsRouteChildren {
   DashboardFundamentalsComponentsJsxRoute: typeof DashboardFundamentalsComponentsJsxRoute
@@ -595,7 +630,7 @@ const DashboardUiPatternsRouteWithChildren =
 interface DashboardRouteChildren {
   DashboardArchitectureRoute: typeof DashboardArchitectureRoute
   DashboardDataFetchingRoute: typeof DashboardDataFetchingRoute
-  DashboardFormsValidationRoute: typeof DashboardFormsValidationRoute
+  DashboardFormsValidationRoute: typeof DashboardFormsValidationRouteWithChildren
   DashboardFundamentalsRoute: typeof DashboardFundamentalsRouteWithChildren
   DashboardHooksEffectsRoute: typeof DashboardHooksEffectsRouteWithChildren
   DashboardPerformanceRoute: typeof DashboardPerformanceRouteWithChildren
@@ -610,7 +645,7 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardArchitectureRoute: DashboardArchitectureRoute,
   DashboardDataFetchingRoute: DashboardDataFetchingRoute,
-  DashboardFormsValidationRoute: DashboardFormsValidationRoute,
+  DashboardFormsValidationRoute: DashboardFormsValidationRouteWithChildren,
   DashboardFundamentalsRoute: DashboardFundamentalsRouteWithChildren,
   DashboardHooksEffectsRoute: DashboardHooksEffectsRouteWithChildren,
   DashboardPerformanceRoute: DashboardPerformanceRouteWithChildren,

@@ -110,6 +110,21 @@ export const labs = [
     isSearchable: true,
   },
   {
+    id: "react-hook-form-zod",
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="31" y="24" width="64" height="72" rx="10" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M47 44h28M47 60h21M47 76h34" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M38 44l5 5 9-12M38 75l5 5 9-12" fill="none" stroke="%23e11d48" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Crect x="103" y="31" width="32" height="24" rx="8" fill="none" stroke="%23e11d48" stroke-width="3"/%3E%3Crect x="103" y="68" width="32" height="24" rx="8" fill="none" stroke="%230891b2" stroke-width="3"/%3E%3Cpath d="M95 44h8M95 80h8M119 55v13" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/%3E%3Cpath d="M113 43h12M113 80h12" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3Ccircle cx="95" cy="44" r="4" fill="%23e11d48"/%3E%3Ccircle cx="95" cy="80" r="4" fill="%230891b2"/%3E%3Cpath d="M62 101h36" stroke="%230f172a" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7"/%3E%3C/svg%3E',
+    imageAlt: "Validated form fields connected to schema branches",
+    title: "React Hook Form + Zod",
+    description:
+      "Build a type-safe form with schema validation, accessible errors, submit state, and a conditional union.",
+    level: "intermediate",
+    section: "forms-validation",
+    sectionLabel: "Forms & Validation",
+    href: "/forms-validation/react-hook-form-zod",
+    isPopular: true,
+    isSearchable: true,
+  },
+  {
     id: "reducer-state-machine",
     imageSrc:
       'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="25" y="24" width="38" height="24" rx="8" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Crect x="97" y="24" width="38" height="24" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Crect x="25" y="72" width="38" height="24" rx="8" fill="none" stroke="%23059669" stroke-width="3"/%3E%3Crect x="97" y="72" width="38" height="24" rx="8" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M63 36h34M116 48v24M97 84H63M44 72V48" fill="none" stroke="%230891b2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="m91 29 8 7-8 7M109 66l7 8 7-8M69 77l-8 7 8 7M37 54l7-8 7 8" fill="none" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Ccircle cx="44" cy="36" r="5" fill="%23059669"/%3E%3Ccircle cx="116" cy="36" r="5" fill="%230f172a"/%3E%3Ccircle cx="44" cy="84" r="5" fill="%230f172a"/%3E%3Ccircle cx="116" cy="84" r="5" fill="%23059669"/%3E%3Cpath d="M75 60h10M80 55v10" stroke="%230f172a" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
