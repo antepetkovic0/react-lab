@@ -1,20 +1,20 @@
-import { Link } from '@tanstack/react-router'
-import { ArrowRightIcon } from 'lucide-react'
-import type * as React from 'react'
-import { Card, CardContent, CardFooter } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
-import { LabCardBadge, type LabCardSectionValue } from './LabCardBadge'
-import { LabCardLevel, type LabCardLevelValue } from './LabCardLevel'
+import { Link } from '@tanstack/react-router';
+import { ArrowRightIcon } from 'lucide-react';
+import type * as React from 'react';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import { LabCardBadge, type LabCardSectionValue } from './LabCardBadge';
+import { LabCardLevel, type LabCardLevelValue } from './LabCardLevel';
 
 type LabCardProps = Omit<React.ComponentProps<typeof Card>, 'title'> & {
-  imageSrc: string
-  imageAlt: string
-  title: string
-  description: string
-  section: LabCardSectionValue
-  level: LabCardLevelValue
-  href: string
-}
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  description: string;
+  section: LabCardSectionValue;
+  level: LabCardLevelValue;
+  href: string;
+};
 
 export function LabCard({
   imageSrc,
@@ -71,7 +71,7 @@ export function LabCard({
         </CardFooter>
       </Card>
     </Link>
-  )
+  );
 }
 
-export type { LabCardLevelValue, LabCardSectionValue }
+export type { LabCardLevelValue, LabCardSectionValue };

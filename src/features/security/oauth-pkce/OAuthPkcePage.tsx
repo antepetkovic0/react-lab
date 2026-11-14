@@ -6,35 +6,35 @@ import {
   LockKeyholeIcon,
   RefreshCcwIcon,
   ServerCogIcon,
-} from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { RouteBreadcrumbs } from "@/components/shared/route-breadcrumbs/RouteBreadcrumbs";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { randomBase64Url, sha256Base64Url } from "@/lib/crypto";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { randomBase64Url, sha256Base64Url } from '@/lib/crypto';
 import {
   protocolSteps,
   storageOptions,
   tokenExchangeCode,
-} from "./oauth-pkce.data";
-import type { TokenExchangeResult } from "./oauth-pkce.types";
-import { getDefaultRedirectUri, makeFakeToken } from "./oauth-pkce.utils";
-import { ResultPanel } from "./ResultPanel";
-import { StatusRow } from "./StatusRow";
-import { ValueBox } from "./ValueBox";
+} from './oauth-pkce.data';
+import type { TokenExchangeResult } from './oauth-pkce.types';
+import { getDefaultRedirectUri, makeFakeToken } from './oauth-pkce.utils';
+import { ResultPanel } from './ResultPanel';
+import { StatusRow } from './StatusRow';
+import { ValueBox } from './ValueBox';
 
 type AuthCodeRecord = {
   code: string;
   codeChallenge: string;
-  codeChallengeMethod: "S256";
+  codeChallengeMethod: 'S256';
   clientId: string;
   redirectUri: string;
   scope: string;
@@ -48,12 +48,12 @@ type CallbackParams = {
 };
 
 function OAuthPkcePage() {
-  const [clientId, setClientId] = useState("react-lab-spa");
-  const [scope, setScope] = useState("openid profile email");
+  const [clientId, setClientId] = useState('react-lab-spa');
+  const [scope, setScope] = useState('openid profile email');
   const [redirectUri] = useState(getDefaultRedirectUri());
-  const [verifier, setVerifier] = useState("");
-  const [challenge, setChallenge] = useState("");
-  const [stateValue, setStateValue] = useState("");
+  const [verifier, setVerifier] = useState('');
+  const [challenge, setChallenge] = useState('');
+  const [stateValue, setStateValue] = useState('');
   const [serverRecord, setServerRecord] = useState<AuthCodeRecord | null>(null);
   const [callbackParams, setCallbackParams] = useState<CallbackParams | null>(
     null,
@@ -63,21 +63,21 @@ function OAuthPkcePage() {
   );
 
   const [storageChoice, setStorageChoice] =
-    useState<(typeof storageOptions)[number]["id"]>("memory");
+    useState<(typeof storageOptions)[number]['id']>('memory');
 
   const authorizationUrl = useMemo(() => {
     if (!challenge || !stateValue) {
-      return "Generate a PKCE transaction first.";
+      return 'Generate a PKCE transaction first.';
     }
 
-    const url = new URL("https://auth.example.test/oauth/authorize");
-    url.searchParams.set("response_type", "code");
-    url.searchParams.set("client_id", clientId);
-    url.searchParams.set("redirect_uri", redirectUri);
-    url.searchParams.set("scope", scope);
-    url.searchParams.set("state", stateValue);
-    url.searchParams.set("code_challenge", challenge);
-    url.searchParams.set("code_challenge_method", "S256");
+    const url = new URL('https://auth.example.test/oauth/authorize');
+    url.searchParams.set('response_type', 'code');
+    url.searchParams.set('client_id', clientId);
+    url.searchParams.set('redirect_uri', redirectUri);
+    url.searchParams.set('scope', scope);
+    url.searchParams.set('state', stateValue);
+    url.searchParams.set('code_challenge', challenge);
+    url.searchParams.set('code_challenge_method', 'S256');
 
     return url.toString();
   }, [challenge, clientId, redirectUri, scope, stateValue]);
@@ -108,7 +108,7 @@ function OAuthPkcePage() {
     setServerRecord({
       code,
       codeChallenge: challenge,
-      codeChallengeMethod: "S256",
+      codeChallengeMethod: 'S256',
       clientId,
       redirectUri,
       scope,
@@ -126,9 +126,9 @@ function OAuthPkcePage() {
   }) {
     if (!serverRecord || !callbackParams) {
       setTokenResult({
-        status: "error",
-        title: "No authorization code",
-        description: "Run the authorization step before exchanging a code.",
+        status: 'error',
+        title: 'No authorization code',
+        description: 'Run the authorization step before exchanging a code.',
       });
       return;
     }
@@ -138,20 +138,20 @@ function OAuthPkcePage() {
 
     if (submittedState !== stateValue) {
       setTokenResult({
-        status: "error",
-        title: "State validation failed",
+        status: 'error',
+        title: 'State validation failed',
         description:
-          "The callback state does not match the browser transaction, so the client rejects the response before token exchange.",
+          'The callback state does not match the browser transaction, so the client rejects the response before token exchange.',
       });
       return;
     }
 
     if (serverRecord.used && !options?.reuseCode) {
       setTokenResult({
-        status: "error",
-        title: "Authorization code already used",
+        status: 'error',
+        title: 'Authorization code already used',
         description:
-          "A real provider invalidates each authorization code after one successful token exchange.",
+          'A real provider invalidates each authorization code after one successful token exchange.',
       });
       return;
     }
@@ -160,22 +160,22 @@ function OAuthPkcePage() {
 
     if (submittedChallenge !== serverRecord.codeChallenge) {
       setTokenResult({
-        status: "error",
-        title: "PKCE verification failed",
+        status: 'error',
+        title: 'PKCE verification failed',
         description:
-          "Hashing the submitted verifier did not recreate the original code_challenge, so an intercepted code is useless.",
+          'Hashing the submitted verifier did not recreate the original code_challenge, so an intercepted code is useless.',
       });
       return;
     }
 
     setServerRecord({ ...serverRecord, used: true });
     setTokenResult({
-      status: "success",
-      title: "Token exchange accepted",
+      status: 'success',
+      title: 'Token exchange accepted',
       description:
-        "The verifier matched the challenge, so the fake provider returned tokens for this public client.",
-      accessToken: makeFakeToken("access", clientId),
-      idToken: makeFakeToken("id", clientId),
+        'The verifier matched the challenge, so the fake provider returned tokens for this public client.',
+      accessToken: makeFakeToken('access', clientId),
+      idToken: makeFakeToken('id', clientId),
     });
   }
 
@@ -223,8 +223,8 @@ function OAuthPkcePage() {
                 <span className="flex size-9 items-center justify-center rounded-md bg-primary/10 text-primary">
                   <Icon className="size-4" />
                 </span>
-                <Badge variant={index < 2 ? "default" : "secondary"}>
-                  {String(index + 1).padStart(2, "0")}
+                <Badge variant={index < 2 ? 'default' : 'secondary'}>
+                  {String(index + 1).padStart(2, '0')}
                 </Badge>
               </div>
               <h2 className="mt-4 text-sm font-semibold">{step.title}</h2>
@@ -340,11 +340,11 @@ function OAuthPkcePage() {
                 <div className="mt-4 grid gap-3 md:grid-cols-2">
                   <ValueBox
                     label="callback code"
-                    value={callbackParams?.code ?? "Waiting for authorization"}
+                    value={callbackParams?.code ?? 'Waiting for authorization'}
                   />
                   <ValueBox
                     label="callback state"
-                    value={callbackParams?.state ?? "Waiting for authorization"}
+                    value={callbackParams?.state ?? 'Waiting for authorization'}
                   />
                 </div>
 
@@ -378,7 +378,7 @@ function OAuthPkcePage() {
                       <Button
                         disabled={!callbackParams}
                         onClick={() =>
-                          void redeemCode({ stateOverride: "tampered-state" })
+                          void redeemCode({ stateOverride: 'tampered-state' })
                         }
                         size="sm"
                         variant="destructive"
@@ -433,15 +433,15 @@ function OAuthPkcePage() {
             <CardContent className="space-y-3">
               <StatusRow
                 label="Authorization code"
-                value={serverRecord?.code ?? "Not issued"}
+                value={serverRecord?.code ?? 'Not issued'}
               />
               <StatusRow
                 label="Challenge method"
-                value={serverRecord?.codeChallengeMethod ?? "Waiting"}
+                value={serverRecord?.codeChallengeMethod ?? 'Waiting'}
               />
               <StatusRow
                 label="Code status"
-                value={serverRecord?.used ? "Used" : "Unused or missing"}
+                value={serverRecord?.used ? 'Used' : 'Unused or missing'}
               />
               <div className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-sm leading-6 text-muted-foreground">
                 A real provider keeps this record server-side. The SPA never
@@ -498,7 +498,7 @@ function OAuthPkcePage() {
                 ))}
               </div>
               <div className="rounded-lg border bg-muted/20 p-3 text-sm leading-6 text-muted-foreground">
-                Selected:{" "}
+                Selected:{' '}
                 <span className="font-semibold text-foreground">
                   {selectedStorage?.label}
                 </span>

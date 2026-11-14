@@ -1,19 +1,19 @@
-import type { UploadStatus } from "./reducer-state-machine.types";
+import type { UploadStatus } from './reducer-state-machine.types';
 
 export type UploadEvent =
-  | { type: "SELECT_FILE"; fileName: string }
-  | { type: "START" }
-  | { type: "PROGRESS"; amount: number }
-  | { type: "PAUSE" }
-  | { type: "RESUME" }
-  | { type: "FAIL"; message: string }
-  | { type: "RETRY" }
-  | { type: "CANCEL" }
-  | { type: "RESET" };
+  | { type: 'SELECT_FILE'; fileName: string }
+  | { type: 'START' }
+  | { type: 'PROGRESS'; amount: number }
+  | { type: 'PAUSE' }
+  | { type: 'RESUME' }
+  | { type: 'FAIL'; message: string }
+  | { type: 'RETRY' }
+  | { type: 'CANCEL' }
+  | { type: 'RESET' };
 
 type EventLogItem = {
   id: number;
-  event: UploadEvent["type"];
+  event: UploadEvent['type'];
   from: UploadStatus;
   to: UploadStatus;
   accepted: boolean;
@@ -31,7 +31,7 @@ type UploadState = {
 };
 
 export const initialUploadState: UploadState = {
-  status: "idle",
+  status: 'idle',
   fileName: null,
   progress: 0,
   attempts: 0,
@@ -45,9 +45,9 @@ export function uploadReducer(
   event: UploadEvent,
 ): UploadState {
   switch (event.type) {
-    case "SELECT_FILE": {
-      if (state.status !== "idle") {
-        return ignoreEvent(state, event, "Select a new file after reset.");
+    case 'SELECT_FILE': {
+      if (state.status !== 'idle') {
+        return ignoreEvent(state, event, 'Select a new file after reset.');
       }
 
       return recordEvent(
@@ -55,41 +55,41 @@ export function uploadReducer(
         event,
         {
           ...state,
-          status: "ready",
+          status: 'ready',
           fileName: event.fileName,
           progress: 0,
           error: null,
         },
         true,
-        "File selected. START is now valid.",
+        'File selected. START is now valid.',
       );
     }
 
-    case "START": {
-      if (state.status !== "ready") {
-        return ignoreEvent(state, event, "START only works from ready.");
+    case 'START': {
+      if (state.status !== 'ready') {
+        return ignoreEvent(state, event, 'START only works from ready.');
       }
 
       return recordEvent(
         state,
         event,
-        { ...state, status: "uploading", attempts: state.attempts + 1 },
+        { ...state, status: 'uploading', attempts: state.attempts + 1 },
         true,
-        "Upload effect can begin ticking.",
+        'Upload effect can begin ticking.',
       );
     }
 
-    case "PROGRESS": {
-      if (state.status !== "uploading") {
+    case 'PROGRESS': {
+      if (state.status !== 'uploading') {
         return ignoreEvent(
           state,
           event,
-          "Progress is ignored unless uploading.",
+          'Progress is ignored unless uploading.',
         );
       }
 
       const progress = Math.min(100, state.progress + event.amount);
-      const status = progress === 100 ? "success" : "uploading";
+      const status = progress === 100 ? 'success' : 'uploading';
 
       return recordEvent(
         state,
@@ -97,56 +97,56 @@ export function uploadReducer(
         { ...state, status, progress },
         true,
         progress === 100
-          ? "Reached the terminal success state."
-          : "Progress accepted.",
+          ? 'Reached the terminal success state.'
+          : 'Progress accepted.',
       );
     }
 
-    case "PAUSE": {
-      if (state.status !== "uploading") {
-        return ignoreEvent(state, event, "PAUSE only works while uploading.");
+    case 'PAUSE': {
+      if (state.status !== 'uploading') {
+        return ignoreEvent(state, event, 'PAUSE only works while uploading.');
       }
 
       return recordEvent(
         state,
         event,
-        { ...state, status: "paused" },
+        { ...state, status: 'paused' },
         true,
-        "Timer cleanup stops progress events.",
+        'Timer cleanup stops progress events.',
       );
     }
 
-    case "RESUME": {
-      if (state.status !== "paused") {
-        return ignoreEvent(state, event, "RESUME only works from paused.");
+    case 'RESUME': {
+      if (state.status !== 'paused') {
+        return ignoreEvent(state, event, 'RESUME only works from paused.');
       }
 
       return recordEvent(
         state,
         event,
-        { ...state, status: "uploading" },
+        { ...state, status: 'uploading' },
         true,
-        "Upload effect starts again.",
+        'Upload effect starts again.',
       );
     }
 
-    case "FAIL": {
-      if (state.status !== "uploading") {
-        return ignoreEvent(state, event, "FAIL only works while uploading.");
+    case 'FAIL': {
+      if (state.status !== 'uploading') {
+        return ignoreEvent(state, event, 'FAIL only works while uploading.');
       }
 
       return recordEvent(
         state,
         event,
-        { ...state, status: "error", error: event.message },
+        { ...state, status: 'error', error: event.message },
         true,
-        "Moved to error with retry data preserved.",
+        'Moved to error with retry data preserved.',
       );
     }
 
-    case "RETRY": {
-      if (state.status !== "error") {
-        return ignoreEvent(state, event, "RETRY only works from error.");
+    case 'RETRY': {
+      if (state.status !== 'error') {
+        return ignoreEvent(state, event, 'RETRY only works from error.');
       }
 
       return recordEvent(
@@ -154,22 +154,22 @@ export function uploadReducer(
         event,
         {
           ...state,
-          status: "uploading",
+          status: 'uploading',
           progress: 0,
           attempts: state.attempts + 1,
           error: null,
         },
         true,
-        "Retry restarts progress without selecting a file again.",
+        'Retry restarts progress without selecting a file again.',
       );
     }
 
-    case "CANCEL": {
-      if (state.status !== "uploading" && state.status !== "paused") {
+    case 'CANCEL': {
+      if (state.status !== 'uploading' && state.status !== 'paused') {
         return ignoreEvent(
           state,
           event,
-          "CANCEL only works during an active upload.",
+          'CANCEL only works during an active upload.',
         );
       }
 
@@ -178,16 +178,16 @@ export function uploadReducer(
         event,
         { ...initialUploadState, eventCount: state.eventCount, log: state.log },
         true,
-        "Active upload cancelled and state returned to idle.",
+        'Active upload cancelled and state returned to idle.',
       );
     }
 
-    case "RESET": {
-      if (state.status !== "success" && state.status !== "error") {
+    case 'RESET': {
+      if (state.status !== 'success' && state.status !== 'error') {
         return ignoreEvent(
           state,
           event,
-          "RESET is reserved for terminal states.",
+          'RESET is reserved for terminal states.',
         );
       }
 
@@ -196,7 +196,7 @@ export function uploadReducer(
         event,
         { ...initialUploadState, eventCount: state.eventCount, log: state.log },
         true,
-        "Terminal state cleared.",
+        'Terminal state cleared.',
       );
     }
   }

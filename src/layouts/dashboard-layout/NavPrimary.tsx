@@ -1,15 +1,15 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import type { LucideIcon } from "lucide-react";
-import type * as React from "react";
+import { Link, useRouterState } from '@tanstack/react-router';
+import type { LucideIcon } from 'lucide-react';
+import type * as React from 'react';
 import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from '@/components/ui/sidebar';
 
-import { isSidebarItemActive } from "./dashboard-layout.utils";
+import { isSidebarItemActive } from './dashboard-layout.utils';
 
 export function NavPrimary({
   items,

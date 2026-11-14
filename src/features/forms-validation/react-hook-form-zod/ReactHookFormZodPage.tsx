@@ -1,4 +1,4 @@
-import { zodResolver } from '@hookform/resolvers/zod'
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   BracesIcon,
   CheckCircle2Icon,
@@ -7,23 +7,23 @@ import {
   MailIcon,
   RotateCcwIcon,
   SendIcon,
-} from 'lucide-react'
-import type * as React from 'react'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+} from 'lucide-react';
+import type * as React from 'react';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import {
   concepts,
   discriminatedUnionCode,
@@ -31,7 +31,7 @@ import {
   hookFormCode,
   roleLabels,
   workflowNotes,
-} from './react-hook-form-zod.data'
+} from './react-hook-form-zod.data';
 
 const workspaceInviteSchema = z.object({
   fullName: z.string().trim().min(2, 'Use at least 2 characters.'),
@@ -55,7 +55,7 @@ const workspaceInviteSchema = z.object({
     .max(160, 'Keep notes under 160 characters.')
     .optional(),
   acceptTerms: z.boolean().refine(Boolean, 'Confirm the workspace policy.'),
-})
+});
 
 const contactSchema = z.discriminatedUnion('contactPreference', [
   z.object({
@@ -68,11 +68,11 @@ const contactSchema = z.discriminatedUnion('contactPreference', [
     phone: z.string().trim().min(10, 'Enter at least 10 digits.'),
     email: z.string().optional(),
   }),
-])
+]);
 
-type WorkspaceInviteInput = z.input<typeof workspaceInviteSchema>
-type WorkspaceInviteValues = z.output<typeof workspaceInviteSchema>
-type ContactValues = z.infer<typeof contactSchema>
+type WorkspaceInviteInput = z.input<typeof workspaceInviteSchema>;
+type WorkspaceInviteValues = z.output<typeof workspaceInviteSchema>;
+type ContactValues = z.infer<typeof contactSchema>;
 
 const inviteDefaults: WorkspaceInviteInput = {
   fullName: '',
@@ -82,19 +82,19 @@ const inviteDefaults: WorkspaceInviteInput = {
   password: '',
   notes: '',
   acceptTerms: false,
-}
+};
 
 const contactDefaults: ContactValues = {
   contactPreference: 'email',
   email: '',
   phone: '',
-}
+};
 
 function ReactHookFormZodPage() {
   const [submittedInvite, setSubmittedInvite] =
-    useState<WorkspaceInviteValues | null>(null)
+    useState<WorkspaceInviteValues | null>(null);
   const [submittedContact, setSubmittedContact] =
-    useState<ContactValues | null>(null)
+    useState<ContactValues | null>(null);
 
   const inviteForm = useForm<
     WorkspaceInviteInput,
@@ -104,25 +104,25 @@ function ReactHookFormZodPage() {
     defaultValues: inviteDefaults,
     mode: 'onChange',
     resolver: zodResolver(workspaceInviteSchema),
-  })
+  });
   const contactForm = useForm<ContactValues>({
     defaultValues: contactDefaults,
     mode: 'onChange',
     resolver: zodResolver(contactSchema),
-  })
+  });
 
-  const inviteErrors = inviteForm.formState.errors
-  const contactErrors = contactForm.formState.errors
-  const contactPreference = contactForm.watch('contactPreference')
+  const inviteErrors = inviteForm.formState.errors;
+  const contactErrors = contactForm.formState.errors;
+  const contactPreference = contactForm.watch('contactPreference');
 
   async function handleInviteSubmit(values: WorkspaceInviteValues) {
-    await wait(700)
-    setSubmittedInvite(values)
+    await wait(700);
+    setSubmittedInvite(values);
   }
 
   async function handleContactSubmit(values: ContactValues) {
-    await wait(400)
-    setSubmittedContact(values)
+    await wait(400);
+    setSubmittedContact(values);
   }
 
   return (
@@ -149,7 +149,7 @@ function ReactHookFormZodPage() {
 
       <section className="grid gap-4 lg:grid-cols-4">
         {concepts.map((concept) => {
-          const Icon = concept.icon
+          const Icon = concept.icon;
 
           return (
             <article
@@ -166,7 +166,7 @@ function ReactHookFormZodPage() {
                 {concept.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -336,8 +336,8 @@ function ReactHookFormZodPage() {
                   </Button>
                   <Button
                     onClick={() => {
-                      inviteForm.reset(inviteDefaults)
-                      setSubmittedInvite(null)
+                      inviteForm.reset(inviteDefaults);
+                      setSubmittedInvite(null);
                     }}
                     type="button"
                     variant="outline"
@@ -517,16 +517,16 @@ function ReactHookFormZodPage() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
 
 type FormFieldProps = {
-  children: React.ReactNode
-  className?: string
-  error?: string
-  id: string
-  label: string
-}
+  children: React.ReactNode;
+  className?: string;
+  error?: string;
+  id: string;
+  label: string;
+};
 
 function FormField({ children, className, error, id, label }: FormFieldProps) {
   return (
@@ -537,28 +537,28 @@ function FormField({ children, className, error, id, label }: FormFieldProps) {
       <div className="mt-1">{children}</div>
       <FieldError id={`${id}-error`} message={error} />
     </div>
-  )
+  );
 }
 
 function FieldError({ id, message }: { id: string; message?: string }) {
   if (!message) {
-    return null
+    return null;
   }
 
   return (
     <p className="mt-1 text-xs font-medium text-destructive" id={id}>
       {message}
     </p>
-  )
+  );
 }
 
 type FormStatePanelProps = {
-  dirty: boolean
-  errors: number
-  isValid: boolean
-  submitCount: number
-  submittedValue: WorkspaceInviteValues | null
-}
+  dirty: boolean;
+  errors: number;
+  isValid: boolean;
+  submitCount: number;
+  submittedValue: WorkspaceInviteValues | null;
+};
 
 function FormStatePanel({
   dirty,
@@ -596,7 +596,7 @@ function FormStatePanel({
         </pre>
       </div>
     </div>
-  )
+  );
 }
 
 function StateTile({ label, value }: { label: string; value: string }) {
@@ -605,7 +605,7 @@ function StateTile({ label, value }: { label: string; value: string }) {
       <p className="text-muted-foreground">{label}</p>
       <p className="mt-1 font-semibold">{value}</p>
     </div>
-  )
+  );
 }
 
 function CodePanel({
@@ -613,9 +613,9 @@ function CodePanel({
   code,
   title,
 }: {
-  className?: string
-  code: string
-  title: string
+  className?: string;
+  code: string;
+  title: string;
 }) {
   return (
     <Card className={className}>
@@ -631,11 +631,11 @@ function CodePanel({
         </pre>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 function wait(ms: number) {
-  return new Promise<void>((resolve) => window.setTimeout(resolve, ms))
+  return new Promise<void>((resolve) => window.setTimeout(resolve, ms));
 }
 
-export { ReactHookFormZodPage }
+export { ReactHookFormZodPage };

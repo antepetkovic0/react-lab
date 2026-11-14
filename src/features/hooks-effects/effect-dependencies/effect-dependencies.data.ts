@@ -5,7 +5,7 @@ import {
   ListChecksIcon,
   Repeat2Icon,
   ShieldCheckIcon,
-} from 'lucide-react'
+} from 'lucide-react';
 
 export const mentalModelCards = [
   {
@@ -32,7 +32,7 @@ export const mentalModelCards = [
     description:
       'When at least one dependency changes, React runs cleanup with old values, then setup with new values.',
   },
-]
+];
 
 export const objectIsExamples = [
   {
@@ -55,7 +55,7 @@ export const objectIsExamples = [
     result: 'false',
     explanation: 'Two object literals are two separate references.',
   },
-]
+];
 
 export const dependencyPitfalls = [
   {
@@ -77,7 +77,7 @@ export const dependencyPitfalls = [
       'items.filter(...) creates a new array even when the filtered values look the same.',
     fix: 'Depend on the primitive inputs, memoize expensive derivations, or keep the derivation in render if no Effect is needed.',
   },
-]
+];
 
 export const stabilizationChoices = [
   {
@@ -98,7 +98,7 @@ export const stabilizationChoices = [
     description:
       'useMemo and useCallback help when identity matters to an Effect, memoized child, or external subscription API.',
   },
-]
+];
 
 export const dependencyArrayCode = `function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234')
@@ -109,7 +109,7 @@ export const dependencyArrayCode = `function ChatRoom({ roomId }) {
 
     return () => connection.disconnect()
   }, [serverUrl, roomId])
-}`
+}`;
 
 export const unnecessaryObjectCode = `function ChatRoom({ roomId }) {
   const options = { serverUrl: 'https://localhost:1234', roomId }
@@ -120,7 +120,7 @@ export const unnecessaryObjectCode = `function ChatRoom({ roomId }) {
 
     return () => connection.disconnect()
   }, [options]) // options is new on every render
-}`
+}`;
 
 export const objectInsideEffectCode = `function ChatRoom({ roomId }) {
   useEffect(() => {
@@ -130,7 +130,7 @@ export const objectInsideEffectCode = `function ChatRoom({ roomId }) {
 
     return () => connection.disconnect()
   }, [roomId])
-}`
+}`;
 
 export const readingLinks = [
   {
@@ -149,4 +149,4 @@ export const readingLinks = [
     title: 'useCallback reference',
     href: 'https://react.dev/reference/react/useCallback',
   },
-]
+];

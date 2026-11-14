@@ -1,37 +1,37 @@
-import { Clock3Icon, GaugeIcon, TimerResetIcon } from "lucide-react";
+import { Clock3Icon, GaugeIcon, TimerResetIcon } from 'lucide-react';
 
 export const products = [
-  "React Query Planner",
-  "Hook Timer",
-  "Effect Cleanup Kit",
-  "State Machine Notes",
-  "Render Profiler",
-  "Form Validation Map",
-  "Router Breadcrumb Builder",
-  "Search Result Cache",
+  'React Query Planner',
+  'Hook Timer',
+  'Effect Cleanup Kit',
+  'State Machine Notes',
+  'Render Profiler',
+  'Form Validation Map',
+  'Router Breadcrumb Builder',
+  'Search Result Cache',
 ];
 
 export const concepts = [
   {
-    title: "Debounce waits for quiet",
+    title: 'Debounce waits for quiet',
     icon: TimerResetIcon,
     description:
-      "Debounce delays the function execution until a specific amount of time has passed since the last event.",
-    examples: "Search input, autosave, validation after typing",
+      'Debounce delays the function execution until a specific amount of time has passed since the last event.',
+    examples: 'Search input, autosave, validation after typing',
   },
   {
-    title: "Throttle sets a rhythm",
+    title: 'Throttle sets a rhythm',
     icon: GaugeIcon,
     description:
-      "Throttle guarantees the function will execute at a regular, fixed interval as long as events are continuously firing.",
-    examples: "Scroll position, resize, drag, pointer tracking",
+      'Throttle guarantees the function will execute at a regular, fixed interval as long as events are continuously firing.',
+    examples: 'Scroll position, resize, drag, pointer tracking',
   },
   {
-    title: "Both rely on cleanup",
+    title: 'Both rely on cleanup',
     icon: Clock3Icon,
     description:
-      "Timers are effects. Clear the old timer when values change so stale work does not update the UI later.",
-    examples: "clearTimeout inside the effect cleanup function",
+      'Timers are effects. Clear the old timer when values change so stale work does not update the UI later.',
+    examples: 'clearTimeout inside the effect cleanup function',
   },
 ];
 

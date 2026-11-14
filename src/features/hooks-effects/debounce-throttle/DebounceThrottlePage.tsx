@@ -3,31 +3,31 @@ import {
   InfoIcon,
   ListFilterIcon,
   TimerResetIcon,
-} from "lucide-react";
-import { useMemo, useState } from "react";
-import { RouteBreadcrumbs } from "@/components/shared/route-breadcrumbs/RouteBreadcrumbs";
-import { Badge } from "@/components/ui/badge";
+} from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useDebounce } from "@/hooks/use-debounce";
-import { useThrottle } from "@/hooks/use-throttle";
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { useDebounce } from '@/hooks/use-debounce';
+import { useThrottle } from '@/hooks/use-throttle';
 import {
   concepts,
   debounceCode,
   products,
   searchPreviewCode,
   throttleCode,
-} from "./debounce-throttle.data";
-import { Meter } from "./Meter";
+} from './debounce-throttle.data';
+import { Meter } from './Meter';
 
 function DebounceThrottlePage() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [sliderValue, setSliderValue] = useState(50);
 
   const debouncedQuery = useDebounce(query, 450);
@@ -122,7 +122,7 @@ function DebounceThrottlePage() {
                       Raw input
                     </p>
                     <p className="mt-1 min-h-6 break-words text-sm font-semibold">
-                      {query || "Empty"}
+                      {query || 'Empty'}
                     </p>
                   </div>
                   <div className="rounded-lg border border-primary/30 bg-primary/5 p-3">
@@ -130,7 +130,7 @@ function DebounceThrottlePage() {
                       Debounced query
                     </p>
                     <p className="mt-1 min-h-6 break-words text-sm font-semibold text-primary">
-                      {debouncedQuery || "Empty"}
+                      {debouncedQuery || 'Empty'}
                     </p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ function DebounceThrottlePage() {
                   old timer and starts a fresh one.
                 </div>
                 <div className="rounded-md bg-muted/30 p-3 text-sm leading-6 text-muted-foreground">
-                  When typing pauses for 450ms, <code>debouncedQuery</code>{" "}
+                  When typing pauses for 450ms, <code>debouncedQuery</code>{' '}
                   updates and the filtered list recalculates.
                 </div>
               </div>

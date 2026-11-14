@@ -1,13 +1,13 @@
 export type TokenExchangeResult =
   | {
-      status: "success";
+      status: 'success';
       title: string;
       description: string;
       accessToken: string;
       idToken: string;
     }
   | {
-      status: "error";
+      status: 'error';
       title: string;
       description: string;
     };

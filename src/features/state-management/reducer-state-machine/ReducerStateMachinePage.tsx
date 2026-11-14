@@ -7,28 +7,28 @@ import {
   RefreshCwIcon,
   RotateCcwIcon,
   ShieldAlertIcon,
-} from "lucide-react";
-import { useEffect, useReducer } from "react";
-import { RouteBreadcrumbs } from "@/components/shared/route-breadcrumbs/RouteBreadcrumbs";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from 'lucide-react';
+import { useEffect, useReducer } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import {
   concepts,
   reducerCode,
   sampleFiles,
   statusMeta,
   transitionRows,
-} from "./reducer-state-machine.data";
-import { StatusBadge } from "./StatusBadge";
-import { initialUploadState, uploadReducer } from "./upload-reducer";
+} from './reducer-state-machine.data';
+import { StatusBadge } from './StatusBadge';
+import { initialUploadState, uploadReducer } from './upload-reducer';
 
 function ReducerStateMachinePage() {
   const [state, dispatch] = useReducer(uploadReducer, initialUploadState);
@@ -36,12 +36,12 @@ function ReducerStateMachinePage() {
   const nextFile = sampleFiles[state.eventCount % sampleFiles.length];
 
   useEffect(() => {
-    if (state.status !== "uploading") {
+    if (state.status !== 'uploading') {
       return;
     }
 
     const intervalId = window.setInterval(() => {
-      dispatch({ type: "PROGRESS", amount: 11 });
+      dispatch({ type: 'PROGRESS', amount: 11 });
     }, 650);
 
     return () => window.clearInterval(intervalId);
@@ -124,7 +124,7 @@ function ReducerStateMachinePage() {
               <div className="mt-5 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                   <span className="font-medium">
-                    {state.fileName ?? "No file selected"}
+                    {state.fileName ?? 'No file selected'}
                   </span>
                   <span className="text-muted-foreground">
                     {state.progress}%
@@ -153,9 +153,9 @@ function ReducerStateMachinePage() {
 
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
               <Button
-                disabled={state.status !== "idle"}
+                disabled={state.status !== 'idle'}
                 onClick={() =>
-                  dispatch({ type: "SELECT_FILE", fileName: nextFile })
+                  dispatch({ type: 'SELECT_FILE', fileName: nextFile })
                 }
                 type="button"
               >
@@ -163,16 +163,16 @@ function ReducerStateMachinePage() {
                 Select
               </Button>
               <Button
-                disabled={state.status !== "ready"}
-                onClick={() => dispatch({ type: "START" })}
+                disabled={state.status !== 'ready'}
+                onClick={() => dispatch({ type: 'START' })}
                 type="button"
               >
                 <PlayIcon className="size-4" />
                 Start
               </Button>
               <Button
-                disabled={state.status !== "uploading"}
-                onClick={() => dispatch({ type: "PAUSE" })}
+                disabled={state.status !== 'uploading'}
+                onClick={() => dispatch({ type: 'PAUSE' })}
                 type="button"
                 variant="outline"
               >
@@ -180,8 +180,8 @@ function ReducerStateMachinePage() {
                 Pause
               </Button>
               <Button
-                disabled={state.status !== "paused"}
-                onClick={() => dispatch({ type: "RESUME" })}
+                disabled={state.status !== 'paused'}
+                onClick={() => dispatch({ type: 'RESUME' })}
                 type="button"
                 variant="outline"
               >
@@ -189,11 +189,11 @@ function ReducerStateMachinePage() {
                 Resume
               </Button>
               <Button
-                disabled={state.status !== "uploading"}
+                disabled={state.status !== 'uploading'}
                 onClick={() =>
                   dispatch({
-                    type: "FAIL",
-                    message: "Network timeout while sending the last chunk.",
+                    type: 'FAIL',
+                    message: 'Network timeout while sending the last chunk.',
                   })
                 }
                 type="button"
@@ -203,8 +203,8 @@ function ReducerStateMachinePage() {
                 Fail
               </Button>
               <Button
-                disabled={state.status !== "error"}
-                onClick={() => dispatch({ type: "RETRY" })}
+                disabled={state.status !== 'error'}
+                onClick={() => dispatch({ type: 'RETRY' })}
                 type="button"
                 variant="outline"
               >
@@ -213,9 +213,9 @@ function ReducerStateMachinePage() {
               </Button>
               <Button
                 disabled={
-                  state.status !== "uploading" && state.status !== "paused"
+                  state.status !== 'uploading' && state.status !== 'paused'
                 }
-                onClick={() => dispatch({ type: "CANCEL" })}
+                onClick={() => dispatch({ type: 'CANCEL' })}
                 type="button"
                 variant="outline"
               >
@@ -224,9 +224,9 @@ function ReducerStateMachinePage() {
               </Button>
               <Button
                 disabled={
-                  state.status !== "success" && state.status !== "error"
+                  state.status !== 'success' && state.status !== 'error'
                 }
-                onClick={() => dispatch({ type: "RESET" })}
+                onClick={() => dispatch({ type: 'RESET' })}
                 type="button"
                 variant="outline"
               >
@@ -238,20 +238,20 @@ function ReducerStateMachinePage() {
             <div className="grid gap-3 md:grid-cols-3">
               {(
                 [
-                  "idle",
-                  "ready",
-                  "uploading",
-                  "paused",
-                  "success",
-                  "error",
+                  'idle',
+                  'ready',
+                  'uploading',
+                  'paused',
+                  'success',
+                  'error',
                 ] as const
               ).map((machineStatus) => (
                 <div
                   className={cn(
-                    "rounded-lg border p-3 text-sm transition-colors",
+                    'rounded-lg border p-3 text-sm transition-colors',
                     state.status === machineStatus
-                      ? "border-primary/40 bg-primary/5"
-                      : "bg-background",
+                      ? 'border-primary/40 bg-primary/5'
+                      : 'bg-background',
                   )}
                   key={machineStatus}
                 >
@@ -292,18 +292,18 @@ function ReducerStateMachinePage() {
                     <span className="text-sm font-semibold">{item.event}</span>
                     <Badge
                       className={cn(
-                        "border",
+                        'border',
                         item.accepted
-                          ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-                          : "border-muted-foreground/20 bg-muted text-muted-foreground",
+                          ? 'border-emerald-200 bg-emerald-50 text-emerald-700'
+                          : 'border-muted-foreground/20 bg-muted text-muted-foreground',
                       )}
                       variant="outline"
                     >
-                      {item.accepted ? "accepted" : "ignored"}
+                      {item.accepted ? 'accepted' : 'ignored'}
                     </Badge>
                   </div>
                   <p className="mt-2 text-xs text-muted-foreground">
-                    {item.from} {"->"} {item.to}
+                    {item.from} {'->'} {item.to}
                   </p>
                   <p className="mt-2 text-xs leading-5 text-muted-foreground">
                     {item.note}

@@ -27,7 +27,7 @@ export function randomBase64Url(byteLength: number) {
  */
 export async function sha256Base64Url(value: string) {
   const bytes = new TextEncoder().encode(value);
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
 
   return bytesToBase64Url(new Uint8Array(digest));
 }
@@ -43,14 +43,14 @@ export async function sha256Base64Url(value: string) {
  * @returns A base64url string: `+` → `-`, `/` → `_`, padding removed.
  */
 export function bytesToBase64Url(bytes: Uint8Array) {
-  let binary = "";
+  let binary = '';
 
   for (const byte of bytes) {
     binary += String.fromCharCode(byte);
   }
 
   return btoa(binary)
-    .replaceAll("+", "-")
-    .replaceAll("/", "_")
-    .replaceAll("=", "");
+    .replaceAll('+', '-')
+    .replaceAll('/', '_')
+    .replaceAll('=', '');
 }

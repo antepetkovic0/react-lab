@@ -3,16 +3,16 @@ import {
   EyeIcon,
   FileCode2Icon,
   LightbulbIcon,
-} from 'lucide-react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
+} from 'lucide-react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 import {
   classicTransformCode,
   componentExampleCode,
@@ -21,13 +21,13 @@ import {
   jsxBeforeCode,
   modernRuntimeCode,
   practiceNotes,
-} from './components-jsx.data'
+} from './components-jsx.data';
 
 type CodeBlockProps = {
-  code: string
-  title: string
-  eyebrow?: string
-}
+  code: string;
+  title: string;
+  eyebrow?: string;
+};
 
 function CodeBlock({ code, eyebrow, title }: CodeBlockProps) {
   return (
@@ -42,7 +42,7 @@ function CodeBlock({ code, eyebrow, title }: CodeBlockProps) {
         <code>{code}</code>
       </pre>
     </div>
-  )
+  );
 }
 
 function ComponentsJsxPage() {
@@ -71,7 +71,7 @@ function ComponentsJsxPage() {
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {focusTopics.map((topic) => {
-          const Icon = topic.icon
+          const Icon = topic.icon;
 
           return (
             <article
@@ -88,7 +88,7 @@ function ComponentsJsxPage() {
                 {topic.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -279,7 +279,7 @@ function ComponentsJsxPage() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
 
-export { ComponentsJsxPage }
+export { ComponentsJsxPage };

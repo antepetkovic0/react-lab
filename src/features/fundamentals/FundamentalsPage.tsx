@@ -1,14 +1,14 @@
-import { Outlet, useRouterState } from "@tanstack/react-router";
-import { LabCard } from "@/components/shared/lab-card/LabCard";
-import { LabTopicsSection } from "@/components/shared/lab-topics-section/LabTopicsSection";
-import { labs, overview } from "./fundamentals.data";
+import { Outlet, useRouterState } from '@tanstack/react-router';
+import { LabCard } from '@/components/shared/lab-card/LabCard';
+import { LabTopicsSection } from '@/components/shared/lab-topics-section/LabTopicsSection';
+import { labs, overview } from './fundamentals.data';
 
 function FundamentalsPage() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
 
-  if (pathname !== "/fundamentals") {
+  if (pathname !== '/fundamentals') {
     return <Outlet />;
   }
 

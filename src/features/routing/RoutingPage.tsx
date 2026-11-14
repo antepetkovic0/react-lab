@@ -1,5 +1,5 @@
-import { LabTopicsSection as LabSectionPage } from "@/components/shared/lab-topics-section/LabTopicsSection";
-import { overview } from "./routing.data";
+import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection';
+import { overview } from './routing.data';
 
 function RoutingPage() {
   return (

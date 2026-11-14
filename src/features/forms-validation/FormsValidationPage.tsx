@@ -1,15 +1,15 @@
-import { Outlet, useRouterState } from '@tanstack/react-router'
-import { LabCard } from '@/components/shared/lab-card/LabCard'
-import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection'
-import { labs, overview } from './forms-validation.data'
+import { Outlet, useRouterState } from '@tanstack/react-router';
+import { LabCard } from '@/components/shared/lab-card/LabCard';
+import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection';
+import { labs, overview } from './forms-validation.data';
 
 function FormsValidationPage() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
-  })
+  });
 
   if (pathname !== '/forms-validation') {
-    return <Outlet />
+    return <Outlet />;
   }
 
   return (
@@ -45,7 +45,7 @@ function FormsValidationPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
-export { FormsValidationPage }
+export { FormsValidationPage };

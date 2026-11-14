@@ -1,5 +1,5 @@
-import { Link, useRouterState } from "@tanstack/react-router";
-import { Fragment } from "react";
+import { Link, useRouterState } from '@tanstack/react-router';
+import { Fragment } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,24 +7,24 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { labs } from "@/content/labs";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/breadcrumb';
+import { labs } from '@/content/labs';
+import { cn } from '@/lib/utils';
 
 export const routeBreadcrumbLabels: Record<string, string> = {
-  architecture: "Architecture",
-  "components-jsx": "Components & JSX",
-  "core-web-vitals": "Core Web Vitals",
-  "data-fetching": "Data Fetching",
-  "forms-validation": "Forms & Validation",
-  fundamentals: "Fundamentals",
-  "hooks-effects": "Hooks & Effects",
-  performance: "Performance",
-  routing: "Routing",
-  security: "Security",
-  "state-management": "State Management",
-  testing: "Testing",
-  "ui-patterns": "UI Patterns",
+  architecture: 'Architecture',
+  'components-jsx': 'Components & JSX',
+  'core-web-vitals': 'Core Web Vitals',
+  'data-fetching': 'Data Fetching',
+  'forms-validation': 'Forms & Validation',
+  fundamentals: 'Fundamentals',
+  'hooks-effects': 'Hooks & Effects',
+  performance: 'Performance',
+  routing: 'Routing',
+  security: 'Security',
+  'state-management': 'State Management',
+  testing: 'Testing',
+  'ui-patterns': 'UI Patterns',
   ...Object.fromEntries(labs.map((lab) => [lab.id, lab.title])),
 };
 
@@ -39,17 +39,17 @@ type BreadcrumbSegment = {
 
 function prettifySegment(segment: string) {
   return segment
-    .split("-")
+    .split('-')
     .filter(Boolean)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(' ');
 }
 
 function getRouteBreadcrumbSegments(pathname: string): BreadcrumbSegment[] {
-  const routeSegments = pathname.split("/").filter(Boolean);
+  const routeSegments = pathname.split('/').filter(Boolean);
 
   return routeSegments.map((segment, index) => ({
-    href: `/${routeSegments.slice(0, index + 1).join("/")}`,
+    href: `/${routeSegments.slice(0, index + 1).join('/')}`,
     label: routeBreadcrumbLabels[segment] ?? prettifySegment(segment),
   }));
 }
@@ -61,7 +61,7 @@ export function RouteBreadcrumbs({ className }: RouteBreadcrumbsProps) {
   const segments = getRouteBreadcrumbSegments(pathname);
 
   return (
-    <Breadcrumb className={cn("text-xs", className)}>
+    <Breadcrumb className={cn('text-xs', className)}>
       <BreadcrumbList className="text-xs">
         <BreadcrumbItem>
           {segments.length === 0 ? (

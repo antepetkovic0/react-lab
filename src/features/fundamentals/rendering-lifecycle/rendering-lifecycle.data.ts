@@ -7,7 +7,7 @@ import {
   Repeat2Icon,
   SparklesIcon,
   WaypointsIcon,
-} from 'lucide-react'
+} from 'lucide-react';
 
 export const lifecycleStages = [
   {
@@ -46,7 +46,7 @@ export const lifecycleStages = [
     output:
       'The user sees the committed UI. Passive effects run after the browser has had a chance to paint.',
   },
-]
+];
 
 export const renderTriggers = [
   {
@@ -73,7 +73,7 @@ export const renderTriggers = [
     description:
       'Changing an element type or unstable key can make React replace a subtree instead of preserving its state.',
   },
-]
+];
 
 export const scenarios = [
   {
@@ -123,20 +123,20 @@ export const scenarios = [
     insight:
       'Component type and key are part of identity. Stable identity is what preserves state.',
   },
-]
+];
 
 export const fiberNotes = [
   "A fiber is React's internal unit of work for one component or host node in the tree.",
   'The fiber tree lets React keep bookkeeping such as pending work, previous output, effects, and parent-child-sibling relationships.',
   'Because work is represented as fibers, React can prepare a new tree, pause or resume some work, and only commit after a render finishes successfully.',
   'Fiber is an implementation detail. The contract you rely on is still pure rendering, stable identity, and effects after commit.',
-]
+];
 
 export const renderPurityCode = `function PriceTag({ price, taxRate }) {
   const total = price * (1 + taxRate)
 
   return <span>{total.toFixed(2)}</span>
-}`
+}`;
 
 export const impureRenderCode = `let nextId = 0
 
@@ -145,7 +145,7 @@ function TodoRow({ todo }) {
   nextId += 1
 
   return <li id={\`todo-\${nextId}\`}>{todo.text}</li>
-}`
+}`;
 
 export const updateFlowCode = `function Counter() {
   const [count, setCount] = useState(0)
@@ -156,7 +156,7 @@ export const updateFlowCode = `function Counter() {
   }
 
   return <button onClick={increment}>{count}</button>
-}`
+}`;
 
 export const readingLinks = [
   {
@@ -175,4 +175,4 @@ export const readingLinks = [
     title: 'Reconciliation',
     href: 'https://legacy.reactjs.org/docs/reconciliation.html',
   },
-]
+];

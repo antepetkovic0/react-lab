@@ -1,4 +1,4 @@
-import { BoxesIcon, Layers3Icon, WaypointsIcon } from 'lucide-react'
+import { BoxesIcon, Layers3Icon, WaypointsIcon } from 'lucide-react';
 
 export const concepts = [
   {
@@ -19,7 +19,7 @@ export const concepts = [
     description:
       'Avoid duplicated state that can drift. Store the minimal value and derive the rest during render.',
   },
-]
+];
 
 export const palettes = [
   {
@@ -37,7 +37,7 @@ export const palettes = [
     label: 'Warm',
     description: 'Soft review and reflection mode',
   },
-] as const
+] as const;
 
 export const localStateCode = `function ThemePicker() {
   const [theme, setTheme] = useState('calm')
@@ -48,7 +48,7 @@ export const localStateCode = `function ThemePicker() {
       onSelectTheme={setTheme}
     />
   )
-}`
+}`;
 
 export const liftedStateCode = `function ThemeSettings() {
   const [theme, setTheme] = useState('calm')
@@ -62,7 +62,7 @@ export const liftedStateCode = `function ThemeSettings() {
       <ThemePreview selectedTheme={theme} />
     </>
   )
-}`
+}`;
 
 export const valueHandlerCode = `function ThemePicker({ selectedTheme, onSelectTheme }) {
   return themes.map((theme) => (
@@ -75,7 +75,7 @@ export const valueHandlerCode = `function ThemePicker({ selectedTheme, onSelectT
       {theme.label}
     </button>
   ))
-}`
+}`;
 
 export const decisionSteps = [
   {
@@ -114,10 +114,10 @@ export const decisionSteps = [
     detail:
       'Requirements change. Moving state down or up is normal maintenance, not a failure.',
   },
-]
+];
 
 export const rules = [
   'Co-location is the default for state that belongs to one interaction.',
   'Lifting state up is the tool for synchronizing siblings.',
   'Context can help with distance, but the provider should still live as close as practical.',
-]
+];

@@ -1,5 +1,5 @@
-import { LabCard } from "@/components/shared/lab-card/LabCard";
-import { labs, overview } from "./dashboard.data";
+import { LabCard } from '@/components/shared/lab-card/LabCard';
+import { labs, overview } from './dashboard.data';
 
 function DashboardPage() {
   return (

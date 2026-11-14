@@ -3,7 +3,7 @@ import {
   FileCode2Icon,
   ShieldCheckIcon,
   SplitIcon,
-} from 'lucide-react'
+} from 'lucide-react';
 
 export const concepts = [
   {
@@ -30,14 +30,14 @@ export const concepts = [
     description:
       'Use a discriminated union when one field decides which other fields are required.',
   },
-]
+];
 
 export const workflowNotes = [
   'useForm owns field registration, touched state, dirty state, validation timing, and submit state.',
   'zodResolver(schema) is the adapter that maps Zod issues into formState.errors.',
   "mode: 'onChange' updates isValid while the learner edits; submit-only validation is often quieter in production.",
   'Discriminated unions work best when the discriminator is a real form field such as contactPreference or accountType.',
-]
+];
 
 export const formSchemaCode = `const workspaceInviteSchema = z.object({
   fullName: z
@@ -71,7 +71,7 @@ export const formSchemaCode = `const workspaceInviteSchema = z.object({
     .refine(Boolean, "Confirm the workspace policy."),
 });
 
-type WorkspaceInviteValues = z.infer<typeof workspaceInviteSchema>;`
+type WorkspaceInviteValues = z.infer<typeof workspaceInviteSchema>;`;
 
 export const hookFormCode = `const form = useForm<WorkspaceInviteValues>({
   resolver: zodResolver(workspaceInviteSchema),
@@ -89,7 +89,7 @@ export const hookFormCode = `const form = useForm<WorkspaceInviteValues>({
 
 async function onSubmit(values: WorkspaceInviteValues) {
   await saveInvite(values);
-}`
+}`;
 
 export const fieldErrorCode = `<Input
   aria-describedby={errors.email ? "email-error" : undefined}
@@ -102,7 +102,7 @@ export const fieldErrorCode = `<Input
   <p className="text-sm text-destructive" id="email-error">
     {errors.email.message}
   </p>
-) : null}`
+) : null}`;
 
 export const discriminatedUnionCode = `const contactSchema = z.discriminatedUnion("contactPreference", [
   z.object({
@@ -120,10 +120,10 @@ export const discriminatedUnionCode = `const contactSchema = z.discriminatedUnio
 type ContactValues = z.infer<typeof contactSchema>;
 
 // The selected contactPreference chooses which object shape is valid.
-// No extra if/else validation is needed in onSubmit.`
+// No extra if/else validation is needed in onSubmit.`;
 
 export const roleLabels = {
   owner: 'Owner',
   admin: 'Admin',
   member: 'Member',
-} as const
+} as const;

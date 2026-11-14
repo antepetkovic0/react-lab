@@ -1,38 +1,38 @@
 export const overview = {
   description:
-    "Build confidence with focused tests across components, routes, network behavior, and user flows.",
-  eyebrow: "Confidence",
-  title: "Testing",
+    'Build confidence with focused tests across components, routes, network behavior, and user flows.',
+  eyebrow: 'Confidence',
+  title: 'Testing',
   topics: [
     {
-      title: "Unit tests",
+      title: 'Unit tests',
       description:
-        "Verify small functions and components with focused inputs and outputs.",
+        'Verify small functions and components with focused inputs and outputs.',
     },
     {
-      title: "Integration tests",
+      title: 'Integration tests',
       description:
-        "Exercise connected components, providers, routes, and user interactions together.",
+        'Exercise connected components, providers, routes, and user interactions together.',
     },
     {
-      title: "E2E tests",
+      title: 'E2E tests',
       description:
-        "Run browser-level flows that cover the app the way a user experiences it.",
+        'Run browser-level flows that cover the app the way a user experiences it.',
     },
     {
-      title: "Mocking",
+      title: 'Mocking',
       description:
-        "Replace network calls, timers, and external services with controlled test doubles.",
+        'Replace network calls, timers, and external services with controlled test doubles.',
     },
     {
-      title: "Accessibility tests",
+      title: 'Accessibility tests',
       description:
-        "Catch missing labels, keyboard traps, and semantic issues during test runs.",
+        'Catch missing labels, keyboard traps, and semantic issues during test runs.',
     },
     {
-      title: "Regression checks",
+      title: 'Regression checks',
       description:
-        "Protect important behavior from breaking as features and refactors land.",
+        'Protect important behavior from breaking as features and refactors land.',
     },
   ],
 };

@@ -1,18 +1,18 @@
-import { cn } from '@/lib/utils'
+import { cn } from '@/lib/utils';
 
-export type LabCardLevelValue = 'beginner' | 'intermediate' | 'advanced'
+export type LabCardLevelValue = 'beginner' | 'intermediate' | 'advanced';
 
 type LabCardLevelProps = {
-  level: LabCardLevelValue
-  className?: string
-}
+  level: LabCardLevelValue;
+  className?: string;
+};
 
 const levelMeta: Record<
   LabCardLevelValue,
   {
-    label: string
-    bars: number
-    className: string
+    label: string;
+    bars: number;
+    className: string;
   }
 > = {
   beginner: {
@@ -30,10 +30,10 @@ const levelMeta: Record<
     bars: 3,
     className: 'bg-red-500',
   },
-}
+};
 
 export function LabCardLevel({ level, className }: LabCardLevelProps) {
-  const meta = levelMeta[level]
+  const meta = levelMeta[level];
 
   return (
     <div
@@ -55,5 +55,5 @@ export function LabCardLevel({ level, className }: LabCardLevelProps) {
       </div>
       <span className="text-xs font-medium">{meta.label}</span>
     </div>
-  )
+  );
 }

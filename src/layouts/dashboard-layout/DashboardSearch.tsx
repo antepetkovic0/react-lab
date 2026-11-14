@@ -1,23 +1,23 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { SearchIcon } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Link, useNavigate } from '@tanstack/react-router';
+import { SearchIcon } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/components/ui/input-group";
-import { Kbd } from "@/components/ui/kbd";
-import { searchableLabs } from "@/content/labs";
+} from '@/components/ui/input-group';
+import { Kbd } from '@/components/ui/kbd';
+import { searchableLabs } from '@/content/labs';
 
 export function DashboardSearch() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
   function selectLab(href: string) {
     setIsOpen(false);
-    setQuery("");
+    setQuery('');
     inputRef.current?.blur();
     navigate({ to: href });
   }
@@ -34,7 +34,7 @@ export function DashboardSearch() {
         lab.title,
         lab.sectionLabel,
         lab.description,
-      ].join(" ");
+      ].join(' ');
 
       return searchableText.toLowerCase().includes(normalizedQuery);
     });
@@ -44,7 +44,7 @@ export function DashboardSearch() {
     function handleShortcut(event: KeyboardEvent) {
       if (
         !(event.metaKey || event.ctrlKey) ||
-        event.key.toLowerCase() !== "k"
+        event.key.toLowerCase() !== 'k'
       ) {
         return;
       }
@@ -54,9 +54,9 @@ export function DashboardSearch() {
       setIsOpen(true);
     }
 
-    window.addEventListener("keydown", handleShortcut);
+    window.addEventListener('keydown', handleShortcut);
 
-    return () => window.removeEventListener("keydown", handleShortcut);
+    return () => window.removeEventListener('keydown', handleShortcut);
   }, []);
 
   return (
@@ -70,7 +70,7 @@ export function DashboardSearch() {
           }}
           onFocus={() => setIsOpen(true)}
           onKeyDown={(event) => {
-            if (event.key !== "Enter" || !filteredLabs.length) {
+            if (event.key !== 'Enter' || !filteredLabs.length) {
               return;
             }
 

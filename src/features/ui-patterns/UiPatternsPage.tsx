@@ -1,14 +1,14 @@
-import { Outlet, useRouterState } from "@tanstack/react-router";
-import { LabCard } from "@/components/shared/lab-card/LabCard";
-import { LabTopicsSection as LabSectionPage } from "@/components/shared/lab-topics-section/LabTopicsSection";
-import { labCards, overview } from "./ui-patterns.data";
+import { Outlet, useRouterState } from '@tanstack/react-router';
+import { LabCard } from '@/components/shared/lab-card/LabCard';
+import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection';
+import { labCards, overview } from './ui-patterns.data';
 
 function UiPatternsPage() {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
 
-  if (pathname !== "/ui-patterns") {
+  if (pathname !== '/ui-patterns') {
     return <Outlet />;
   }
 

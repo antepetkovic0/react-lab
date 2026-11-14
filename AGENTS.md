@@ -1,3 +1,18 @@
+# Project Setup And Workflow
+
+- Use npm and the committed `package-lock.json`; run `npm ci` after cloning.
+- Node 24 LTS is the default (`nvm install && nvm use` reads `.nvmrc`). Supported Node and npm versions are declared in `package.json`.
+- Read `README.md` for setup, commands, and the project map.
+- Use Biome for formatting, linting, and import organization. `biome.json` is the authority: two spaces, single quotes, and semicolons (`semicolons: "always"`), including TypeScript type members. Do not add a competing formatter or linter.
+- Run `npm run lint:fix` for safe fixes. Keep broad formatting changes separate from feature changes; do not use unsafe fixes without inspecting their behavior.
+- Before finishing code changes, run `npm run check` (lint, tests, TypeScript, and production build). For docs-only changes, check links and commands; run lint if changing supported configuration files.
+- Tests live in `tests/` and use Node's built-in test runner with native TypeScript stripping. Use explicit `.ts` extensions and relative imports in tests; the runner does not resolve `@/` aliases or JSX. Add focused behavior tests for changed logic. The build type-checks tests too.
+- Check `npm outdated` and `npm audit` when upgrading dependencies. Update related React, TanStack Router, Tailwind, and form packages together to compatible versions; different TanStack packages do not necessarily share a release number.
+- Review migration notes for major upgrades and validate each group. Do not run `npm audit fix --force` or add overrides without checking the proposed versions and dependency paths.
+- Commit manifest and lockfile updates together. Keep the Biome dependency pinned exactly and its `$schema` version in sync.
+- Never edit `src/routeTree.gen.ts` manually. Start Vite or run the build to regenerate routes, and include resulting route changes. Generated code is excluded from Biome.
+- CI runs the same checks as local development and checks for uncommitted generated route changes. Dependabot proposes weekly updates; major upgrades require separate review.
+
 # Creating New Lab
 
 When adding a new lab, follow the existing lab structure and keep the change scoped to the new route, feature folder, data, and navigation registration.
@@ -58,7 +73,7 @@ Use external resources to verify facts and APIs, but let this repository's exist
 
 - Prefer local code patterns before copying external examples.
 - Use official docs for React, TanStack Router, Vite, TypeScript, Tailwind CSS, browser APIs, accessibility, and performance.
-- Use the shadcn MCP for shadcn/ui component examples, install commands, and expected composition.
+- Use the shadcn MCP for shadcn/ui component examples, install commands, and expected composition when available. Otherwise use official shadcn documentation and the installed CLI. Inspect generated changes before accepting them.
 - Use MDN for web platform behavior and browser APIs.
 - Use web.dev or official framework documentation for performance guidance.
 - Check `package.json` before following docs so examples match the installed libraries.
@@ -90,4 +105,5 @@ Use external resources to verify facts and APIs, but let this repository's exist
 
 - Run `npm run lint` for formatting and static checks.
 - Run `npm run build` to verify TypeScript, route generation, and production bundling.
-- For substantial UI changes, start the dev server and inspect the affected route in the browser.
+- For substantial UI changes, start the dev server and inspect the affected route in the browser. Check keyboard interaction, accessible labels, and narrow/mobile layouts.
+- Add or update focused behavior tests when changing application logic; run `npm test`.

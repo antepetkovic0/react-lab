@@ -1,4 +1,4 @@
-import { getLabsBySection } from '@/content/labs'
+import { getLabsBySection } from '@/content/labs';
 
 export const overview = {
   description:
@@ -37,6 +37,6 @@ export const overview = {
         'Represent pending, success, failure, and retry behavior during form submits.',
     },
   ],
-}
+};
 
-export const labs = getLabsBySection('forms-validation')
+export const labs = getLabsBySection('forms-validation');

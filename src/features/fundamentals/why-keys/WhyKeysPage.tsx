@@ -1,36 +1,36 @@
-import { AlertTriangleIcon, RotateCcwIcon, Trash2Icon } from 'lucide-react'
-import { useState } from 'react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { AlertTriangleIcon, RotateCcwIcon, Trash2Icon } from 'lucide-react';
+import { useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   badKeysCode,
   goodKeysCode,
   keyConcepts,
   people,
   rules,
-} from './why-keys.data'
+} from './why-keys.data';
 
-type Person = (typeof people)[number]
+type Person = (typeof people)[number];
 
 type PreviewListProps = {
-  items: Person[]
-  keyStrategy: 'index' | 'id'
-}
+  items: Person[];
+  keyStrategy: 'index' | 'id';
+};
 
 function PreviewList({ items, keyStrategy }: PreviewListProps) {
   return (
     <ul className="space-y-3">
       {items.map((person, index) => {
-        const inputId = `${keyStrategy}-${person.id}-note`
+        const inputId = `${keyStrategy}-${person.id}-note`;
 
         return (
           <li
@@ -60,24 +60,24 @@ function PreviewList({ items, keyStrategy }: PreviewListProps) {
               />
             </div>
           </li>
-        )
+        );
       })}
     </ul>
-  )
+  );
 }
 
 function WhyKeysPage() {
-  const [visiblePeople, setVisiblePeople] = useState(people)
+  const [visiblePeople, setVisiblePeople] = useState(people);
 
   const removeFirstPerson = () => {
-    setVisiblePeople((currentPeople) => currentPeople.slice(1))
-  }
+    setVisiblePeople((currentPeople) => currentPeople.slice(1));
+  };
 
   const resetPeople = () => {
-    setVisiblePeople(people)
-  }
+    setVisiblePeople(people);
+  };
 
-  const canRemove = visiblePeople.length > 1
+  const canRemove = visiblePeople.length > 1;
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
@@ -101,7 +101,7 @@ function WhyKeysPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         {keyConcepts.map((concept) => {
-          const Icon = concept.icon
+          const Icon = concept.icon;
 
           return (
             <article
@@ -118,7 +118,7 @@ function WhyKeysPage() {
                 {concept.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -264,7 +264,7 @@ function WhyKeysPage() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
 
-export { WhyKeysPage }
+export { WhyKeysPage };

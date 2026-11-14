@@ -4,17 +4,17 @@ import {
   ExternalLinkIcon,
   InfoIcon,
   Layers3Icon,
-} from 'lucide-react'
-import { useState } from 'react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
+} from 'lucide-react';
+import { useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 import {
   fiberNotes,
   impureRenderCode,
@@ -24,13 +24,13 @@ import {
   renderTriggers,
   scenarios,
   updateFlowCode,
-} from './rendering-lifecycle.data'
+} from './rendering-lifecycle.data';
 
 type CodeBlockProps = {
-  code: string
-  title: string
-  description: string
-}
+  code: string;
+  title: string;
+  description: string;
+};
 
 function CodeBlock({ code, description, title }: CodeBlockProps) {
   return (
@@ -45,16 +45,16 @@ function CodeBlock({ code, description, title }: CodeBlockProps) {
         </pre>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 function RenderingLifecyclePage() {
   const [selectedScenarioId, setSelectedScenarioId] = useState(
     scenarios[0]?.id ?? '',
-  )
+  );
   const selectedScenario =
     scenarios.find((scenario) => scenario.id === selectedScenarioId) ??
-    scenarios[0]
+    scenarios[0];
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
@@ -80,8 +80,8 @@ function RenderingLifecyclePage() {
 
       <section className="grid gap-4 lg:grid-cols-4">
         {lifecycleStages.map((stage, index) => {
-          const Icon = stage.icon
-          const isLastStage = index === lifecycleStages.length - 1
+          const Icon = stage.icon;
+          const isLastStage = index === lifecycleStages.length - 1;
 
           return (
             <article
@@ -104,7 +104,7 @@ function RenderingLifecyclePage() {
                 </p>
               </div>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -124,7 +124,7 @@ function RenderingLifecyclePage() {
           <CardContent className="space-y-4 p-4">
             <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
               {scenarios.map((scenario) => {
-                const isSelected = scenario.id === selectedScenario.id
+                const isSelected = scenario.id === selectedScenario.id;
 
                 return (
                   <button
@@ -140,7 +140,7 @@ function RenderingLifecyclePage() {
                   >
                     <span className="font-medium">{scenario.title}</span>
                   </button>
-                )
+                );
               })}
             </div>
 
@@ -188,7 +188,7 @@ function RenderingLifecyclePage() {
             <CardContent>
               <ul className="space-y-3">
                 {renderTriggers.map((trigger) => {
-                  const Icon = trigger.icon
+                  const Icon = trigger.icon;
 
                   return (
                     <li className="flex gap-3" key={trigger.title}>
@@ -202,7 +202,7 @@ function RenderingLifecyclePage() {
                         </p>
                       </div>
                     </li>
-                  )
+                  );
                 })}
               </ul>
             </CardContent>
@@ -309,7 +309,7 @@ function RenderingLifecyclePage() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
 
-export { RenderingLifecyclePage }
+export { RenderingLifecyclePage };

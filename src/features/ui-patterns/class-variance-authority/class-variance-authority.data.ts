@@ -1,4 +1,4 @@
-import { BoxesIcon, GitBranchIcon, MergeIcon } from 'lucide-react'
+import { BoxesIcon, GitBranchIcon, MergeIcon } from 'lucide-react';
 
 export const concepts = [
   {
@@ -19,7 +19,7 @@ export const concepts = [
     description:
       'CVA returns the recipe classes. This project uses cn(), a small helper that runs clsx first and tailwind-merge second, so conditional classes stay ergonomic and conflicting Tailwind utilities resolve cleanly.',
   },
-]
+];
 
 export const usageNotes = [
   {
@@ -42,7 +42,7 @@ export const usageNotes = [
     description:
       'Call cn(recipe({ ...variants }), className) when the component accepts className. Conflicting utilities like p-3 and p-6 resolve predictably.',
   },
-]
+];
 
 export const withoutVariantsCode = `type SignalCardProps = {
   intent?: "success" | "warning" | "danger";
@@ -89,7 +89,7 @@ function SignalCard({
   );
 
   return <article className={classNameFromBranches}>...</article>;
-}`
+}`;
 
 export const withVariantsCode = `import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
@@ -179,7 +179,7 @@ function SignalCard({
       ...
     </article>
   );
-}`
+}`;
 
 export const cnCode = `import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -190,13 +190,13 @@ export function cn(...inputs: ClassValue[]) {
 
 cn("rounded-lg p-3 bg-card", isLarge && "p-6", className);
 // If className contains "p-2", tailwind-merge keeps the last
-// conflicting padding utility instead of shipping "p-6 p-2" together.`
+// conflicting padding utility instead of shipping "p-6 p-2" together.`;
 
 export const controlGroups = {
   intent: ['success', 'warning', 'danger'],
   density: ['comfortable', 'compact'],
   emphasis: ['soft', 'solid'],
-} as const
+} as const;
 
 export const references = [
   'cva(base, options) returns a class recipe function.',
@@ -204,4 +204,4 @@ export const references = [
   'defaultVariants keep component call sites quiet for the common path.',
   'compoundVariants apply classes when multiple variant conditions match.',
   'clsx handles conditional classes; tailwind-merge removes conflicting Tailwind utilities.',
-]
+];

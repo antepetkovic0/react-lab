@@ -1,4 +1,4 @@
-import { ArrowDownUpIcon, BadgeCheckIcon, FingerprintIcon } from 'lucide-react'
+import { ArrowDownUpIcon, BadgeCheckIcon, FingerprintIcon } from 'lucide-react';
 
 export const keyConcepts = [
   {
@@ -19,7 +19,7 @@ export const keyConcepts = [
     description:
       'Use IDs from your data. Avoid array indexes for changing lists and avoid generating keys during render.',
   },
-]
+];
 
 export const people = [
   {
@@ -46,7 +46,7 @@ export const people = [
     role: 'Ships the route',
     note: 'Run build before merge',
   },
-]
+];
 
 export const badKeysCode = `function TodoList({ todos }) {
   return (
@@ -56,7 +56,7 @@ export const badKeysCode = `function TodoList({ todos }) {
       ))}
     </ul>
   );
-}`
+}`;
 
 export const goodKeysCode = `function TodoList({ todos }) {
   return (
@@ -66,10 +66,10 @@ export const goodKeysCode = `function TodoList({ todos }) {
       ))}
     </ul>
   );
-}`
+}`;
 
 export const rules = [
   'Keys only need to be unique among siblings in the same array.',
   'A key should stay the same for the same item across renders.',
   'If a component needs the ID, pass it as a normal prop too. React does not pass key through props.',
-]
+];

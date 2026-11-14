@@ -1,4 +1,4 @@
-import { getLabsBySection } from '@/content/labs'
+import { getLabsBySection } from '@/content/labs';
 
 export const overview = {
   description:
@@ -37,6 +37,6 @@ export const overview = {
         'Build small reusable foundations that keep product interfaces consistent.',
     },
   ],
-}
+};
 
-export const labCards = getLabsBySection('ui-patterns')
+export const labCards = getLabsBySection('ui-patterns');

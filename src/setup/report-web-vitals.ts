@@ -1,4 +1,4 @@
-import type { MetricType } from "web-vitals";
+import type { MetricType } from 'web-vitals';
 
 export function sendToAnalytics(metric: MetricType) {
   const body = JSON.stringify({
@@ -11,13 +11,13 @@ export function sendToAnalytics(metric: MetricType) {
 
   const url = import.meta.env.VITE_WEB_VITALS_URL;
 
-  if (navigator.sendBeacon) {
+  if (url && navigator.sendBeacon) {
     navigator.sendBeacon(url, body);
   }
 }
 
 export function sendToConsole(metric: MetricType) {
-  console.log("[web-vitals]", metric.name, {
+  console.log('[web-vitals]', metric.name, {
     delta: metric.delta,
     entries: metric.entries,
     id: metric.id,
@@ -29,7 +29,7 @@ export function sendToConsole(metric: MetricType) {
 
 export function reportWebVitals(onPerfEntry?: (metric: MetricType) => void) {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    import("web-vitals").then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+    import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
       onCLS(onPerfEntry);
       onINP(onPerfEntry);
       onFCP(onPerfEntry);

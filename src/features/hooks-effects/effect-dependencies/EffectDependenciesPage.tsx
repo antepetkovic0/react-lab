@@ -1,16 +1,20 @@
-import { CheckCircle2Icon, ExternalLinkIcon, RefreshCwIcon } from 'lucide-react'
-import { useCallback, useMemo, useState } from 'react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import {
+  CheckCircle2Icon,
+  ExternalLinkIcon,
+  RefreshCwIcon,
+} from 'lucide-react';
+import { useCallback, useMemo, useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import {
   dependencyArrayCode,
   dependencyPitfalls,
@@ -20,21 +24,21 @@ import {
   readingLinks,
   stabilizationChoices,
   unnecessaryObjectCode,
-} from './effect-dependencies.data'
+} from './effect-dependencies.data';
 
 type DependencyComparison = {
-  label: string
-  previous: string
-  next: string
-  changed: boolean
-  note: string
-}
+  label: string;
+  previous: string;
+  next: string;
+  changed: boolean;
+  note: string;
+};
 
 type CodeBlockProps = {
-  code: string
-  title: string
-  description: string
-}
+  code: string;
+  title: string;
+  description: string;
+};
 
 function CodeBlock({ code, description, title }: CodeBlockProps) {
   return (
@@ -49,27 +53,27 @@ function CodeBlock({ code, description, title }: CodeBlockProps) {
         </pre>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 function EffectDependenciesPage() {
-  const [roomId, setRoomId] = useState('general')
-  const [reuseObject, setReuseObject] = useState(false)
-  const [reuseArray, setReuseArray] = useState(false)
-  const [reuseFunction, setReuseFunction] = useState(false)
+  const [roomId, setRoomId] = useState('general');
+  const [reuseObject, setReuseObject] = useState(false);
+  const [reuseArray, setReuseArray] = useState(false);
+  const [reuseFunction, setReuseFunction] = useState(false);
 
   const previousObject = useMemo(
     () => ({ roomId: 'general', reconnect: true }),
     [],
-  )
-  const previousArray = useMemo(() => ['general', 'music'], [])
-  const previousFunction = useCallback(() => 'connect', [])
+  );
+  const previousArray = useMemo(() => ['general', 'music'], []);
+  const previousFunction = useCallback(() => 'connect', []);
 
   const nextObject = reuseObject
     ? previousObject
-    : { roomId: 'general', reconnect: true }
-  const nextArray = reuseArray ? previousArray : ['general', 'music']
-  const nextFunction = reuseFunction ? previousFunction : () => 'connect'
+    : { roomId: 'general', reconnect: true };
+  const nextArray = reuseArray ? previousArray : ['general', 'music'];
+  const nextFunction = reuseFunction ? previousFunction : () => 'connect';
 
   const comparisons: DependencyComparison[] = [
     {
@@ -106,12 +110,12 @@ function EffectDependenciesPage() {
       changed: !Object.is(previousFunction, nextFunction),
       note: 'Functions declared during render are new values unless their identity is stabilized.',
     },
-  ]
+  ];
 
   const changedCount = comparisons.filter(
     (comparison) => comparison.changed,
-  ).length
-  const effectWillRun = changedCount > 0
+  ).length;
+  const effectWillRun = changedCount > 0;
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
@@ -137,7 +141,7 @@ function EffectDependenciesPage() {
 
       <section className="grid gap-4 lg:grid-cols-4">
         {mentalModelCards.map((card) => {
-          const Icon = card.icon
+          const Icon = card.icon;
 
           return (
             <article
@@ -152,7 +156,7 @@ function EffectDependenciesPage() {
                 {card.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -374,7 +378,7 @@ function EffectDependenciesPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {dependencyPitfalls.map((pitfall) => {
-              const Icon = pitfall.icon
+              const Icon = pitfall.icon;
 
               return (
                 <article
@@ -398,7 +402,7 @@ function EffectDependenciesPage() {
                     {pitfall.fix}
                   </p>
                 </article>
-              )
+              );
             })}
           </CardContent>
         </Card>
@@ -412,7 +416,7 @@ function EffectDependenciesPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {stabilizationChoices.map((choice) => {
-              const Icon = choice.icon
+              const Icon = choice.icon;
 
               return (
                 <article className="flex gap-3" key={choice.title}>
@@ -426,7 +430,7 @@ function EffectDependenciesPage() {
                     </p>
                   </div>
                 </article>
-              )
+              );
             })}
 
             <div className="rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm leading-6 text-muted-foreground">
@@ -440,7 +444,7 @@ function EffectDependenciesPage() {
         </Card>
       </section>
     </div>
-  )
+  );
 }
 
-export { EffectDependenciesPage }
+export { EffectDependenciesPage };

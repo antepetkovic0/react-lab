@@ -1,5 +1,5 @@
-import { LabTopicsSection as LabSectionPage } from "@/components/shared/lab-topics-section/LabTopicsSection";
-import { overview } from "./data-fetching.data";
+import { LabTopicsSection as LabSectionPage } from '@/components/shared/lab-topics-section/LabTopicsSection';
+import { overview } from './data-fetching.data';
 
 function DataFetchingPage() {
   return (

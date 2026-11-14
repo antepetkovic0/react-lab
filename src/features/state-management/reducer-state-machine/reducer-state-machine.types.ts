@@ -1,7 +1,7 @@
 export type UploadStatus =
-  | "idle"
-  | "ready"
-  | "uploading"
-  | "paused"
-  | "success"
-  | "error";
+  | 'idle'
+  | 'ready'
+  | 'uploading'
+  | 'paused'
+  | 'success'
+  | 'error';

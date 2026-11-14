@@ -11,29 +11,29 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/_dashboard'
 import { Route as DashboardIndexRouteImport } from './routes/_dashboard/index'
-import { Route as DashboardUiPatternsRouteImport } from './routes/_dashboard/ui-patterns'
-import { Route as DashboardTestingRouteImport } from './routes/_dashboard/testing'
-import { Route as DashboardStateManagementRouteImport } from './routes/_dashboard/state-management'
-import { Route as DashboardSecurityRouteImport } from './routes/_dashboard/security'
-import { Route as DashboardRoutingRouteImport } from './routes/_dashboard/routing'
-import { Route as DashboardPerformanceRouteImport } from './routes/_dashboard/performance'
-import { Route as DashboardHooksEffectsRouteImport } from './routes/_dashboard/hooks-effects'
-import { Route as DashboardFundamentalsRouteImport } from './routes/_dashboard/fundamentals'
-import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboard/forms-validation'
-import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
 import { Route as DashboardArchitectureRouteImport } from './routes/_dashboard/architecture'
-import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
-import { Route as DashboardUiPatternsClassVarianceAuthorityRouteImport } from './routes/_dashboard/ui-patterns/class-variance-authority'
-import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
-import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashboard/security/oauth-pkce'
-import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
-import { Route as DashboardHooksEffectsEffectDependenciesRouteImport } from './routes/_dashboard/hooks-effects/effect-dependencies'
-import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
-import { Route as DashboardFundamentalsWhyKeysRouteImport } from './routes/_dashboard/fundamentals/why-keys'
-import { Route as DashboardFundamentalsRenderingLifecycleRouteImport } from './routes/_dashboard/fundamentals/rendering-lifecycle'
-import { Route as DashboardFundamentalsLiftingStateUpRouteImport } from './routes/_dashboard/fundamentals/lifting-state-up'
-import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
+import { Route as DashboardDataFetchingRouteImport } from './routes/_dashboard/data-fetching'
+import { Route as DashboardFormsValidationRouteImport } from './routes/_dashboard/forms-validation'
+import { Route as DashboardFundamentalsRouteImport } from './routes/_dashboard/fundamentals'
+import { Route as DashboardHooksEffectsRouteImport } from './routes/_dashboard/hooks-effects'
+import { Route as DashboardPerformanceRouteImport } from './routes/_dashboard/performance'
+import { Route as DashboardRoutingRouteImport } from './routes/_dashboard/routing'
+import { Route as DashboardSecurityRouteImport } from './routes/_dashboard/security'
+import { Route as DashboardStateManagementRouteImport } from './routes/_dashboard/state-management'
+import { Route as DashboardTestingRouteImport } from './routes/_dashboard/testing'
+import { Route as DashboardUiPatternsRouteImport } from './routes/_dashboard/ui-patterns'
 import { Route as DashboardFormsValidationReactHookFormZodRouteImport } from './routes/_dashboard/forms-validation/react-hook-form-zod'
+import { Route as DashboardFundamentalsComponentsJsxRouteImport } from './routes/_dashboard/fundamentals/components-jsx'
+import { Route as DashboardFundamentalsLiftingStateUpRouteImport } from './routes/_dashboard/fundamentals/lifting-state-up'
+import { Route as DashboardFundamentalsRenderingLifecycleRouteImport } from './routes/_dashboard/fundamentals/rendering-lifecycle'
+import { Route as DashboardFundamentalsWhyKeysRouteImport } from './routes/_dashboard/fundamentals/why-keys'
+import { Route as DashboardHooksEffectsDebounceThrottleRouteImport } from './routes/_dashboard/hooks-effects/debounce-throttle'
+import { Route as DashboardHooksEffectsEffectDependenciesRouteImport } from './routes/_dashboard/hooks-effects/effect-dependencies'
+import { Route as DashboardPerformanceCoreWebVitalsRouteImport } from './routes/_dashboard/performance/core-web-vitals'
+import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashboard/security/oauth-pkce'
+import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
+import { Route as DashboardUiPatternsClassVarianceAuthorityRouteImport } from './routes/_dashboard/ui-patterns/class-variance-authority'
+import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
@@ -44,45 +44,14 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   path: '/',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardUiPatternsRoute = DashboardUiPatternsRouteImport.update({
-  id: '/ui-patterns',
-  path: '/ui-patterns',
+const DashboardArchitectureRoute = DashboardArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardTestingRoute = DashboardTestingRouteImport.update({
-  id: '/testing',
-  path: '/testing',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardStateManagementRoute =
-  DashboardStateManagementRouteImport.update({
-    id: '/state-management',
-    path: '/state-management',
-    getParentRoute: () => DashboardRoute,
-  } as any)
-const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
-  id: '/security',
-  path: '/security',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardRoutingRoute = DashboardRoutingRouteImport.update({
-  id: '/routing',
-  path: '/routing',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardPerformanceRoute = DashboardPerformanceRouteImport.update({
-  id: '/performance',
-  path: '/performance',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardHooksEffectsRoute = DashboardHooksEffectsRouteImport.update({
-  id: '/hooks-effects',
-  path: '/hooks-effects',
-  getParentRoute: () => DashboardRoute,
-} as any)
-const DashboardFundamentalsRoute = DashboardFundamentalsRouteImport.update({
-  id: '/fundamentals',
-  path: '/fundamentals',
+const DashboardDataFetchingRoute = DashboardDataFetchingRouteImport.update({
+  id: '/data-fetching',
+  path: '/data-fetching',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardFormsValidationRoute =
@@ -91,68 +60,57 @@ const DashboardFormsValidationRoute =
     path: '/forms-validation',
     getParentRoute: () => DashboardRoute,
   } as any)
-const DashboardDataFetchingRoute = DashboardDataFetchingRouteImport.update({
-  id: '/data-fetching',
-  path: '/data-fetching',
+const DashboardFundamentalsRoute = DashboardFundamentalsRouteImport.update({
+  id: '/fundamentals',
+  path: '/fundamentals',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardArchitectureRoute = DashboardArchitectureRouteImport.update({
-  id: '/architecture',
-  path: '/architecture',
+const DashboardHooksEffectsRoute = DashboardHooksEffectsRouteImport.update({
+  id: '/hooks-effects',
+  path: '/hooks-effects',
   getParentRoute: () => DashboardRoute,
 } as any)
-const DashboardUiPatternsCompoundComponentsRoute =
-  DashboardUiPatternsCompoundComponentsRouteImport.update({
-    id: '/compound-components',
-    path: '/compound-components',
-    getParentRoute: () => DashboardUiPatternsRoute,
+const DashboardPerformanceRoute = DashboardPerformanceRouteImport.update({
+  id: '/performance',
+  path: '/performance',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardRoutingRoute = DashboardRoutingRouteImport.update({
+  id: '/routing',
+  path: '/routing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSecurityRoute = DashboardSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardStateManagementRoute =
+  DashboardStateManagementRouteImport.update({
+    id: '/state-management',
+    path: '/state-management',
+    getParentRoute: () => DashboardRoute,
   } as any)
-const DashboardUiPatternsClassVarianceAuthorityRoute =
-  DashboardUiPatternsClassVarianceAuthorityRouteImport.update({
-    id: '/class-variance-authority',
-    path: '/class-variance-authority',
-    getParentRoute: () => DashboardUiPatternsRoute,
+const DashboardTestingRoute = DashboardTestingRouteImport.update({
+  id: '/testing',
+  path: '/testing',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardUiPatternsRoute = DashboardUiPatternsRouteImport.update({
+  id: '/ui-patterns',
+  path: '/ui-patterns',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardFormsValidationReactHookFormZodRoute =
+  DashboardFormsValidationReactHookFormZodRouteImport.update({
+    id: '/react-hook-form-zod',
+    path: '/react-hook-form-zod',
+    getParentRoute: () => DashboardFormsValidationRoute,
   } as any)
-const DashboardStateManagementReducerStateMachineRoute =
-  DashboardStateManagementReducerStateMachineRouteImport.update({
-    id: '/reducer-state-machine',
-    path: '/reducer-state-machine',
-    getParentRoute: () => DashboardStateManagementRoute,
-  } as any)
-const DashboardSecurityOauthPkceRoute =
-  DashboardSecurityOauthPkceRouteImport.update({
-    id: '/oauth-pkce',
-    path: '/oauth-pkce',
-    getParentRoute: () => DashboardSecurityRoute,
-  } as any)
-const DashboardPerformanceCoreWebVitalsRoute =
-  DashboardPerformanceCoreWebVitalsRouteImport.update({
-    id: '/core-web-vitals',
-    path: '/core-web-vitals',
-    getParentRoute: () => DashboardPerformanceRoute,
-  } as any)
-const DashboardHooksEffectsEffectDependenciesRoute =
-  DashboardHooksEffectsEffectDependenciesRouteImport.update({
-    id: '/effect-dependencies',
-    path: '/effect-dependencies',
-    getParentRoute: () => DashboardHooksEffectsRoute,
-  } as any)
-const DashboardHooksEffectsDebounceThrottleRoute =
-  DashboardHooksEffectsDebounceThrottleRouteImport.update({
-    id: '/debounce-throttle',
-    path: '/debounce-throttle',
-    getParentRoute: () => DashboardHooksEffectsRoute,
-  } as any)
-const DashboardFundamentalsWhyKeysRoute =
-  DashboardFundamentalsWhyKeysRouteImport.update({
-    id: '/why-keys',
-    path: '/why-keys',
-    getParentRoute: () => DashboardFundamentalsRoute,
-  } as any)
-const DashboardFundamentalsRenderingLifecycleRoute =
-  DashboardFundamentalsRenderingLifecycleRouteImport.update({
-    id: '/rendering-lifecycle',
-    path: '/rendering-lifecycle',
+const DashboardFundamentalsComponentsJsxRoute =
+  DashboardFundamentalsComponentsJsxRouteImport.update({
+    id: '/components-jsx',
+    path: '/components-jsx',
     getParentRoute: () => DashboardFundamentalsRoute,
   } as any)
 const DashboardFundamentalsLiftingStateUpRoute =
@@ -161,17 +119,59 @@ const DashboardFundamentalsLiftingStateUpRoute =
     path: '/lifting-state-up',
     getParentRoute: () => DashboardFundamentalsRoute,
   } as any)
-const DashboardFundamentalsComponentsJsxRoute =
-  DashboardFundamentalsComponentsJsxRouteImport.update({
-    id: '/components-jsx',
-    path: '/components-jsx',
+const DashboardFundamentalsRenderingLifecycleRoute =
+  DashboardFundamentalsRenderingLifecycleRouteImport.update({
+    id: '/rendering-lifecycle',
+    path: '/rendering-lifecycle',
     getParentRoute: () => DashboardFundamentalsRoute,
   } as any)
-const DashboardFormsValidationReactHookFormZodRoute =
-  DashboardFormsValidationReactHookFormZodRouteImport.update({
-    id: '/react-hook-form-zod',
-    path: '/react-hook-form-zod',
-    getParentRoute: () => DashboardFormsValidationRoute,
+const DashboardFundamentalsWhyKeysRoute =
+  DashboardFundamentalsWhyKeysRouteImport.update({
+    id: '/why-keys',
+    path: '/why-keys',
+    getParentRoute: () => DashboardFundamentalsRoute,
+  } as any)
+const DashboardHooksEffectsDebounceThrottleRoute =
+  DashboardHooksEffectsDebounceThrottleRouteImport.update({
+    id: '/debounce-throttle',
+    path: '/debounce-throttle',
+    getParentRoute: () => DashboardHooksEffectsRoute,
+  } as any)
+const DashboardHooksEffectsEffectDependenciesRoute =
+  DashboardHooksEffectsEffectDependenciesRouteImport.update({
+    id: '/effect-dependencies',
+    path: '/effect-dependencies',
+    getParentRoute: () => DashboardHooksEffectsRoute,
+  } as any)
+const DashboardPerformanceCoreWebVitalsRoute =
+  DashboardPerformanceCoreWebVitalsRouteImport.update({
+    id: '/core-web-vitals',
+    path: '/core-web-vitals',
+    getParentRoute: () => DashboardPerformanceRoute,
+  } as any)
+const DashboardSecurityOauthPkceRoute =
+  DashboardSecurityOauthPkceRouteImport.update({
+    id: '/oauth-pkce',
+    path: '/oauth-pkce',
+    getParentRoute: () => DashboardSecurityRoute,
+  } as any)
+const DashboardStateManagementReducerStateMachineRoute =
+  DashboardStateManagementReducerStateMachineRouteImport.update({
+    id: '/reducer-state-machine',
+    path: '/reducer-state-machine',
+    getParentRoute: () => DashboardStateManagementRoute,
+  } as any)
+const DashboardUiPatternsClassVarianceAuthorityRoute =
+  DashboardUiPatternsClassVarianceAuthorityRouteImport.update({
+    id: '/class-variance-authority',
+    path: '/class-variance-authority',
+    getParentRoute: () => DashboardUiPatternsRoute,
+  } as any)
+const DashboardUiPatternsCompoundComponentsRoute =
+  DashboardUiPatternsCompoundComponentsRouteImport.update({
+    id: '/compound-components',
+    path: '/compound-components',
+    getParentRoute: () => DashboardUiPatternsRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -356,67 +356,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/ui-patterns': {
-      id: '/_dashboard/ui-patterns'
-      path: '/ui-patterns'
-      fullPath: '/ui-patterns'
-      preLoaderRoute: typeof DashboardUiPatternsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/testing': {
-      id: '/_dashboard/testing'
-      path: '/testing'
-      fullPath: '/testing'
-      preLoaderRoute: typeof DashboardTestingRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/state-management': {
-      id: '/_dashboard/state-management'
-      path: '/state-management'
-      fullPath: '/state-management'
-      preLoaderRoute: typeof DashboardStateManagementRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/security': {
-      id: '/_dashboard/security'
-      path: '/security'
-      fullPath: '/security'
-      preLoaderRoute: typeof DashboardSecurityRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/routing': {
-      id: '/_dashboard/routing'
-      path: '/routing'
-      fullPath: '/routing'
-      preLoaderRoute: typeof DashboardRoutingRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/performance': {
-      id: '/_dashboard/performance'
-      path: '/performance'
-      fullPath: '/performance'
-      preLoaderRoute: typeof DashboardPerformanceRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/hooks-effects': {
-      id: '/_dashboard/hooks-effects'
-      path: '/hooks-effects'
-      fullPath: '/hooks-effects'
-      preLoaderRoute: typeof DashboardHooksEffectsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/fundamentals': {
-      id: '/_dashboard/fundamentals'
-      path: '/fundamentals'
-      fullPath: '/fundamentals'
-      preLoaderRoute: typeof DashboardFundamentalsRouteImport
-      parentRoute: typeof DashboardRoute
-    }
-    '/_dashboard/forms-validation': {
-      id: '/_dashboard/forms-validation'
-      path: '/forms-validation'
-      fullPath: '/forms-validation'
-      preLoaderRoute: typeof DashboardFormsValidationRouteImport
+    '/_dashboard/architecture': {
+      id: '/_dashboard/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof DashboardArchitectureRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/_dashboard/data-fetching': {
@@ -426,74 +370,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardDataFetchingRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/architecture': {
-      id: '/_dashboard/architecture'
-      path: '/architecture'
-      fullPath: '/architecture'
-      preLoaderRoute: typeof DashboardArchitectureRouteImport
+    '/_dashboard/forms-validation': {
+      id: '/_dashboard/forms-validation'
+      path: '/forms-validation'
+      fullPath: '/forms-validation'
+      preLoaderRoute: typeof DashboardFormsValidationRouteImport
       parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/ui-patterns/compound-components': {
-      id: '/_dashboard/ui-patterns/compound-components'
-      path: '/compound-components'
-      fullPath: '/ui-patterns/compound-components'
-      preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
-      parentRoute: typeof DashboardUiPatternsRoute
+    '/_dashboard/fundamentals': {
+      id: '/_dashboard/fundamentals'
+      path: '/fundamentals'
+      fullPath: '/fundamentals'
+      preLoaderRoute: typeof DashboardFundamentalsRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/ui-patterns/class-variance-authority': {
-      id: '/_dashboard/ui-patterns/class-variance-authority'
-      path: '/class-variance-authority'
-      fullPath: '/ui-patterns/class-variance-authority'
-      preLoaderRoute: typeof DashboardUiPatternsClassVarianceAuthorityRouteImport
-      parentRoute: typeof DashboardUiPatternsRoute
+    '/_dashboard/hooks-effects': {
+      id: '/_dashboard/hooks-effects'
+      path: '/hooks-effects'
+      fullPath: '/hooks-effects'
+      preLoaderRoute: typeof DashboardHooksEffectsRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/state-management/reducer-state-machine': {
-      id: '/_dashboard/state-management/reducer-state-machine'
-      path: '/reducer-state-machine'
-      fullPath: '/state-management/reducer-state-machine'
-      preLoaderRoute: typeof DashboardStateManagementReducerStateMachineRouteImport
-      parentRoute: typeof DashboardStateManagementRoute
+    '/_dashboard/performance': {
+      id: '/_dashboard/performance'
+      path: '/performance'
+      fullPath: '/performance'
+      preLoaderRoute: typeof DashboardPerformanceRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/security/oauth-pkce': {
-      id: '/_dashboard/security/oauth-pkce'
-      path: '/oauth-pkce'
-      fullPath: '/security/oauth-pkce'
-      preLoaderRoute: typeof DashboardSecurityOauthPkceRouteImport
-      parentRoute: typeof DashboardSecurityRoute
+    '/_dashboard/routing': {
+      id: '/_dashboard/routing'
+      path: '/routing'
+      fullPath: '/routing'
+      preLoaderRoute: typeof DashboardRoutingRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/performance/core-web-vitals': {
-      id: '/_dashboard/performance/core-web-vitals'
-      path: '/core-web-vitals'
-      fullPath: '/performance/core-web-vitals'
-      preLoaderRoute: typeof DashboardPerformanceCoreWebVitalsRouteImport
-      parentRoute: typeof DashboardPerformanceRoute
+    '/_dashboard/security': {
+      id: '/_dashboard/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof DashboardSecurityRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/hooks-effects/effect-dependencies': {
-      id: '/_dashboard/hooks-effects/effect-dependencies'
-      path: '/effect-dependencies'
-      fullPath: '/hooks-effects/effect-dependencies'
-      preLoaderRoute: typeof DashboardHooksEffectsEffectDependenciesRouteImport
-      parentRoute: typeof DashboardHooksEffectsRoute
+    '/_dashboard/state-management': {
+      id: '/_dashboard/state-management'
+      path: '/state-management'
+      fullPath: '/state-management'
+      preLoaderRoute: typeof DashboardStateManagementRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/hooks-effects/debounce-throttle': {
-      id: '/_dashboard/hooks-effects/debounce-throttle'
-      path: '/debounce-throttle'
-      fullPath: '/hooks-effects/debounce-throttle'
-      preLoaderRoute: typeof DashboardHooksEffectsDebounceThrottleRouteImport
-      parentRoute: typeof DashboardHooksEffectsRoute
+    '/_dashboard/testing': {
+      id: '/_dashboard/testing'
+      path: '/testing'
+      fullPath: '/testing'
+      preLoaderRoute: typeof DashboardTestingRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/fundamentals/why-keys': {
-      id: '/_dashboard/fundamentals/why-keys'
-      path: '/why-keys'
-      fullPath: '/fundamentals/why-keys'
-      preLoaderRoute: typeof DashboardFundamentalsWhyKeysRouteImport
-      parentRoute: typeof DashboardFundamentalsRoute
+    '/_dashboard/ui-patterns': {
+      id: '/_dashboard/ui-patterns'
+      path: '/ui-patterns'
+      fullPath: '/ui-patterns'
+      preLoaderRoute: typeof DashboardUiPatternsRouteImport
+      parentRoute: typeof DashboardRoute
     }
-    '/_dashboard/fundamentals/rendering-lifecycle': {
-      id: '/_dashboard/fundamentals/rendering-lifecycle'
-      path: '/rendering-lifecycle'
-      fullPath: '/fundamentals/rendering-lifecycle'
-      preLoaderRoute: typeof DashboardFundamentalsRenderingLifecycleRouteImport
+    '/_dashboard/forms-validation/react-hook-form-zod': {
+      id: '/_dashboard/forms-validation/react-hook-form-zod'
+      path: '/react-hook-form-zod'
+      fullPath: '/forms-validation/react-hook-form-zod'
+      preLoaderRoute: typeof DashboardFormsValidationReactHookFormZodRouteImport
+      parentRoute: typeof DashboardFormsValidationRoute
+    }
+    '/_dashboard/fundamentals/components-jsx': {
+      id: '/_dashboard/fundamentals/components-jsx'
+      path: '/components-jsx'
+      fullPath: '/fundamentals/components-jsx'
+      preLoaderRoute: typeof DashboardFundamentalsComponentsJsxRouteImport
       parentRoute: typeof DashboardFundamentalsRoute
     }
     '/_dashboard/fundamentals/lifting-state-up': {
@@ -503,19 +454,68 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFundamentalsLiftingStateUpRouteImport
       parentRoute: typeof DashboardFundamentalsRoute
     }
-    '/_dashboard/fundamentals/components-jsx': {
-      id: '/_dashboard/fundamentals/components-jsx'
-      path: '/components-jsx'
-      fullPath: '/fundamentals/components-jsx'
-      preLoaderRoute: typeof DashboardFundamentalsComponentsJsxRouteImport
+    '/_dashboard/fundamentals/rendering-lifecycle': {
+      id: '/_dashboard/fundamentals/rendering-lifecycle'
+      path: '/rendering-lifecycle'
+      fullPath: '/fundamentals/rendering-lifecycle'
+      preLoaderRoute: typeof DashboardFundamentalsRenderingLifecycleRouteImport
       parentRoute: typeof DashboardFundamentalsRoute
     }
-    '/_dashboard/forms-validation/react-hook-form-zod': {
-      id: '/_dashboard/forms-validation/react-hook-form-zod'
-      path: '/react-hook-form-zod'
-      fullPath: '/forms-validation/react-hook-form-zod'
-      preLoaderRoute: typeof DashboardFormsValidationReactHookFormZodRouteImport
-      parentRoute: typeof DashboardFormsValidationRoute
+    '/_dashboard/fundamentals/why-keys': {
+      id: '/_dashboard/fundamentals/why-keys'
+      path: '/why-keys'
+      fullPath: '/fundamentals/why-keys'
+      preLoaderRoute: typeof DashboardFundamentalsWhyKeysRouteImport
+      parentRoute: typeof DashboardFundamentalsRoute
+    }
+    '/_dashboard/hooks-effects/debounce-throttle': {
+      id: '/_dashboard/hooks-effects/debounce-throttle'
+      path: '/debounce-throttle'
+      fullPath: '/hooks-effects/debounce-throttle'
+      preLoaderRoute: typeof DashboardHooksEffectsDebounceThrottleRouteImport
+      parentRoute: typeof DashboardHooksEffectsRoute
+    }
+    '/_dashboard/hooks-effects/effect-dependencies': {
+      id: '/_dashboard/hooks-effects/effect-dependencies'
+      path: '/effect-dependencies'
+      fullPath: '/hooks-effects/effect-dependencies'
+      preLoaderRoute: typeof DashboardHooksEffectsEffectDependenciesRouteImport
+      parentRoute: typeof DashboardHooksEffectsRoute
+    }
+    '/_dashboard/performance/core-web-vitals': {
+      id: '/_dashboard/performance/core-web-vitals'
+      path: '/core-web-vitals'
+      fullPath: '/performance/core-web-vitals'
+      preLoaderRoute: typeof DashboardPerformanceCoreWebVitalsRouteImport
+      parentRoute: typeof DashboardPerformanceRoute
+    }
+    '/_dashboard/security/oauth-pkce': {
+      id: '/_dashboard/security/oauth-pkce'
+      path: '/oauth-pkce'
+      fullPath: '/security/oauth-pkce'
+      preLoaderRoute: typeof DashboardSecurityOauthPkceRouteImport
+      parentRoute: typeof DashboardSecurityRoute
+    }
+    '/_dashboard/state-management/reducer-state-machine': {
+      id: '/_dashboard/state-management/reducer-state-machine'
+      path: '/reducer-state-machine'
+      fullPath: '/state-management/reducer-state-machine'
+      preLoaderRoute: typeof DashboardStateManagementReducerStateMachineRouteImport
+      parentRoute: typeof DashboardStateManagementRoute
+    }
+    '/_dashboard/ui-patterns/class-variance-authority': {
+      id: '/_dashboard/ui-patterns/class-variance-authority'
+      path: '/class-variance-authority'
+      fullPath: '/ui-patterns/class-variance-authority'
+      preLoaderRoute: typeof DashboardUiPatternsClassVarianceAuthorityRouteImport
+      parentRoute: typeof DashboardUiPatternsRoute
+    }
+    '/_dashboard/ui-patterns/compound-components': {
+      id: '/_dashboard/ui-patterns/compound-components'
+      path: '/compound-components'
+      fullPath: '/ui-patterns/compound-components'
+      preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
+      parentRoute: typeof DashboardUiPatternsRoute
     }
   }
 }

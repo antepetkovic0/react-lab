@@ -3,19 +3,19 @@ import {
   CheckCircle2Icon,
   ExternalLinkIcon,
   InfoIcon,
-} from 'lucide-react'
-import { useState } from 'react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+} from 'lucide-react';
+import { useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import {
   concepts,
   decisionSteps,
@@ -24,17 +24,17 @@ import {
   palettes,
   rules,
   valueHandlerCode,
-} from './lifting-state-up.data'
+} from './lifting-state-up.data';
 
-type PaletteId = (typeof palettes)[number]['id']
-type OwnershipMode = 'colocated' | 'lifted'
+type PaletteId = (typeof palettes)[number]['id'];
+type OwnershipMode = 'colocated' | 'lifted';
 
 type PaletteStyle = {
-  surface: string
-  accent: string
-  text: string
-  meter: string
-}
+  surface: string;
+  accent: string;
+  text: string;
+  meter: string;
+};
 
 const paletteStyles: Record<PaletteId, PaletteStyle> = {
   calm: {
@@ -55,17 +55,17 @@ const paletteStyles: Record<PaletteId, PaletteStyle> = {
     text: 'text-rose-950',
     meter: 'bg-rose-500',
   },
-}
+};
 
 function getPalette(id: PaletteId) {
-  return palettes.find((palette) => palette.id === id) ?? palettes[0]
+  return palettes.find((palette) => palette.id === id) ?? palettes[0];
 }
 
 type PaletteButtonsProps = {
-  label: string
-  selectedId: PaletteId
-  onSelect: (id: PaletteId) => void
-}
+  label: string;
+  selectedId: PaletteId;
+  onSelect: (id: PaletteId) => void;
+};
 
 function PaletteButtons({ label, onSelect, selectedId }: PaletteButtonsProps) {
   return (
@@ -75,8 +75,8 @@ function PaletteButtons({ label, onSelect, selectedId }: PaletteButtonsProps) {
       </legend>
       <div className="grid gap-2 sm:grid-cols-3">
         {palettes.map((palette) => {
-          const isSelected = palette.id === selectedId
-          const styles = paletteStyles[palette.id]
+          const isSelected = palette.id === selectedId;
+          const styles = paletteStyles[palette.id];
 
           return (
             <button
@@ -100,22 +100,22 @@ function PaletteButtons({ label, onSelect, selectedId }: PaletteButtonsProps) {
                 {palette.description}
               </span>
             </button>
-          )
+          );
         })}
       </div>
     </fieldset>
-  )
+  );
 }
 
 type ThemePreviewProps = {
-  selectedId: PaletteId
-  title: string
-  description: string
-}
+  selectedId: PaletteId;
+  title: string;
+  description: string;
+};
 
 function ThemePreview({ description, selectedId, title }: ThemePreviewProps) {
-  const palette = getPalette(selectedId)
-  const styles = paletteStyles[selectedId]
+  const palette = getPalette(selectedId);
+  const styles = paletteStyles[selectedId];
 
   return (
     <div className={cn('rounded-lg border p-4', styles.surface)}>
@@ -142,11 +142,11 @@ function ThemePreview({ description, selectedId, title }: ThemePreviewProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 function LocalThemePicker() {
-  const [selectedId, setSelectedId] = useState<PaletteId>('calm')
+  const [selectedId, setSelectedId] = useState<PaletteId>('calm');
 
   return (
     <section className="space-y-4 rounded-lg border bg-background p-4">
@@ -170,11 +170,11 @@ function LocalThemePicker() {
         title="Local preview"
       />
     </section>
-  )
+  );
 }
 
 function LocalPreviewPanel() {
-  const [selectedId, setSelectedId] = useState<PaletteId>('focus')
+  const [selectedId, setSelectedId] = useState<PaletteId>('focus');
 
   return (
     <section className="space-y-4 rounded-lg border bg-background p-4">
@@ -198,13 +198,13 @@ function LocalPreviewPanel() {
         title="Sibling preview"
       />
     </section>
-  )
+  );
 }
 
 type LiftedThemePickerProps = {
-  selectedId: PaletteId
-  onSelect: (id: PaletteId) => void
-}
+  selectedId: PaletteId;
+  onSelect: (id: PaletteId) => void;
+};
 
 function LiftedThemePicker({ onSelect, selectedId }: LiftedThemePickerProps) {
   return (
@@ -224,13 +224,13 @@ function LiftedThemePicker({ onSelect, selectedId }: LiftedThemePickerProps) {
         selectedId={selectedId}
       />
     </section>
-  )
+  );
 }
 
 type LiftedPreviewPanelProps = {
-  selectedId: PaletteId
-  onSelect: (id: PaletteId) => void
-}
+  selectedId: PaletteId;
+  onSelect: (id: PaletteId) => void;
+};
 
 function LiftedPreviewPanel({ onSelect, selectedId }: LiftedPreviewPanelProps) {
   return (
@@ -255,13 +255,13 @@ function LiftedPreviewPanel({ onSelect, selectedId }: LiftedPreviewPanelProps) {
         selectedId={selectedId}
       />
     </section>
-  )
+  );
 }
 
 function OwnershipPlayground() {
-  const [mode, setMode] = useState<OwnershipMode>('colocated')
-  const [liftedTheme, setLiftedTheme] = useState<PaletteId>('calm')
-  const isLifted = mode === 'lifted'
+  const [mode, setMode] = useState<OwnershipMode>('colocated');
+  const [liftedTheme, setLiftedTheme] = useState<PaletteId>('calm');
+  const isLifted = mode === 'lifted';
 
   return (
     <Card className="gap-0 py-0">
@@ -322,7 +322,7 @@ function OwnershipPlayground() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 function DecisionDiagram() {
@@ -349,7 +349,7 @@ function DecisionDiagram() {
           role="img"
         >
           {decisionSteps.map((step, index) => {
-            const isLast = index === decisionSteps.length - 1
+            const isLast = index === decisionSteps.length - 1;
 
             return (
               <div className="grid gap-3" key={step.id}>
@@ -374,7 +374,7 @@ function DecisionDiagram() {
                   </div>
                 ) : null}
               </div>
-            )
+            );
           })}
         </div>
 
@@ -407,14 +407,14 @@ function DecisionDiagram() {
         </p>
       </CardContent>
     </Card>
-  )
+  );
 }
 
 type CodeBlockProps = {
-  code: string
-  title: string
-  description: string
-}
+  code: string;
+  title: string;
+  description: string;
+};
 
 function CodeBlock({ code, description, title }: CodeBlockProps) {
   return (
@@ -427,7 +427,7 @@ function CodeBlock({ code, description, title }: CodeBlockProps) {
         <code>{code}</code>
       </pre>
     </div>
-  )
+  );
 }
 
 function LiftingStateUpPage() {
@@ -455,7 +455,7 @@ function LiftingStateUpPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         {concepts.map((concept) => {
-          const Icon = concept.icon
+          const Icon = concept.icon;
 
           return (
             <article
@@ -472,7 +472,7 @@ function LiftingStateUpPage() {
                 {concept.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -545,7 +545,7 @@ function LiftingStateUpPage() {
         />
       </section>
     </div>
-  )
+  );
 }
 
-export { LiftingStateUpPage }
+export { LiftingStateUpPage };

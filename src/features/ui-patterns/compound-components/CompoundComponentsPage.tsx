@@ -3,28 +3,28 @@ import {
   FileCode2Icon,
   InfoIcon,
   ShieldCheckIcon,
-} from 'lucide-react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
+} from 'lucide-react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from '@/components/ui/card';
 import {
   advantages,
   concepts,
   implementationCode,
   previewCode,
-} from './compound-components.data'
+} from './compound-components.data';
 import {
   LabAccordion,
   LabAccordionContent,
   LabAccordionItem,
   LabAccordionTrigger,
-} from './LabAccordion'
+} from './LabAccordion';
 
 function CompoundComponentsPage() {
   return (
@@ -51,7 +51,7 @@ function CompoundComponentsPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         {concepts.map((concept) => {
-          const Icon = concept.icon
+          const Icon = concept.icon;
 
           return (
             <article
@@ -68,7 +68,7 @@ function CompoundComponentsPage() {
                 {concept.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -220,7 +220,7 @@ function CompoundComponentsPage() {
         </aside>
       </div>
     </div>
-  )
+  );
 }
 
-export { CompoundComponentsPage }
+export { CompoundComponentsPage };

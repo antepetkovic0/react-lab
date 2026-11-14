@@ -1,6 +1,6 @@
-import type * as React from 'react'
-import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/utils'
+import type * as React from 'react';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export type LabCardSectionValue =
   | 'fundamentals'
@@ -13,20 +13,20 @@ export type LabCardSectionValue =
   | 'performance'
   | 'security'
   | 'testing'
-  | 'architecture'
+  | 'architecture';
 
 type LabCardBadgeProps = Omit<
   React.ComponentProps<typeof Badge>,
   'children' | 'variant'
 > & {
-  section: LabCardSectionValue
-}
+  section: LabCardSectionValue;
+};
 
 const sectionMeta: Record<
   LabCardSectionValue,
   {
-    label: string
-    className: string
+    label: string;
+    className: string;
   }
 > = {
   fundamentals: {
@@ -73,14 +73,14 @@ const sectionMeta: Record<
     label: 'Architecture',
     className: 'border-slate-200 bg-slate-50 text-slate-700',
   },
-}
+};
 
 export function LabCardBadge({
   section,
   className,
   ...props
 }: LabCardBadgeProps) {
-  const meta = sectionMeta[section]
+  const meta = sectionMeta[section];
 
   return (
     <Badge
@@ -90,5 +90,5 @@ export function LabCardBadge({
     >
       {meta.label}
     </Badge>
-  )
+  );
 }

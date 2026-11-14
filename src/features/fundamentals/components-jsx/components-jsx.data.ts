@@ -1,4 +1,9 @@
-import { BlocksIcon, BracesIcon, FileCode2Icon, ShapesIcon } from 'lucide-react'
+import {
+  BlocksIcon,
+  BracesIcon,
+  FileCode2Icon,
+  ShapesIcon,
+} from 'lucide-react';
 
 export const focusTopics = [
   {
@@ -25,7 +30,7 @@ export const focusTopics = [
     description:
       'Components compose other components with JSX. Lowercase tags describe built-in DOM elements, while capitalized tags describe your own React components.',
   },
-]
+];
 
 export const componentExampleCode = `type ProfileCardProps = {
   name: string
@@ -47,26 +52,26 @@ function ProfileCard({ name, role, isOnline }: ProfileCardProps) {
       </div>
     </article>
   )
-}`
+}`;
 
 export const jsxBeforeCode = `const element = (
   <h1 className="greeting">
     Hello, Ada!
   </h1>
-)`
+)`;
 
 export const classicTransformCode = `const element = React.createElement(
   'h1',
   { className: 'greeting' },
   'Hello, Ada!'
-)`
+)`;
 
 export const modernRuntimeCode = `import { jsx as _jsx } from 'react/jsx-runtime'
 
 const element = _jsx('h1', {
   className: 'greeting',
   children: 'Hello, Ada!',
-})`
+})`;
 
 export const elementObjectCode = `const element = {
   type: 'h1',
@@ -74,11 +79,11 @@ export const elementObjectCode = `const element = {
     className: 'greeting',
     children: 'Hello, Ada!',
   },
-}`
+}`;
 
 export const practiceNotes = [
   'Use braces for JavaScript expressions: values, calculations, function calls, and variables.',
   'Use quotes for literal string attributes and braces for dynamic attributes.',
   'Use className and camelCase DOM props because JSX is closer to JavaScript than HTML.',
   'Treat React elements as descriptions. Creating one does not create a DOM node by itself.',
-]
+];

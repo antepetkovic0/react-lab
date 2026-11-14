@@ -1,7 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority'
-import { ActivityIcon } from 'lucide-react'
-import type * as React from 'react'
-import { cn } from '@/lib/utils'
+import { cva, type VariantProps } from 'class-variance-authority';
+import { ActivityIcon } from 'lucide-react';
+import type * as React from 'react';
+import { cn } from '@/lib/utils';
 
 const signalCardVariants = cva(
   'relative overflow-hidden rounded-lg border transition-all',
@@ -62,7 +62,7 @@ const signalCardVariants = cva(
       interactive: true,
     },
   },
-)
+);
 
 const signalCopy = {
   success: {
@@ -83,22 +83,22 @@ const signalCopy = {
       'A required accessibility check failed and should be fixed before deploy.',
     meta: '1 required check failed',
   },
-}
+};
 
 const dotTone = {
   success: 'bg-emerald-500',
   warning: 'bg-amber-500',
   danger: 'bg-rose-500',
-}
+};
 
 type SignalCardProps = React.ComponentProps<'article'> &
   VariantProps<typeof signalCardVariants> & {
-    pulse?: boolean
-  }
+    pulse?: boolean;
+  };
 
-type SignalIntent = NonNullable<SignalCardProps['intent']>
-type SignalDensity = NonNullable<SignalCardProps['density']>
-type SignalEmphasis = NonNullable<SignalCardProps['emphasis']>
+type SignalIntent = NonNullable<SignalCardProps['intent']>;
+type SignalDensity = NonNullable<SignalCardProps['density']>;
+type SignalEmphasis = NonNullable<SignalCardProps['emphasis']>;
 
 function SignalCard({
   className,
@@ -109,9 +109,9 @@ function SignalCard({
   pulse = true,
   ...props
 }: SignalCardProps) {
-  const activeIntent = intent ?? 'success'
-  const copy = signalCopy[activeIntent]
-  const isSolid = emphasis === 'solid'
+  const activeIntent = intent ?? 'success';
+  const copy = signalCopy[activeIntent];
+  const isSolid = emphasis === 'solid';
 
   return (
     <article
@@ -162,7 +162,7 @@ function SignalCard({
         </div>
       </div>
     </article>
-  )
+  );
 }
 
 export {
@@ -170,4 +170,4 @@ export {
   type SignalDensity,
   type SignalEmphasis,
   type SignalIntent,
-}
+};

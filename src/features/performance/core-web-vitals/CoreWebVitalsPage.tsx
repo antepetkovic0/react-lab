@@ -1,14 +1,14 @@
-import { ActivityIcon, BarChart3Icon, InfoIcon } from "lucide-react";
-import { RouteBreadcrumbs } from "@/components/shared/route-breadcrumbs/RouteBreadcrumbs";
-import { Badge } from "@/components/ui/badge";
+import { ActivityIcon, BarChart3Icon, InfoIcon } from 'lucide-react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { observerCode, vitals } from "./core-web-vitals.data";
+} from '@/components/ui/card';
+import { observerCode, vitals } from './core-web-vitals.data';
 
 function CoreWebVitalsPage() {
   return (

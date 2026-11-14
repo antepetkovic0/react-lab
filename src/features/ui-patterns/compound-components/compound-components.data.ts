@@ -1,4 +1,4 @@
-import { BlocksIcon, GitBranchIcon, Layers3Icon } from 'lucide-react'
+import { BlocksIcon, GitBranchIcon, Layers3Icon } from 'lucide-react';
 
 export const concepts = [
   {
@@ -19,14 +19,14 @@ export const concepts = [
     description:
       'The API reads like a small UI language, so app code can arrange the pieces while the component keeps its rules private.',
   },
-]
+];
 
 export const advantages = [
   'Avoids prop drilling across tightly related child components.',
   'Keeps internal state and event handlers close to the root component.',
   'Creates a flexible API that still guides consumers toward valid structure.',
   'Makes patterns like tabs, menus, accordions, and form fields easier to compose.',
-]
+];
 
 export const previewCode = `function FAQPanel() {
     return (
@@ -62,7 +62,7 @@ export const previewCode = `function FAQPanel() {
         </AccordionItem>
       </Accordion>
     );
-  }`
+  }`;
 
 export const implementationCode = `interface AccordionContextType {
     openId: string;
@@ -178,4 +178,4 @@ export const implementationCode = `interface AccordionContextType {
         {children}
       </section>
     );
-  }`
+  }`;

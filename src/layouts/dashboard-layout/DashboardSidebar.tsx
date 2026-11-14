@@ -12,7 +12,7 @@ import {
   RouteIcon,
   ShieldCheckIcon,
   WebhookIcon,
-} from "lucide-react";
+} from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -21,32 +21,32 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { NavPrimary } from "./NavPrimary";
-import { SubscribeForm } from "./SubscribeForm";
+} from '@/components/ui/sidebar';
+import { NavPrimary } from './NavPrimary';
+import { SubscribeForm } from './SubscribeForm';
 
 const data = {
   navPrimary: [
-    { title: "Dashboard", url: "/", icon: LayoutDashboardIcon },
+    { title: 'Dashboard', url: '/', icon: LayoutDashboardIcon },
     {
-      title: "Fundamentals",
-      url: "/fundamentals",
+      title: 'Fundamentals',
+      url: '/fundamentals',
       icon: CodeXmlIcon,
     },
-    { title: "Hooks & Effects", url: "/hooks-effects", icon: WebhookIcon },
-    { title: "Routing", url: "/routing", icon: RouteIcon },
+    { title: 'Hooks & Effects', url: '/hooks-effects', icon: WebhookIcon },
+    { title: 'Routing', url: '/routing', icon: RouteIcon },
     {
-      title: "Forms & Validation",
-      url: "/forms-validation",
+      title: 'Forms & Validation',
+      url: '/forms-validation',
       icon: FormInputIcon,
     },
-    { title: "State Management", url: "/state-management", icon: BoxIcon },
-    { title: "Data Fetching", url: "/data-fetching", icon: GlobeIcon },
-    { title: "UI Patterns", url: "/ui-patterns", icon: PuzzleIcon },
-    { title: "Security", url: "/security", icon: ShieldCheckIcon },
-    { title: "Performance", url: "/performance", icon: GaugeIcon },
-    { title: "Testing", url: "/testing", icon: FlaskConicalIcon },
-    { title: "Architecture", url: "/architecture", icon: CircuitBoardIcon },
+    { title: 'State Management', url: '/state-management', icon: BoxIcon },
+    { title: 'Data Fetching', url: '/data-fetching', icon: GlobeIcon },
+    { title: 'UI Patterns', url: '/ui-patterns', icon: PuzzleIcon },
+    { title: 'Security', url: '/security', icon: ShieldCheckIcon },
+    { title: 'Performance', url: '/performance', icon: GaugeIcon },
+    { title: 'Testing', url: '/testing', icon: FlaskConicalIcon },
+    { title: 'Architecture', url: '/architecture', icon: CircuitBoardIcon },
   ],
 };
 

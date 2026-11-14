@@ -1,15 +1,15 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from '@tanstack/react-router';
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from '@/components/ui/sidebar'
-import { DashboardSearch } from '@/layouts/dashboard-layout/DashboardSearch'
-import { DashboardSidebar } from '@/layouts/dashboard-layout/DashboardSidebar'
+} from '@/components/ui/sidebar';
+import { DashboardSearch } from '@/layouts/dashboard-layout/DashboardSearch';
+import { DashboardSidebar } from '@/layouts/dashboard-layout/DashboardSidebar';
 
 export const Route = createFileRoute('/_dashboard')({
   component: RootComponent,
-})
+});
 
 function RootComponent() {
   return (
@@ -27,5 +27,5 @@ function RootComponent() {
         </main>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

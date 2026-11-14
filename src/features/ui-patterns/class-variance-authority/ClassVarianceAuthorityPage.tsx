@@ -3,19 +3,19 @@ import {
   FileCode2Icon,
   InfoIcon,
   SlidersHorizontalIcon,
-} from 'lucide-react'
-import { useMemo, useState } from 'react'
-import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+} from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { RouteBreadcrumbs } from '@/components/shared/route-breadcrumbs/RouteBreadcrumbs';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 import {
   cnCode,
   concepts,
@@ -24,20 +24,20 @@ import {
   usageNotes,
   withoutVariantsCode,
   withVariantsCode,
-} from './class-variance-authority.data'
+} from './class-variance-authority.data';
 import {
   SignalCard,
   type SignalDensity,
   type SignalEmphasis,
   type SignalIntent,
-} from './SignalCard'
+} from './SignalCard';
 
 function ClassVarianceAuthorityPage() {
-  const [intent, setIntent] = useState<SignalIntent>('success')
-  const [density, setDensity] = useState<SignalDensity>('comfortable')
-  const [emphasis, setEmphasis] = useState<SignalEmphasis>('soft')
-  const [interactive, setInteractive] = useState(true)
-  const [consumerOverride, setConsumerOverride] = useState(false)
+  const [intent, setIntent] = useState<SignalIntent>('success');
+  const [density, setDensity] = useState<SignalDensity>('comfortable');
+  const [emphasis, setEmphasis] = useState<SignalEmphasis>('soft');
+  const [interactive, setInteractive] = useState(true);
+  const [consumerOverride, setConsumerOverride] = useState(false);
 
   const generatedClassName = useMemo(
     () =>
@@ -49,7 +49,7 @@ function ClassVarianceAuthorityPage() {
         consumerOverride ? 'className: p-6 ring-4' : 'className: none',
       ].join(' | '),
     [consumerOverride, density, emphasis, intent, interactive],
-  )
+  );
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
@@ -76,7 +76,7 @@ function ClassVarianceAuthorityPage() {
 
       <section className="grid gap-4 lg:grid-cols-3">
         {concepts.map((concept) => {
-          const Icon = concept.icon
+          const Icon = concept.icon;
 
           return (
             <article
@@ -93,7 +93,7 @@ function ClassVarianceAuthorityPage() {
                 {concept.description}
               </p>
             </article>
-          )
+          );
         })}
       </section>
 
@@ -286,15 +286,15 @@ function ClassVarianceAuthorityPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 
 type ControlGroupProps = {
-  label: string
-  options: readonly string[]
-  value: string
-  onChange: (value: string) => void
-}
+  label: string;
+  options: readonly string[];
+  value: string;
+  onChange: (value: string) => void;
+};
 
 function ControlGroup({ label, onChange, options, value }: ControlGroupProps) {
   return (
@@ -318,14 +318,14 @@ function ControlGroup({ label, onChange, options, value }: ControlGroupProps) {
         ))}
       </div>
     </fieldset>
-  )
+  );
 }
 
 type CodePanelProps = {
-  code: string
-  eyebrow: string
-  title: string
-}
+  code: string;
+  eyebrow: string;
+  title: string;
+};
 
 function CodePanel({ code, eyebrow, title }: CodePanelProps) {
   return (
@@ -345,7 +345,7 @@ function CodePanel({ code, eyebrow, title }: CodePanelProps) {
         </pre>
       </CardContent>
     </Card>
-  )
+  );
 }
 
-export { ClassVarianceAuthorityPage }
+export { ClassVarianceAuthorityPage };
