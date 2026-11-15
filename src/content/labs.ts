@@ -174,7 +174,7 @@ export const labs = [
     imageSrc:
       'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="25" y="23" width="110" height="74" rx="12" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M45 45h28M45 61h28M45 77h28M91 45h25M91 61h25M91 77h25" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M80 35v50" stroke="%230891b2" stroke-width="3" stroke-dasharray="3 6"/%3E%3Ccircle cx="80" cy="35" r="5" fill="%23059669"/%3E%3Ccircle cx="80" cy="85" r="5" fill="%23059669"/%3E%3Cpath d="m35 13-9 9 9 9m90-18 9 9-9 9" fill="none" stroke="%23059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M68 106h24" stroke="%230891b2" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
     imageAlt: 'Two data shapes connected by a generic type',
-    title: 'Generic React Components',
+    title: 'Generic Components',
     description:
       'Build one typed picker for different data shapes, infer callback types, and constrain table columns with keyof.',
     level: 'intermediate',

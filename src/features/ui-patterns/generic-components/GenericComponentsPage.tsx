@@ -44,7 +44,7 @@ function GenericComponentsPage() {
       <section className="max-w-3xl space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-3xl font-semibold tracking-tight">
-            Generic React Components
+            Generic Components
           </h1>
           <Badge className="bg-primary/10 text-primary" variant="outline">
             UI Patterns
