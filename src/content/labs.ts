@@ -170,6 +170,21 @@ export const labs = [
     isSearchable: true,
   },
   {
+    id: 'generic-components',
+    imageSrc:
+      'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="25" y="23" width="110" height="74" rx="12" fill="none" stroke="%230f172a" stroke-width="3"/%3E%3Cpath d="M45 45h28M45 61h28M45 77h28M91 45h25M91 61h25M91 77h25" stroke="%230f172a" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M80 35v50" stroke="%230891b2" stroke-width="3" stroke-dasharray="3 6"/%3E%3Ccircle cx="80" cy="35" r="5" fill="%23059669"/%3E%3Ccircle cx="80" cy="85" r="5" fill="%23059669"/%3E%3Cpath d="m35 13-9 9 9 9m90-18 9 9-9 9" fill="none" stroke="%23059669" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M68 106h24" stroke="%230891b2" stroke-width="3" stroke-linecap="round"/%3E%3C/svg%3E',
+    imageAlt: 'Two data shapes connected by a generic type',
+    title: 'Generic React Components',
+    description:
+      'Build one typed picker for different data shapes, infer callback types, and constrain table columns with keyof.',
+    level: 'intermediate',
+    section: 'ui-patterns',
+    sectionLabel: 'UI Patterns',
+    href: '/ui-patterns/generic-components',
+    isPopular: false,
+    isSearchable: true,
+  },
+  {
     id: 'oauth-pkce',
     imageSrc:
       'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120"%3E%3Crect x="45" y="48" width="70" height="45" rx="10" fill="none" stroke="%230f172a" stroke-width="4"/%3E%3Cpath d="M61 48V37c0-12 8-20 19-20s19 8 19 20v11" fill="none" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Ccircle cx="80" cy="70" r="7" fill="%23059669"/%3E%3Cpath d="M80 77v8" stroke="%23059669" stroke-width="4" stroke-linecap="round"/%3E%3Cpath d="M25 65h20M115 65h20M32 50l13 15-13 15M128 50l-13 15 13 15" fill="none" stroke="%230891b2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/%3E%3Cpath d="M55 102h50" stroke="%230f172a" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7"/%3E%3C/svg%3E',

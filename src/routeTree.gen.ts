@@ -34,6 +34,7 @@ import { Route as DashboardSecurityOauthPkceRouteImport } from './routes/_dashbo
 import { Route as DashboardStateManagementReducerStateMachineRouteImport } from './routes/_dashboard/state-management/reducer-state-machine'
 import { Route as DashboardUiPatternsClassVarianceAuthorityRouteImport } from './routes/_dashboard/ui-patterns/class-variance-authority'
 import { Route as DashboardUiPatternsCompoundComponentsRouteImport } from './routes/_dashboard/ui-patterns/compound-components'
+import { Route as DashboardUiPatternsGenericComponentsRouteImport } from './routes/_dashboard/ui-patterns/generic-components'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
@@ -173,6 +174,12 @@ const DashboardUiPatternsCompoundComponentsRoute =
     path: '/compound-components',
     getParentRoute: () => DashboardUiPatternsRoute,
   } as any)
+const DashboardUiPatternsGenericComponentsRoute =
+  DashboardUiPatternsGenericComponentsRouteImport.update({
+    id: '/generic-components',
+    path: '/generic-components',
+    getParentRoute: () => DashboardUiPatternsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof DashboardIndexRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByFullPath {
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
+  '/ui-patterns/generic-components': typeof DashboardUiPatternsGenericComponentsRoute
 }
 export interface FileRoutesByTo {
   '/architecture': typeof DashboardArchitectureRoute
@@ -225,6 +233,7 @@ export interface FileRoutesByTo {
   '/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
+  '/ui-patterns/generic-components': typeof DashboardUiPatternsGenericComponentsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -253,6 +262,7 @@ export interface FileRoutesById {
   '/_dashboard/state-management/reducer-state-machine': typeof DashboardStateManagementReducerStateMachineRoute
   '/_dashboard/ui-patterns/class-variance-authority': typeof DashboardUiPatternsClassVarianceAuthorityRoute
   '/_dashboard/ui-patterns/compound-components': typeof DashboardUiPatternsCompoundComponentsRoute
+  '/_dashboard/ui-patterns/generic-components': typeof DashboardUiPatternsGenericComponentsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/state-management/reducer-state-machine'
     | '/ui-patterns/class-variance-authority'
     | '/ui-patterns/compound-components'
+    | '/ui-patterns/generic-components'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/architecture'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/state-management/reducer-state-machine'
     | '/ui-patterns/class-variance-authority'
     | '/ui-patterns/compound-components'
+    | '/ui-patterns/generic-components'
   id:
     | '__root__'
     | '/_dashboard'
@@ -334,6 +346,7 @@ export interface FileRouteTypes {
     | '/_dashboard/state-management/reducer-state-machine'
     | '/_dashboard/ui-patterns/class-variance-authority'
     | '/_dashboard/ui-patterns/compound-components'
+    | '/_dashboard/ui-patterns/generic-components'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -517,6 +530,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardUiPatternsCompoundComponentsRouteImport
       parentRoute: typeof DashboardUiPatternsRoute
     }
+    '/_dashboard/ui-patterns/generic-components': {
+      id: '/_dashboard/ui-patterns/generic-components'
+      path: '/generic-components'
+      fullPath: '/ui-patterns/generic-components'
+      preLoaderRoute: typeof DashboardUiPatternsGenericComponentsRouteImport
+      parentRoute: typeof DashboardUiPatternsRoute
+    }
   }
 }
 
@@ -615,6 +635,7 @@ const DashboardStateManagementRouteWithChildren =
 interface DashboardUiPatternsRouteChildren {
   DashboardUiPatternsClassVarianceAuthorityRoute: typeof DashboardUiPatternsClassVarianceAuthorityRoute
   DashboardUiPatternsCompoundComponentsRoute: typeof DashboardUiPatternsCompoundComponentsRoute
+  DashboardUiPatternsGenericComponentsRoute: typeof DashboardUiPatternsGenericComponentsRoute
 }
 
 const DashboardUiPatternsRouteChildren: DashboardUiPatternsRouteChildren = {
@@ -622,6 +643,8 @@ const DashboardUiPatternsRouteChildren: DashboardUiPatternsRouteChildren = {
     DashboardUiPatternsClassVarianceAuthorityRoute,
   DashboardUiPatternsCompoundComponentsRoute:
     DashboardUiPatternsCompoundComponentsRoute,
+  DashboardUiPatternsGenericComponentsRoute:
+    DashboardUiPatternsGenericComponentsRoute,
 }
 
 const DashboardUiPatternsRouteWithChildren =
