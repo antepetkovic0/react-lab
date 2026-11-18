@@ -1,3 +1,5 @@
+import { getLabsBySection } from '@/content/labs';
+
 export const overview = {
   description:
     'Model remote data as cacheable, invalidatable server state instead of manual loading flags everywhere.',
@@ -36,3 +38,5 @@ export const overview = {
     },
   ],
 };
+
+export const labs = getLabsBySection('data-fetching');
